@@ -1,64 +1,56 @@
-<div align="center">
-  <a href="https://github.com/YuanyuanMa03">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&pause=1000&color=20A9F9&center=true&vCenter=true&width=500&lines=Hi+there%2C+I'm+a+new+farmer+in+Code+World!;Welcome+to+my+Digital+Farmland!+%F0%9F%8C%B1" alt="Typing SVG" />
-  </a>
-  <p align="center">
-    <img src="https://komarev.com/ghpvc/?username=Yuanyuan2003&label=PROFILE+VIEWS&color=blueviolet&style=flat-square" alt="profile views" />
-  </p>
-</div>
+# 👋 Hi there, I'm Yuan!
+
+### 🌾 A "New Farmer" Cultivating the Code World
+**M.Sc. Student in Smart Agriculture @ [NJAU](http://www.njau.edu.cn/) | B.S. @ [AAU](http://www.ahau.edu.cn/)**
+
+I view myself as a modern cultivator. Instead of a plow, I use algorithms; instead of rain, I use data. My mission is to empower traditional agriculture with programming and big data analytics, turning every line of code into a drop of water that irrigates the oasis of Digital Agriculture.
+
+> ❝ **Talk is cheap, show me the code and the crop yield.** ❞
 
 ---
 
-### 👋 哈喽，我是远！
+### 🔭 Research & Interests
+* 🌱 **Focus:** Smart Agriculture / Digital Agriculture
+* 🛰️ **Passion:** Remote Sensing (Specially **Google Earth Engine**), Crop Phenology Monitoring, Biophysical Parameter Inversion.
+* 🧠 **Simulation:** Coupling data analysis with crop simulation models to predict growth and yield.
 
-一名来自 **南京农业大学** 的智慧农业在读硕士，本科毕业于 **安徽农业大学** 🌳。
+### 🚀 What I'm Currently Exploring
+I am constantly learning and evolving. Here is what keeps me busy:
 
-我像一个在代码世界里耕作的新农人，希望通过编程和大数据分析技术为传统农业赋能，探索未来农业的无限可能！我坚信，每一行代码，都能像一滴水珠，灌溉出数字农业的绿洲。
-
-- 🌱 **研究方向**: 智慧农业 / 数字农业
-- 🛰️ **当前兴趣**: 热衷于利用遥感影像（尤其是 GEE 平台）分析作物长势、反演参数。通过数据分析研究农业的科学问题，以及利用模拟模型来模拟作物生长。
-- 🧠 **人生格言**: Talk is cheap, show me the code and the crop yield. (空谈无益，给我看代码和作物产量)
-
----
-
-### 🚀 我正在捣鼓的新玩意儿
-
-我总是在学习的路上，目前正专注于以下技术，欢迎同道中人一起交流学习！
-
-- 🛰️ **Google Earth Engine**: 正在解锁“上帝视角”，用海量卫星数据洞察农田的生长秘密。
-- 🐍 **Python**: 我的数据处理“瑞士军刀”，从数据清洗、分析到深度学习模型构建都离不开它。
-- 📊 **R 语言**: 在统计分析和数据可视化的世界里，R 是我最可靠的伙伴之一。
+* **🌍 Google Earth Engine:** Unlocking the "God's Eye View" to decipher the secrets of farmland using massive satellite datasets.
+* **🐍 Python:** My "Swiss Army Knife"—essential for everything from data cleaning and analysis to building Deep Learning models.
+* **📊 R Language:** My most reliable partner for rigorous statistical analysis and stunning data visualization.
 
 ---
 
-### 🛠️ 我的技术栈 (My Tech Stack)
+### 🛠️ Languages & Tools
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
+![Google Earth Engine](https://img.shields.io/badge/Google_Earth_Engine-4285F4?style=for-the-badge&logo=googleearth&logoColor=white)
+![QGIS](https://img.shields.io/badge/QGIS-589632?style=for-the-badge&logo=qgis&logoColor=white)
+![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+
+---
+
+### 📊 GitHub Stats
 <p align="left">
-  <a href="https://www.python.org" target="_blank" rel="noreferrer">
-    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-  </a>
-  <a href="https://www.r-project.org/" target="_blank" rel="noreferrer">
-    <img src="https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white" alt="R"/>
-  </a>
-  <a href="https://earthengine.google.com/" target="_blank" rel="noreferrer">
-    <img src="https://img.shields.io/badge/Google%20Earth%20Engine-4285F4?style=for-the-badge&logo=google-earth&logoColor=white" alt="Google Earth Engine"/>
-  </a>
-  <a href="https://www.qgis.org/en/site/" target="_blank" rel="noreferrer">
-    <img src="https://img.shields.io/badge/QGIS-589632?style=for-the-badge&logo=qgis&logoColor=white" alt="QGIS"/>
-  </a>
-  <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
-    <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
-  </a>
+<img src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME_HERE&show_icons=true&theme=radical" alt="Yuan's Github Stats" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME_HERE&layout=compact&theme=radical" alt="Top Languages" />
 </p>
 
 ---
 
-### 📫 如何找到我 (Connect with Me)
+### 📫 Connect with Me
 
-- **Email**: 📫 [2942204237@qq.com](mailto:2942204237@qq.com) 
-- **Email**: 📫 [2025101184@stu.njau.edu.cn](mailto:2025101184@stu.njau.edu.cn)
+| Platform | Contact |
+| :--- | :--- |
+| **Personal Email** | <a href="mailto:2942204237@qq.com"><img src="https://img.shields.io/badge/QQ_Mail-D42C2C?style=flat-square&logo=gmail&logoColor=white"/></a> |
+| **Academic Email** | <a href="mailto:2025101184@stu.njau.edu.cn"><img src="https://img.shields.io/badge/NJAU_Mail-005A32?style=flat-square&logo=minutemailer&logoColor=white"/></a> |
+
 <br>
 
-<p align="center">
-  <em><b>“用代码和数据，让每一寸土地都充满智慧。”</b></em>
-</p>
+<div align="center">
+  <i>“Empowering every inch of land with wisdom through code and data.”</i>
+</div>
