@@ -60,15 +60,6 @@ I focus on **Digital Agriculture**, leveraging Remote Sensing and AI to tackle c
 
 ---
 
-### 📊 GitHub Analytics
-
-<div align="center"> 
-  <img src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117" height="150" alt="stats graph"  />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=radical&hide_border=true&bg_color=0d1117" height="150" alt="languages graph" />
-</div>
-
----
-
 ### 📫 Let's Connect
 
 <div align="center">
