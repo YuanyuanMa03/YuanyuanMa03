@@ -13,12 +13,6 @@
   <i>B.S. Alumni @ <a href="http://www.ahau.edu.cn/">Anhui Agricultural University (AAU)</a></i>
 </p>
 
-<p width="80%">
-  I am a <b>"Digital Cultivator"</b> bridging the gap between agronomy and artificial intelligence.<br>
-  Transitioning from traditional data analysis to <b>Large Language Model (LLM) Engineering</b>,<br>
-  my mission is to build <b>AI Agents</b> that can "think" for agriculture and solve complex spatial problems.
-</p>
-
 <br>
 
 <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical&quote=Talk%20is%20cheap,%20show%20me%20the%20algorithm.&author=Yuan" alt="Quote" />
