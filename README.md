@@ -9,8 +9,8 @@
 <br/>
 
 <p>
-  <b>Master's Student @ <a href="http://www.njau.edu.cn/">Nanjing Agricultural University (NJAU)</a></b><br>
-  <i>B.S. Alumni @ <a href="http://www.ahau.edu.cn/">Anhui Agricultural University (AAU)</i></i>
+  <b>Undergraduate @ <a href="http://www.ahau.edu.cn/">Anhui Agricultural University (AAU)</a></b><br>
+  <i>Master's Student @ <a href="http://www.njau.edu.cn/">Nanjing Agricultural University (NJAU)</a></i>
 </p>
 
 <br/>
