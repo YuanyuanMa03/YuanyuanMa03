@@ -9,8 +9,8 @@
 <br/>
 
 <p>
-  <b>Undergraduate @ <a href="http://www.ahau.edu.cn/">Anhui Agricultural University (AAU)</a></b><br>
-  <i>Master's Student @ <a href="http://www.njau.edu.cn/">Nanjing Agricultural University (NJAU)</a></i>
+  <b>🎓 <i>Currently pursuing</i> M.Sc. @ <a href="http://www.njau.edu.cn/">Nanjing Agricultural University (NJAU)</a></b><br>
+  <span style="opacity: 0.7; font-size: 0.9em;">B.S. @ <a href="http://www.ahau.edu.cn/">Anhui Agricultural University (AAU)</a></span>
 </p>
 
 <br/>
