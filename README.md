@@ -1,68 +1,111 @@
 <div align="center">
 
-<h1>🌱 Hi there, I'm Yuan!</h1>
+<h1>👋 Hi there, I'm Yuan!</h1>
 
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E8B57&center=true&vCenter=true&width=435&lines=M.Sc.+Student+in+Smart+Agriculture;Future+LLM+Application+Engineer;Building+Agri-Agents+with+Code;Python+%7C+TypeScript+%7C+R+%7C+PyTorch" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E8B57&center=true&vCenter=true&width=435&lines=AI+Agent+Engineer;%7C+LLM+App+Developer;%7C+Building+Intelligent+Systems;Python+%7C+TypeScript+%7C+R" alt="Typing SVG" />
 </a>
 
 <br/>
 
 <p>
   <b>Master's Student @ <a href="http://www.njau.edu.cn/">Nanjing Agricultural University (NJAU)</a></b><br>
-  <i>B.S. Alumni @ <a href="http://www.ahau.edu.cn/">Anhui Agricultural University (AAU)</a></i>
+  <i>B.S. Alumni @ <a href="http://www.ahau.edu.cn/">Anhui Agricultural University (AAU)</i></i>
 </p>
 
-<br>
+<br/>
 
-<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical&quote=Talk%20is%20cheap,%20show%20me%20the%20algorithm.&author=Yuan" alt="Quote" />
+<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical&quote=Agents%20that%20understand%20and%20act.&author=Yuan" alt="Quote" />
 
 </div>
 
 ---
 
-### 🚀 Career Vision & Research Interests
+## 🎯 What I'm Building
 
-I am currently focused on **AI-Native Applications**, exploring how LLMs can understand the physical world.
+I focus on **AI Agent Systems** and **LLM-Native Applications**, with expertise in:
 
-| 🤖 **LLM & AI Engineering** | 🌾 **Smart Agriculture & RS** |
+| 🤖 **AI & LLM Engineering** | 🏗 **System Architecture** |
 | :--- | :--- |
-| **Agent Development**: Building autonomous agents using **LangChain** and **AutoGPT** logic. | **Remote Sensing**: Leveraging **Google Earth Engine** for large-scale crop monitoring. |
-| **Model Tuning**: Fine-tuning open-source models (Llama 3, Qwen) and optimizing hyperparameters. | **Crop Simulation**: Coupling deep learning with traditional crop models. |
-| **Full-Stack AI**: Using **TypeScript/Node.js** to deploy models as interactive web services. | **Data Analysis**: Rigorous statistical modeling using **R** and **Python**. |
+| **Multi-Agent Systems**: Building collaborative agent frameworks (OpenClaw-style) | **Hybrid Architectures**: Node.js + Python + Redis + MQTT |
+| **Model Integration**: Multiple LLM providers (Claude, GPT, Gemini, Qwen) | **Knowledge Systems**: RAG, vector databases, long-term memory |
+| **Agentic Tools**: Function calling, MCP protocol, tool orchestration | **Event-Driven**: Skill chains, automatic composition, result passing |
 
 ---
 
-### 🛠️ Technical Stack
+## 🌾 Domain Applications
 
-I combine strong algorithmic skills with full-stack engineering capabilities.
+I apply AI agent systems to **practical domains**, including:
+
+| 🌾 **Smart Agriculture** | 📚 **Research & Literature** | 🛠️ **Dev Tools** |
+| :--- | :--- | :--- |
+| Crop simulation models + ML | Literature analysis agents | Code generation assistants |
+| Disease detection agents | Paper writing automation | MCP-based tool systems |
+| Methane emission prediction | Academic workflow automation | AI-native version control |
+
+---
+
+## 🛠️ Technical Stack
 
 <div align="center">
 
-| **💻 Core Languages** | **🧠 AI / LLM / Deep Learning** | **📊 Data / Geo / Tools** |
+| **💻 Core Languages** | **🧠 AI / LLM / Agents** | **📊 Data & Tools** |
 | :--- | :--- | :--- |
-| ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) **(Expert)**<br>![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) **(Dev)**<br>![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white) **(Stats)** | ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)<br>![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=flat-square&logo=huggingface&logoColor=black)<br>![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=chainlink&logoColor=white)<br>![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white) | ![GEE](https://img.shields.io/badge/Google_Earth_Engine-4285F4?style=flat-square&logo=googleearth&logoColor=white)<br>![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)<br>![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)<br>![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) |
+| ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) **(Expert)**<br>![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) **(Dev)**<br>![Go](https://img.shields.io/badge/Go-00ADD8E?style=flat-square&logo=go&logoColor=white) | ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=chainlink&logoColor=white)<br>![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat-square&logo=python&logoColor=white)<br>![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) | ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)<br>![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)<br>![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) |
 
-**Key Skills:** *Algorithm Construction • Hyperparameter Tuning • RAG Systems • Spatial Analysis*
+**Key Skills:** *Multi-Agent Systems • LLM Integration • RAG • MCP • Event-Driven Architecture*
 
 </div>
 
 ---
 
-### 👨‍💻 Selected Projects / Explorations
-*(Demonstrating my shift from Analysis to Engineering)*
+## 🚀 Featured Projects
 
-* **🤖 Agri-Consultant Agent (Work in Progress)**
-    * Constructing a RAG-based chatbot using **LangChain** and vector databases to answer farmers' questions based on agricultural literature.
-    * *Tech:* Python, OpenAI API, Pinecone, TypeScript (Frontend).
-* **🌾 Wheat Yield Prediction via Deep Learning**
-    * Designed a custom CNN-LSTM architecture to process time-series satellite data.
-    * Performed extensive **hyperparameter tuning** (learning rate, batch size) to improve model accuracy by 15%.
-    * *Tech:* PyTorch, Google Earth Engine, Python.
+### 🤖 Agent Frameworks
+
+* **[agriclaw-framework](https://github.com/YuanyuanMa03/agriclaw-framework)** ⭐
+    * Domain-specific agent framework inspired by OpenClaw
+    * Node.js Gateway + Python AI Engine + RAG + IoT Integration
+    * Skills: CropAdvisor, SoilAnalyst, WeatherForecaster
+
+* **[researchclaw](https://github.com/YuanyuanMa03/researchclaw)** 🦞
+    * Universal research AI assistant, fully aligned with OpenClaw
+    * 6 core skills: literature search, paper writing, experiment management
+    * Advanced model selection system (OpenClaw-compatible)
+
+* **[qwen-agriculture-agent](https://github.com/YuanyuanMa03/qwen-agriculture-agent)**
+    * AI-powered agriculture assistant based on Qwen-Agent framework
+    * Local inference with MLX (fully offline)
+    * Process-based model integration (RG2CH4, Ricegrow)
+
+### 🛠️ AI Tools & Applications
+
+* **[literature_agent](https://github.com/YuanyuanMa03/literature_agent)** 📚 ⭐ (2 stars)
+    * LLM-powered literature analysis assistant for faster research
+    * Smart screening, deep analysis, interactive visualization
+    * MCP extension support, headless mode for automation
+
+* **[gitai](https://github.com/YuanyuanMa03/gitai)** 🐙
+    * AI-native version control system
+    * Treats prompts as first-class citizens alongside code
+
+* **[nano-claude-code](https://github.com/YuanyuanMa03/nano-claude-code)**
+    * Build your own AI coding assistant (from 0 to 1)
+    * Multi-language implementation (Python, TypeScript, Rust)
 
 ---
 
-### 📫 Connect with Me
+## 📊 Open Source Stats
+
+<div align="center">
+
+![](https://github-readme-streak-stats.herokuapp.com/?user=YuanyuanMa03&theme=radical&hide_border=true)
+
+</div>
+
+---
+
+## 📫 Connect with Me
 
 <div align="center">
 
@@ -72,6 +115,6 @@ I combine strong algorithmic skills with full-stack engineering capabilities.
 | **Personal Email** | <a href="mailto:2942204237@qq.com"><img src="https://img.shields.io/badge/QQ-Mail-D42C2C?style=flat-square&logo=gmail&logoColor=white"/></a> |
 
 <br>
-<i>"Coding the future of agriculture, one algorithm at a time."</i>
+<i>"Building intelligent systems, one agent at a time."</i>
 
 </div>
