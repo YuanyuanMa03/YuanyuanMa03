@@ -63,11 +63,6 @@ I apply AI agent systems to **practical domains**, including:
 
 ### 🌾 AI + Agriculture
 
-* **[Crop-RLVR (Agri-Align)](https://github.com/YuanyuanMa03/Crop-RLVR)**
-    * Physics-informed crop mechanism reasoning with GRPO training
-    * RiceGrow-CH4 simulator integration, progressive reward design
-    * Comprehensive evaluation: IID/OOD, Pass@K, calibration curves
-
 * **[qwen-agriculture-agent](https://github.com/YuanyuanMa03/qwen-agriculture-agent)** ⭐
     * AI-powered agriculture assistant based on Qwen-Agent framework
     * Local inference with MLX (fully offline)
