@@ -1,161 +1,141 @@
 <div align="center">
 
-# Hi, I'm Yuanyuan Ma 👋
+<h1>👋 Hi there, I'm Yuan!</h1>
 
-**AI Researcher & Full-Stack Developer** bridging Agriculture and Intelligence
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E8B57&center=true&vCenter=true&width=435&lines=AI+Agent+Engineer;%7C+LLM+App+Developer;%7C+Building+Intelligent+Systems;Python+%7C+Go+%7C+R" alt="Typing SVG" />
+</a>
 
-[![GitHub](https://img.shields.io/badge/GitHub-YuanyuanMa03-black?style=flat&logo=github)](https://github.com/YuanyuanMa03)
-[![Email](https://img.shields.io/badge/Email-2942204237@qq.com-red?style=flat&logo=gmail)](mailto:2942204237@qq.com)
-[![Research](https://img.shields.io/badge/Focus-LLM%20%7C%20RLVR%20%7C%20AgAI-blue?style=flat)]()
+<br/>
 
----
+<p>
+  <b>🎓 <i>Currently pursuing</i> M.Sc. @ <a href="http://www.njau.edu.cn/">Nanjing Agricultural University (NJAU)</a></b><br>
+  <span style="opacity: 0.7; font-size: 0.9em;">B.S. @ <a href="http://www.ahau.edu.cn/">Anhui Agricultural University (AAU)</a></span>
+</p>
+
+<br/>
+
+<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical&quote=Agents%20that%20understand%20and%20act.&author=Yuan" alt="Quote" />
 
 </div>
 
-## About Me
+---
 
-I'm a graduate researcher working at the intersection of **large language models** and **agricultural intelligence**. I build end-to-end systems — from physics-informed training data generation, through RL-based model alignment, to deployable AI agents — all with a focus on making AI actually useful for real-world domains.
+## 🎯 What I'm Building
 
-- 🔬 Researching **RLVR (Reinforcement Learning from Verification and Reasoning)** for mechanistic crop reasoning
-- 🤖 Building **multi-agent systems** and **AI agents** that integrate domain knowledge with LLMs
-- 🌾 Passionate about **AI for Agriculture** — making crop science accessible through natural language
-- 🛠️ I ship real projects across the stack: training pipelines, agent frameworks, dev tools, and web apps
+I focus on **AI Agent Systems** and **LLM-Native Applications**, with expertise in:
+
+| 🤖 **AI & LLM Engineering** | 🏗 **System Architecture** |
+| :--- | :--- |
+| **Multi-Agent Systems**: Building collaborative agent frameworks | **Hybrid Architectures**: Python + Go + JavaScript |
+| **Model Training & Alignment**: GRPO, LoRA fine-tuning on Apple Silicon | **Knowledge Systems**: RAG, vector databases, long-term memory |
+| **Agentic Tools**: Function calling, MCP protocol, tool orchestration | **Event-Driven**: Skill chains, automatic composition, result passing |
 
 ---
 
-## 🧠 Research Interests
+## 🌾 Domain Applications
 
-`Reinforcement Learning from Human Feedback (RLHF)` `RLVR` `GRPO`
-`LLM Alignment & Safety` `Calibration` `Chain-of-Thought Reasoning`
-`AI for Science` `Agricultural AI` `Multi-Agent Systems`
+I apply AI agent systems to **practical domains**, including:
+
+| 🌾 **Smart Agriculture** | 📚 **Research & Literature** | 🛠️ **Dev Tools** |
+| :--- | :--- | :--- |
+| Crop simulation models + ML | Literature analysis agents | Code generation assistants |
+| Disease detection agents | Paper writing automation | MCP-based tool systems |
+| Methane emission prediction | Academic workflow automation | AI-native version control |
+
+---
+
+## 🛠️ Technical Stack
+
+<div align="center">
+
+| **💻 Core Languages** | **🧠 AI / LLM / Agents** | **📊 Data & Tools** |
+| :--- | :--- | :--- |
+| ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) **(Expert)**<br>![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)<br>![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)<br>![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white) | ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=chainlink&logoColor=white)<br>![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat-square&logo=python&logoColor=white)<br>![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) | ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)<br>![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)<br>![HuggingFace](https://img.shields.io/badge/🤗_HuggingFace-FFD21E?style=flat-square) |
+
+**Key Skills:** *Multi-Agent Systems • LLM Training & Alignment • RAG • MCP • Event-Driven Architecture*
+
+</div>
 
 ---
 
 ## 🚀 Featured Projects
 
-<table>
-<tr>
-<td width="50%">
+### 🌾 AI + Agriculture
 
-### [Crop-RLVR (Agri-Align)](https://github.com/YuanyuanMa03/Crop-RLVR)
-**Physics-Informed RL for Crop Mechanism Reasoning**
+* **[Crop-RLVR (Agri-Align)](https://github.com/YuanyuanMa03/Crop-RLVR)**
+    * Physics-informed crop mechanism reasoning with GRPO training
+    * RiceGrow-CH4 simulator integration, progressive reward design
+    * Comprehensive evaluation: IID/OOD, Pass@K, calibration curves
 
-End-to-end RLVR training pipeline using RiceGrow-CH4 physics simulator as ground truth. Features 3-phase progressive reward (correctness → reasoning → calibration + safe refusal), GRPO training, and comprehensive evaluation (IID/OOD, Pass@K, ECE calibration).
+* **[qwen-agriculture-agent](https://github.com/YuanyuanMa03/qwen-agriculture-agent)** ⭐
+    * AI-powered agriculture assistant based on Qwen-Agent framework
+    * Local inference with MLX (fully offline)
+    * Process-based model integration (RG2CH4, Ricegrow)
 
-`GRPO` `RLVR` `LoRA` `MLX` `RiceGrow` `Reward Design`
+* **[RiceGrowAI](https://github.com/YuanyuanMa03/RiceGrowAI)**
+    * AI-powered rice growth & CH₄ emission simulation system
+    * Interactive visualization and parameter exploration
 
-</td>
-<td width="50%">
+### 🤖 Agent Frameworks
 
-### [qwen-agriculture-agent](https://github.com/YuanyuanMa03/qwen-agriculture-agent)
-**Intelligent Agriculture Assistant**
+* **[AstrBot](https://github.com/YuanyuanMa03/AstrBot)**
+    * Agentic IM chatbot infrastructure supporting multiple platforms & LLMs
+    * Plugin system, multi-platform integration (WeChat, QQ, Telegram...)
 
-AI agent integrating crop growth models, RAG knowledge base, MCP tools, and Qwen-Agent framework for agricultural Q&A, mechanism analysis, and farming recommendations.
+* **[ClassBrainAI](https://github.com/YuanyuanMa03/ClassBrainAI)**
+    * Multi-agent collaborative class management with role-based AI assistants
 
-`Qwen-Agent` `RAG` `MCP` `Multi-Agent` `Agriculture`
+### 🛠️ AI Tools & Applications
 
-</td>
-</tr>
-<tr>
-<td width="50%">
+* **[literature_agent](https://github.com/YuanyuanMa03/literature_agent)** 📚 ⭐⭐
+    * LLM-powered literature analysis assistant for faster research
+    * Smart screening, deep analysis, interactive visualization
 
-### [AstrBot](https://github.com/YuanyuanMa03/AstrBot)
-**Agentic IM Chatbot Infrastructure**
+* **[pi-llm-alignment](https://github.com/YuanyuanMa03/pi-llm-alignment)**
+    * LLM alignment research — safety evaluation and alignment techniques
 
-Full-featured chatbot framework supporting multiple IM platforms, LLM backends, plugin system, and AI features. An open-source alternative for building conversational AI agents.
+* **[gitai](https://github.com/YuanyuanMa03/gitai)** 🐙 ⭐
+    * AI-native version control system
+    * Treats prompts as first-class citizens alongside code
 
-`Python` `LLM Integration` `Plugin System` `Multi-Platform`
+* **[nano-claude-code](https://github.com/YuanyuanMa03/nano-claude-code)**
+    * Build your own AI coding assistant (from 0 to 1)
 
-</td>
-<td width="50%">
+* **[latex-editor](https://github.com/YuanyuanMa03/latex-editor)** ✏️ ⭐
+    * Lightweight online LaTeX editor (Overleaf alternative)
 
-### [literature_agent](https://github.com/YuanyuanMa03/literature_agent)
-**LLM-Powered Literature Research Assistant**
+### 🔧 Developer Tooling
 
-Automated literature analysis tool that helps researchers quickly survey papers, extract key findings, and synthesize research trends using LLMs.
-
-`LLM` `RAG` `Academic Research` `Python`
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### [gitai](https://github.com/YuanyuanMa03/gitai)
-**AI-Native Version Control System**
-
-An experimental VCS that treats AI prompts as first-class citizens alongside code — rethinking version control for the AI-assisted development era.
-
-`Go` `Git` `AI-Native` `Developer Tools`
-
-</td>
-<td width="50%">
-
-### [RiceGrowAI](https://github.com/YuanyuanMa03/RiceGrowAI)
-**AI-Powered Rice Growth & CH₄ Simulation**
-
-Web-based simulation system combining rice growth modeling with CH₄ emission estimation, featuring interactive visualization and parameter exploration.
-
-`Python` `Streamlit` `Crop Modeling` `Visualization`
-
-</td>
-</tr>
-</table>
-
-<details>
-<summary><strong>📦 More Projects</strong></summary>
-
-| Project | Description | Tech |
-|---------|-------------|------|
-| [nano-claude-code](https://github.com/YuanyuanMa03/nano-claude-code) | Build your own Claude Code (code agent) from zero to one | `Python` `Agent` |
-| [pi-llm-alignment](https://github.com/YuanyuanMa03/pi-llm-alignment) | LLM alignment research — safety evaluation and alignment techniques | `Python` `RLHF` |
-| [ClassBrainAI](https://github.com/YuanyuanMa03/ClassBrainAI) | Multi-agent collaborative class management with role-based AI assistants | `Python` `Multi-Agent` |
-| [latex-editor](https://github.com/YuanyuanMa03/latex-editor) | Lightweight online LaTeX editor (Overleaf alternative) | `JavaScript` |
-| [ml-easy-setup](https://github.com/YuanyuanMa03/ml-easy-setup) | One-click ML/DL environment setup for researchers | `Python` `Shell` |
-| [ml-easy-setup-R](https://github.com/YuanyuanMa03/ml-easy-setup-R) | One-click R language data science environment setup | `R` `Shell` |
-
-</details>
+* **[ml-easy-setup](https://github.com/YuanyuanMa03/ml-easy-setup)** ⭐ — One-click ML/DL environment setup
+* **[ml-easy-setup-R](https://github.com/YuanyuanMa03/ml-easy-setup-R)** ⭐ — One-click R data science environment
+* **[Gemini-Balance-api](https://github.com/YuanyuanMa03/Gemini-Balance-api)** ⭐ — Gemini API load balancer
 
 ---
 
-## 🛠️ Tech Stack
-
-**ML & Training**
-`PyTorch` `MLX` `mlx-lm` `LoRA/QLoRA` `GRPO` `RLHF` `TRL`
-
-**AI Agent**
-`LangChain` `Qwen-Agent` `RAG` `MCP` `Multi-Agent` `Tool Calling`
-
-**Languages**
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![R](https://img.shields.io/badge/R-276DC3?style=flat&logo=r&logoColor=white)
-![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat&logo=gnubash&logoColor=white)
-
-**Tools & Platforms**
-![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)
-![HuggingFace](https://img.shields.io/badge/🤗_HuggingFace-FFD21E?style=flat)
-
----
-
-## 📊 GitHub Activity
+## 📊 Open Source Stats
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=YuanyuanMa03&show_icons=true&theme=default&hide_border=true&bg_color=ffffff&title_color=1a1a2e&icon_color=1b6b4a&text_color=333333" height="165">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YuanyuanMa03&layout=compact&hide_border=true&bg_color=ffffff&title_color=1a1a2e&text_color=333333" height="165">
-</div>
 
-<div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=YuanyuanMa03&hide_border=true&background=ffffff&stroke=ffffff&ring=1b6b4a&fire=e8913a&currStreakLabel=1b6b4a" width="60%">
+![](https://github-readme-streak-stats.herokuapp.com/?user=YuanyuanMa03&theme=radical&hide_border=true)
+
+<img src="https://github-readme-stats.vercel.app/api?username=YuanyuanMa03&show_icons=true&theme=radical&hide_border=true" height="170">
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YuanyuanMa03&layout=compact&theme=radical&hide_border=true" height="170">
+
 </div>
 
 ---
 
+## 📫 Connect with Me
+
 <div align="center">
 
-*"Making AI work for agriculture — one commit at a time."*
+| Platform | Reach Out |
+| :--- | :--- |
+| **Academic Email** | <a href="mailto:2025101184@stu.njau.edu.cn"><img src="https://img.shields.io/badge/NJAU-Mail-005A32?style=flat-square&logo=minutemailer&logoColor=white"/></a> |
+| **Personal Email** | <a href="mailto:2942204237@qq.com"><img src="https://img.shields.io/badge/QQ-Mail-D42C2C?style=flat-square&logo=gmail&logoColor=white"/></a> |
+
+<br>
+<i>"Building intelligent systems, one agent at a time."</i>
 
 </div>
