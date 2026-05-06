@@ -1,59 +1,50 @@
 <div align="center">
 
-<h1>👋 Hi there, I'm Yuan!</h1>
+<h1>👋 Hi, I'm Yuan!</h1>
 
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E8B57&center=true&vCenter=true&width=435&lines=AI+Agent+Engineer;%7C+LLM+App+Developer;%7C+Building+Intelligent+Systems;Python+%7C+Go+%7C+R" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=6C63FF&center=true&vCenter=true&width=435&lines=AI+Agent+Engineer;CLI+%7C+TUI+%7C+Multi-Agent+Systems;Building+the+Interface+Between+Human+%26+AI;TypeScript+%7C+Python+%7C+Go" alt="Typing SVG" />
 </a>
 
 <br/>
 
 <p>
-  <b>🎓 <i>Currently pursuing</i> M.Sc. @ <a href="http://www.njau.edu.cn/">Nanjing Agricultural University (NJAU)</a></b><br>
-  <span style="opacity: 0.7; font-size: 0.9em;">B.S. @ <a href="http://www.ahau.edu.cn/">Anhui Agricultural University (AAU)</a></span>
+  <b>🎓 M.Sc. @ <a href="http://www.njau.edu.cn/">Nanjing Agricultural University</a></b><br>
+  <span style="opacity: 0.7; font-size: 0.9em;">Research: AI Agent Systems & Human-AI Boundary</span>
 </p>
 
 <br/>
 
-<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical&quote=Agents%20that%20understand%20and%20act.&author=Yuan" alt="Quote" />
+<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight&quote=The%20boundary%20between%20human%20and%20AI%20is%20not%20a%20wall%20%E2%80%94%20it's%20an%20interface.&author=Yuan" alt="Quote" />
 
 </div>
 
 ---
 
-## 🎯 What I'm Building
+## 🎯 What I Build
 
-I focus on **AI Agent Systems** and **LLM-Native Applications**, with expertise in:
+I focus on **AI Agent Engineering** — building the tools, frameworks, and interfaces that make AI agents genuinely useful.
 
-| 🤖 **AI & LLM Engineering** | 🏗 **System Architecture** |
-| :--- | :--- |
-| **Multi-Agent Systems**: Building collaborative agent frameworks | **Hybrid Architectures**: Python + Go + JavaScript |
-| **Model Training & Alignment**: GRPO, LoRA fine-tuning on Apple Silicon | **Knowledge Systems**: RAG, vector databases, long-term memory |
-| **Agentic Tools**: Function calling, MCP protocol, tool orchestration | **Event-Driven**: Skill chains, automatic composition, result passing |
-
----
-
-## 🌾 Domain Applications
-
-I apply AI agent systems to **practical domains**, including:
-
-| 🌾 **Smart Agriculture** | 📚 **Research & Literature** | 🛠️ **Dev Tools** |
+| 🤖 **Agent Systems** | 🏗️ **Dev Tools & CLI** | 🧠 **LLM Engineering** |
 | :--- | :--- | :--- |
-| Crop simulation models + ML | Literature analysis agents | Code generation assistants |
-| Disease detection agents | Paper writing automation | MCP-based tool systems |
-| Methane emission prediction | Academic workflow automation | AI-native version control |
+| Multi-agent orchestration & collaboration | AI-powered CLI / TUI tools | Provider-agnostic LLM integration |
+| Tool systems, MCP protocol, skill chains | Code agents with real tool execution | GRPO, LoRA fine-tuning (Apple Silicon) |
+| Sub-agent spawning & task delegation | Streaming token output & rich rendering | RAG, vector databases, long-term memory |
 
 ---
 
-## 🛠️ Technical Stack
+## 🛠️ Tech Stack
 
 <div align="center">
 
-| **💻 Core Languages** | **🧠 AI / LLM / Agents** | **📊 Data & Tools** |
+| **💻 Languages** | **🧠 AI / Agents** | **⚙️ Infrastructure** |
 | :--- | :--- | :--- |
-| ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) **(Expert)**<br>![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)<br>![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)<br>![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white) | ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=chainlink&logoColor=white)<br>![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat-square&logo=python&logoColor=white)<br>![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) | ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)<br>![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)<br>![HuggingFace](https://img.shields.io/badge/🤗_HuggingFace-FFD21E?style=flat-square) |
+| ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) **(Primary)** | Multi-Agent Orchestration | ![Bun](https://img.shields.io/badge/Bun-000?style=flat-square&logo=bun&logoColor=white) |
+| ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) | LLM Provider Integration (Anthropic / OpenAI / Gemini / Grok) | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) |
+| ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white) | MCP Protocol & Tool Systems | ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white) |
+| ![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white) | Prompt Engineering & Alignment | ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) |
 
-**Key Skills:** *Multi-Agent Systems • LLM Training & Alignment • RAG • MCP • Event-Driven Architecture*
+**Core Focus:** *AI Coding Agents • Multi-Agent Systems • CLI/TUI Engineering • Provider Abstraction*
 
 </div>
 
@@ -61,76 +52,49 @@ I apply AI agent systems to **practical domains**, including:
 
 ## 🚀 Featured Projects
 
-### 🌾 AI + Agriculture
+### ⚡ AI Coding Agents & CLI
 
-* **[qwen-agriculture-agent](https://github.com/YuanyuanMa03/qwen-agriculture-agent)** ⭐
-    * AI-powered agriculture assistant based on Qwen-Agent framework
-    * Local inference with MLX (fully offline)
-    * Process-based model integration (RG2CH4, Ricegrow)
+* **[xclaw](https://github.com/YuanyuanMa03/xclaw)** — AI programming CLI that redefines the boundary between human and AI. Multi-provider engine, personality-driven TUI, real tool execution. `v1.0.0`
+* **[claude-code](https://github.com/YuanyuanMa03/claude-code)** — Fully runnable Claude Code fork. TypeScript type fixes, enterprise reliability, Bun-native build.
+* **[pi-mono](https://github.com/YuanyuanMa03/pi-mono)** — Active contributor to the multi-provider coding agent framework. TUI fixes, OAuth, streaming, memory optimization.
 
-* **[RiceGrowAI](https://github.com/YuanyuanMa03/RiceGrowAI)**
-    * AI-powered rice growth & CH₄ emission simulation system
-    * Interactive visualization and parameter exploration
+### 🤖 Agent Frameworks & Platforms
 
-### 🤖 Agent Frameworks
+* **[deer-flow](https://github.com/YuanyuanMa03/deer-flow)** — Long-horizon SuperAgent with sandboxes, memories, tools, skills, and subagents. Handles tasks from minutes to hours.
+* **[MindOS](https://github.com/YuanyuanMa03/MindOS)** — Human-AI Collaborative Mind System. Globally sync your mind for all agents: transparent, controllable, evolving.
+* **[ai-desk](https://github.com/YuanyuanMa03/ai-desk)** — Local-first AI aggregation workbench for desktop, mobile, and web.
 
-* **[AstrBot](https://github.com/YuanyuanMa03/AstrBot)**
-    * Agentic IM chatbot infrastructure supporting multiple platforms & LLMs
-    * Plugin system, multi-platform integration (WeChat, QQ, Telegram...)
+### 🔬 Research & Learning
 
-* **[ClassBrainAI](https://github.com/YuanyuanMa03/ClassBrainAI)**
-    * Multi-agent collaborative class management with role-based AI assistants
-
-### 🛠️ AI Tools & Applications
-
-* **[literature_agent](https://github.com/YuanyuanMa03/literature_agent)** 📚 ⭐⭐
-    * LLM-powered literature analysis assistant for faster research
-    * Smart screening, deep analysis, interactive visualization
-
-* **[pi-llm-alignment](https://github.com/YuanyuanMa03/pi-llm-alignment)**
-    * LLM alignment research — safety evaluation and alignment techniques
-
-* **[gitai](https://github.com/YuanyuanMa03/gitai)** 🐙 ⭐
-    * AI-native version control system
-    * Treats prompts as first-class citizens alongside code
-
-* **[nano-claude-code](https://github.com/YuanyuanMa03/nano-claude-code)**
-    * Build your own AI coding assistant (from 0 to 1)
-
-* **[latex-editor](https://github.com/YuanyuanMa03/latex-editor)** ✏️ ⭐
-    * Lightweight online LaTeX editor (Overleaf alternative)
-
-### 🔧 Developer Tooling
-
-* **[ml-easy-setup](https://github.com/YuanyuanMa03/ml-easy-setup)** ⭐ — One-click ML/DL environment setup
-* **[ml-easy-setup-R](https://github.com/YuanyuanMa03/ml-easy-setup-R)** ⭐ — One-click R data science environment
-* **[Gemini-Balance-api](https://github.com/YuanyuanMa03/Gemini-Balance-api)** ⭐ — Gemini API load balancer
+* **[TraceGPT](https://github.com/YuanyuanMa03/TraceGPT)** — Calculator-verifiable Transformer learning framework. Pure NumPy, no PyTorch dependency.
+* **[GitPulse](https://github.com/YuanyuanMa03/GitPulse)** — Real-time GitHub trending tracker (开源脉搏).
+* **[RICEMIND · 禾智](https://github.com/YuanyuanMa03/ricemind)** — Agricultural AI Agent SDK with literature search, BibTeX export, and domain templates.
 
 ---
 
-## 📊 Open Source Stats
+## 📊 GitHub Stats
 
 <div align="center">
 
-![](https://github-readme-streak-stats.herokuapp.com/?user=YuanyuanMa03&theme=radical&hide_border=true)
+![](https://github-readme-streak-stats.herokuapp.com/?user=YuanyuanMa03&theme=tokyonight&hide_border=true)
 
-<img src="https://github-readme-stats.vercel.app/api?username=YuanyuanMa03&show_icons=true&theme=radical&hide_border=true" height="170">
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YuanyuanMa03&layout=compact&theme=radical&hide_border=true" height="170">
+<img src="https://github-readme-stats.vercel.app/api?username=YuanyuanMa03&show_icons=true&theme=tokyonight&hide_border=true" height="170">
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YuanyuanMa03&layout=compact&theme=tokyonight&hide_border=true" height="170">
 
 </div>
 
 ---
 
-## 📫 Connect with Me
+## 📫 Connect
 
 <div align="center">
 
-| Platform | Reach Out |
+| Platform | |
 | :--- | :--- |
-| **Academic Email** | <a href="mailto:2025101184@stu.njau.edu.cn"><img src="https://img.shields.io/badge/NJAU-Mail-005A32?style=flat-square&logo=minutemailer&logoColor=white"/></a> |
-| **Personal Email** | <a href="mailto:2942204237@qq.com"><img src="https://img.shields.io/badge/QQ-Mail-D42C2C?style=flat-square&logo=gmail&logoColor=white"/></a> |
+| **Academic** | <a href="mailto:2025101184@stu.njau.edu.cn"><img src="https://img.shields.io/badge/NJAU-Mail-005A32?style=flat-square&logo=minutemailer&logoColor=white"/></a> |
+| **Personal** | <a href="mailto:2942204237@qq.com"><img src="https://img.shields.io/badge/QQ-Mail-D42C2C?style=flat-square&logo=gmail&logoColor=white"/></a> |
 
 <br>
-<i>"Building intelligent systems, one agent at a time."</i>
+<i>"Building the interface between human and AI, one agent at a time."</i>
 
 </div>
