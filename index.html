@@ -5,644 +5,537 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yuan — AI Agent Engineer</title>
   <meta name="description" content="AI Agent Engineer — Building tools, CLIs, and frameworks at the boundary of human and AI." />
-  <meta name="author" content="Yuan (YuanyuanMa03)" />
-  
-  <!-- Open Graph -->
   <meta property="og:title" content="Yuan — AI Agent Engineer" />
-  <meta property="og:description" content="Building tools, CLIs, and frameworks at the boundary of human and AI." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yuanyuanma03.github.io" />
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/118096301?v=4" />
+  <meta property="og:url" content="https://yuanyuanma03.github.io/YuanyuanMa03/" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
   <style>
-    /* ========== Reset & Base ========== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
+
     :root {
-      --bg: #0a0a0f;
-      --bg-card: #12121a;
-      --bg-card-hover: #1a1a28;
-      --border: #1e1e2e;
-      --border-hover: #2d2d44;
-      --text: #e4e4ef;
-      --text-secondary: #8888a0;
-      --text-muted: #55556a;
-      --accent: #7c6aff;
-      --accent-light: #9d8fff;
-      --accent-dim: rgba(124, 106, 255, 0.12);
-      --gradient-1: #7c6aff;
-      --gradient-2: #00d4aa;
-      --gradient-3: #ff6b8a;
-      --radius: 16px;
-      --radius-sm: 10px;
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --bg: #050510;
+      --card: rgba(255,255,255,0.03);
+      --card-hover: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.12);
+      --text: #f0f0ff;
+      --text2: #9999bb;
+      --text3: #555577;
+      --neon: #00ffaa;
+      --neon2: #7b61ff;
+      --neon3: #ff4488;
+      --cyan: #00e5ff;
+      --radius: 20px;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --display: 'Syne', 'Space Grotesk', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
-    
+
     body {
-      font-family: var(--font-sans);
+      font-family: var(--sans);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
 
-    /* ========== Background Grid ========== */
-    .bg-grid {
+    /* ====== Canvas Background ====== */
+    #bg-canvas {
       position: fixed;
       inset: 0;
-      background-image: 
-        linear-gradient(rgba(124, 106, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124, 106, 255, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
       z-index: 0;
+      pointer-events: none;
     }
 
-    .bg-glow {
+    /* ====== Noise Overlay ====== */
+    .noise {
       position: fixed;
-      top: -30%;
-      left: -10%;
-      width: 60%;
-      height: 60%;
-      background: radial-gradient(circle, rgba(124, 106, 255, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .bg-glow-2 {
-      position: fixed;
-      bottom: -20%;
-      right: -10%;
-      width: 50%;
-      height: 50%;
-      background: radial-gradient(circle, rgba(0, 212, 170, 0.06) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ========== Container ========== */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
+      inset: 0;
       z-index: 1;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
     }
 
-    /* ========== Nav ========== */
+    /* ====== Container ====== */
+    .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ====== Nav ====== */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      background: rgba(10, 10, 15, 0.8);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      background: rgba(5,5,16,0.7);
       border-bottom: 1px solid var(--border);
     }
-
-    nav .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
+    nav .wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
     }
-
-    .nav-logo {
-      font-weight: 800;
-      font-size: 1.2rem;
-      background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .logo {
+      font-family: var(--display);
+      font-size: 1.4rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--neon), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
+    .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
+      color: var(--text2); font-size: 0.88rem; font-weight: 500;
+      transition: color .2s; position: relative;
     }
-
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--neon);
+      transition: width .3s;
+    }
     .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
 
-    /* ========== Hero ========== */
+    /* ====== Hero ====== */
     .hero {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 64px;
+      display: flex; align-items: center;
+      padding-top: 72px;
+      position: relative;
     }
-
-    .hero-content {
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 80px;
       align-items: center;
       width: 100%;
     }
-
-    .hero-text h1 {
-      font-size: 3.5rem;
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 8px;
-      letter-spacing: -0.03em;
-    }
-
-    .hero-text h1 .wave { display: inline-block; animation: wave 2.5s ease-in-out infinite; transform-origin: 70% 70%; }
-
-    @keyframes wave {
-      0%, 60%, 100% { transform: rotate(0deg); }
-      10% { transform: rotate(14deg); }
-      20% { transform: rotate(-8deg); }
-      30% { transform: rotate(14deg); }
-      40% { transform: rotate(-4deg); }
-      50% { transform: rotate(10deg); }
-    }
-
-    .hero-subtitle {
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: var(--text-secondary);
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,255,170,0.08);
+      border: 1px solid rgba(0,255,170,0.2);
+      color: var(--neon);
+      font-family: var(--mono);
+      font-size: 0.78rem; font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 100px;
       margin-bottom: 24px;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--neon);
+      animation: blink-dot 2s ease-in-out infinite;
+    }
+    @keyframes blink-dot { 0%,100%{opacity:1} 50%{opacity:.3} }
+    @keyframes pulse-glow {
+      0%,100% { box-shadow: 0 0 20px rgba(0,255,170,0.1); }
+      50% { box-shadow: 0 0 30px rgba(0,255,170,0.2); }
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--neon), var(--cyan), var(--neon2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 300;
+      color: var(--text2);
+      margin-bottom: 32px;
       letter-spacing: -0.01em;
     }
-
-    .hero-subtitle .highlight {
-      background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 600;
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text2);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.9;
     }
-
-    .hero-description {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      max-width: 480px;
-      margin-bottom: 36px;
-      line-height: 1.8;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.25s;
-      cursor: pointer;
-      border: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px;
+      border-radius: 14px;
+      font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; border: none;
+      transition: all .3s;
+      font-family: var(--sans);
     }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-      color: white;
-      box-shadow: 0 4px 20px rgba(124, 106, 255, 0.3);
+    .btn-neon {
+      background: linear-gradient(135deg, var(--neon), var(--cyan));
+      color: #050510;
+      box-shadow: 0 0 30px rgba(0,255,170,0.25), 0 4px 20px rgba(0,255,170,0.15);
     }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(124, 106, 255, 0.4);
+    .btn-neon:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 50px rgba(0,255,170,0.35), 0 8px 30px rgba(0,255,170,0.2);
     }
-
-    .btn-secondary {
-      background: var(--bg-card);
+    .btn-ghost {
+      background: transparent;
       color: var(--text);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-hover);
+    }
+    .btn-ghost:hover {
+      border-color: var(--neon2);
+      background: rgba(123,97,255,0.08);
+      transform: translateY(-3px);
     }
 
-    .btn-secondary:hover {
-      border-color: var(--border-hover);
-      background: var(--bg-card-hover);
-      transform: translateY(-2px);
-    }
-
-    /* Hero visual — terminal mockup */
-    .hero-visual {
-      position: relative;
-    }
-
+    /* Terminal */
+    .hero-visual { position: relative; }
     .terminal {
-      background: var(--bg-card);
+      background: rgba(10,10,20,0.8);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 60px rgba(0,255,170,0.06), 0 20px 60px rgba(0,0,0,0.5);
+      backdrop-filter: blur(20px);
     }
-
-    .terminal-bar {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 18px;
-      background: rgba(255, 255, 255, 0.02);
+    .term-bar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.02);
       border-bottom: 1px solid var(--border);
     }
-
-    .terminal-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
+    .term-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .term-dot.r { background: #ff5f57; }
+    .term-dot.y { background: #febc2e; }
+    .term-dot.g { background: #28c840; }
+    .term-title {
+      flex: 1; text-align: center;
+      font-family: var(--mono);
+      font-size: 0.78rem; color: var(--text3);
     }
-
-    .terminal-dot.red { background: #ff5f57; }
-    .terminal-dot.yellow { background: #febc2e; }
-    .terminal-dot.green { background: #28c840; }
-
-    .terminal-title {
-      flex: 1;
-      text-align: center;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    .term-body {
+      padding: 28px;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      line-height: 2.2;
     }
-
-    .terminal-body {
-      padding: 24px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      line-height: 2;
-    }
-
-    .terminal-body .prompt { color: var(--gradient-2); }
-    .terminal-body .cmd { color: var(--text); }
-    .terminal-body .flag { color: var(--accent-light); }
-    .terminal-body .comment { color: var(--text-muted); }
-    .terminal-body .output { color: var(--gradient-2); }
-    .terminal-body .string { color: var(--gradient-3); }
-    .terminal-body .keyword { color: var(--gradient-1); }
-
-    .cursor-blink {
+    .term-body .p { color: var(--neon); }
+    .term-body .c { color: var(--text3); }
+    .term-body .k { color: var(--neon2); }
+    .term-body .s { color: var(--neon3); }
+    .term-body .o { color: var(--neon); }
+    .term-body .w { color: var(--text); }
+    .cursor {
       display: inline-block;
-      width: 8px;
-      height: 16px;
-      background: var(--accent);
+      width: 9px; height: 17px;
+      background: var(--neon);
       animation: blink 1s step-end infinite;
       vertical-align: middle;
       margin-left: 4px;
     }
+    @keyframes blink { 50%{opacity:0} }
 
-    @keyframes blink { 50% { opacity: 0; } }
+    /* ====== Sections ====== */
+    section { padding: 140px 0; }
 
-    /* ========== Section ========== */
-    section {
-      padding: 120px 0;
-    }
-
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--accent);
+    .sec-label {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--neon);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       margin-bottom: 12px;
     }
-
-    .section-title {
-      font-size: 2.5rem;
+    .sec-title {
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       margin-bottom: 16px;
     }
-
-    .section-desc {
+    .sec-desc {
       font-size: 1.05rem;
-      color: var(--text-secondary);
-      max-width: 560px;
-      margin-bottom: 48px;
+      color: var(--text2);
+      max-width: 600px;
+      margin-bottom: 56px;
+      line-height: 1.8;
     }
 
-    /* ========== Skills ========== */
-    .skills-grid {
+    /* ====== Skills ====== */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .skill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 30px;
+      transition: all .4s cubic-bezier(.4,0,.2,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .skill::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--neon), transparent);
+      opacity: 0;
+      transition: opacity .4s;
+    }
+    .skill:hover {
+      border-color: var(--border-hover);
+      background: var(--card-hover);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .skill:hover::before { opacity: 1; }
+    .skill-ico {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+    }
+    .skill h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .skill p {
+      font-size: 0.88rem;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+    .skill-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 20px;
+    }
+    .skill-tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    /* ====== Projects ====== */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .proj {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      transition: all .4s cubic-bezier(.4,0,.2,1);
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    .proj::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(0,255,170,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .4s;
+    }
+    .proj:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .proj:hover::after { opacity: 1; }
+    .proj-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .proj-emoji { font-size: 2.2rem; line-height: 1; }
+    .proj-link {
+      color: var(--text3);
+      transition: color .2s;
+    }
+    .proj-link:hover { color: var(--neon); }
+    .proj h3 {
+      font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 4px;
+      position: relative; z-index: 1;
+    }
+    .proj-sub {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--neon);
+      margin-bottom: 14px;
+      position: relative; z-index: 1;
+    }
+    .proj p {
+      font-size: 0.88rem;
+      color: var(--text2);
+      line-height: 1.7;
+      flex: 1;
+      position: relative; z-index: 1;
+    }
+    .proj-tech {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 18px;
+      position: relative; z-index: 1;
+    }
+    .proj-tech span {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text3);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .proj.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, rgba(0,255,170,0.06), rgba(123,97,255,0.04));
+      border-color: rgba(0,255,170,0.15);
+    }
+    .proj.featured:hover {
+      border-color: rgba(0,255,170,0.3);
+    }
+
+    /* ====== Stats ====== */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      transition: all .3s;
+    }
+    .stat:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+    .stat-val {
+      font-family: var(--display);
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--neon), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-lbl {
+      font-size: 0.85rem;
+      color: var(--text2);
+      margin-top: 4px;
+    }
+
+    .activity {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      text-align: center;
+    }
+    .activity img {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 12px;
+    }
+
+    /* ====== Contact ====== */
+    .contact-links {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
-
-    .skill-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      transition: all 0.3s;
-    }
-
-    .skill-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .skill-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-    }
-
-    .skill-card h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .skill-card p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 16px;
-    }
-
-    .skill-tag {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      background: var(--accent-dim);
-      color: var(--accent-light);
-      border-radius: 6px;
-    }
-
-    /* ========== Projects ========== */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px;
-      transition: all 0.3s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .project-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-
-    .project-emoji {
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 12px;
-    }
-
-    .project-links a {
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
-
-    .project-links a:hover { color: var(--text); }
-
-    .project-card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .project-card .project-subtitle {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-
-    .project-card p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      flex: 1;
-    }
-
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 16px;
-    }
-
-    .project-tech span {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      padding: 3px 10px;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-muted);
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
-
-    .project-card.featured {
-      grid-column: span 2;
-      background: linear-gradient(135deg, rgba(124, 106, 255, 0.08), rgba(0, 212, 170, 0.05));
-      border-color: rgba(124, 106, 255, 0.2);
-    }
-
-    /* ========== Stats ========== */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-bottom: 48px;
-    }
-
-    .stat-card {
-      background: var(--bg-card);
+    .contact-card {
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 28px;
-      text-align: center;
-      transition: all 0.3s;
+      display: flex; align-items: center; gap: 16px;
+      transition: all .3s;
     }
-
-    .stat-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-    }
-
-    .stat-value {
-      font-size: 2.2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-top: 4px;
-    }
-
-    /* ========== Activity ========== */
-    .activity-graph {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px;
-      text-align: center;
-    }
-
-    .activity-graph img {
-      width: 100%;
-      max-width: 800px;
-      border-radius: 8px;
-    }
-
-    /* ========== Contact ========== */
-    .contact {
-      padding-bottom: 80px;
-    }
-
-    .contact-links {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .contact-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 32px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      transition: all 0.3s;
-      flex: 1;
-      min-width: 240px;
-    }
-
     .contact-card:hover {
       border-color: var(--border-hover);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
     }
+    .contact-card .ico { font-size: 1.8rem; }
+    .contact-card .lbl { font-size: 0.78rem; color: var(--text3); }
+    .contact-card .val { font-weight: 600; font-size: 0.92rem; }
 
-    .contact-card .icon {
-      font-size: 1.5rem;
-    }
-
-    .contact-card .label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .contact-card .value {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    /* ========== Footer ========== */
+    /* ====== Footer ====== */
     footer {
       border-top: 1px solid var(--border);
-      padding: 32px 0;
+      padding: 40px 0;
       text-align: center;
     }
+    footer p { color: var(--text3); font-size: 0.85rem; }
+    footer .heart { color: var(--neon3); }
 
-    footer p {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    footer .heart {
-      color: var(--gradient-3);
-    }
-
-    /* ========== Responsive ========== */
-    @media (max-width: 900px) {
-      .hero-content { grid-template-columns: 1fr; gap: 48px; }
-      .hero-text h1 { font-size: 2.5rem; }
-      .hero-visual { max-width: 500px; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .project-card.featured { grid-column: span 1; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .nav-links { display: none; }
-    }
-
-    @media (max-width: 600px) {
-      .hero-text h1 { font-size: 2rem; }
-      .hero-subtitle { font-size: 1.2rem; }
-      .section-title { font-size: 1.8rem; }
-      section { padding: 80px 0; }
-    }
-
-    /* ========== Scroll Animations ========== */
+    /* ====== Animations ====== */
     .fade-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s cubic-bezier(.4,0,.2,1);
     }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
+    /* stagger */
+    .fade-up:nth-child(2) { transition-delay: .1s; }
+    .fade-up:nth-child(3) { transition-delay: .2s; }
+    .fade-up:nth-child(4) { transition-delay: .3s; }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { max-width: 520px; }
+      .skills { grid-template-columns: 1fr; }
+      .projects { grid-template-columns: 1fr; }
+      .proj.featured { grid-column: span 1; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .contact-links { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 20px; }
+      section { padding: 100px 0; }
+      .stat-val { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-glow"></div>
-  <div class="bg-glow-2"></div>
+  <canvas id="bg-canvas"></canvas>
+  <div class="noise"></div>
 
   <!-- Nav -->
   <nav>
-    <div class="container">
-      <a href="#" class="nav-logo">yuan.dev</a>
+    <div class="wrap">
+      <a href="#" class="logo">yuan<span style="color:var(--neon)">.</span>dev</a>
       <ul class="nav-links">
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -654,21 +547,22 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="container">
-      <div class="hero-content">
+    <div class="wrap">
+      <div class="hero-grid">
         <div class="hero-text">
-          <h1><span class="wave">👋</span> I'm Yuan</h1>
-          <p class="hero-subtitle"><span class="highlight">AI Agent Engineer</span></p>
-          <p class="hero-description">
-            Building tools, CLIs, and multi-agent frameworks at the boundary between human and AI. 
-            Focused on making agents genuinely useful through real tool execution, streaming interfaces, and provider-agnostic architectures.
+          <div class="hero-badge"><span class="dot"></span> Available for collaboration</div>
+          <h1>Building the <span class="gradient">Future of Agents</span></h1>
+          <p class="hero-sub">AI Agent Engineer · CLI Architect · Open Source</p>
+          <p class="hero-desc">
+            I design and build multi-agent systems, AI coding CLIs, and provider-agnostic LLM frameworks.
+            Focused on making agents genuinely useful — real tools, real execution, real impact.
           </p>
           <div class="hero-cta">
-            <a href="https://github.com/YuanyuanMa03" target="_blank" class="btn btn-primary">
+            <a href="https://github.com/YuanyuanMa03" target="_blank" class="btn btn-neon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               GitHub
             </a>
-            <a href="#projects" class="btn btn-secondary">
+            <a href="#projects" class="btn btn-ghost">
               View Projects ↓
             </a>
           </div>
@@ -676,22 +570,24 @@
 
         <div class="hero-visual">
           <div class="terminal">
-            <div class="terminal-bar">
-              <span class="terminal-dot red"></span>
-              <span class="terminal-dot yellow"></span>
-              <span class="terminal-dot green"></span>
-              <span class="terminal-title">xclaw — AI programming CLI</span>
+            <div class="term-bar">
+              <span class="term-dot r"></span>
+              <span class="term-dot y"></span>
+              <span class="term-dot g"></span>
+              <span class="term-title">xclaw — AI programming CLI</span>
             </div>
-            <div class="terminal-body">
-              <div><span class="prompt">$</span> <span class="cmd">xclaw</span> <span class="flag">--model</span> <span class="string">"gpt-4o"</span> <span class="flag">--agent</span></div>
-              <div class="comment"># Multi-provider engine ready</div>
-              <div><span class="output">✓</span> Anthropic · OpenAI · Gemini · Grok</div>
-              <div class="comment"># Real tool execution</div>
-              <div><span class="output">✓</span> Bash · Read · Edit · Write · Grep · Glob</div>
-              <div class="comment"># Agent loop active</div>
-              <div><span class="keyword">→</span> Analyzing codebase...</div>
-              <div><span class="keyword">→</span> <span class="cmd">Reading</span> <span class="string">src/engine/agent-loop.ts</span></div>
-              <div><span class="keyword">→</span> <span class="cmd">Streaming</span> tokens to TUI...<span class="cursor-blink"></span></div>
+            <div class="term-body">
+              <div><span class="p">$</span> <span class="w">xclaw</span> <span class="k">--model</span> <span class="s">"gpt-4o"</span> <span class="k">--agent</span></div>
+              <div class="c"># Multi-provider engine ready</div>
+              <div><span class="o">✓</span> <span class="w">Anthropic · OpenAI · Gemini · Grok</span></div>
+              <div class="c"># Agent loop active — tool execution</div>
+              <div><span class="o">✓</span> <span class="w">Bash · Read · Edit · Write · Grep · Glob</span></div>
+              <div class="c"># Permission system armed</div>
+              <div><span class="o">✓</span> <span class="w">ask · auto-edit · full-auto</span></div>
+              <div> </div>
+              <div><span class="k">→</span> <span class="w">Analyzing codebase...</span></div>
+              <div><span class="k">→</span> <span class="w">Reading</span> <span class="s">src/engine/agent-loop.ts</span></div>
+              <div><span class="k">→</span> <span class="w">Streaming tokens to TUI</span><span class="cursor"></span></div>
             </div>
           </div>
         </div>
@@ -701,49 +597,46 @@
 
   <!-- Skills -->
   <section id="skills">
-    <div class="container">
+    <div class="wrap">
       <div class="fade-up">
-        <p class="section-label">// What I do</p>
-        <h2 class="section-title">Core Competencies</h2>
-        <p class="section-desc">
-          I design and build AI agent systems end-to-end: from provider abstraction layers to terminal UIs, from tool orchestration to multi-agent coordination.
+        <p class="sec-label">// What I do</p>
+        <h2 class="sec-title">Core Competencies</h2>
+        <p class="sec-desc">
+          End-to-end AI agent engineering: from provider abstraction layers to terminal UIs, from tool orchestration to multi-agent coordination.
         </p>
       </div>
-
-      <div class="skills-grid">
-        <div class="skill-card fade-up">
-          <div class="skill-icon" style="background: rgba(124, 106, 255, 0.12);">🤖</div>
+      <div class="skills">
+        <div class="skill fade-up">
+          <div class="skill-ico" style="background:rgba(0,255,170,0.1);">🤖</div>
           <h3>Multi-Agent Systems</h3>
-          <p>Designing collaborative agent frameworks with sub-agent spawning, task delegation, and inter-agent communication protocols.</p>
+          <p>Collaborative agent frameworks with sub-agent spawning, task delegation, and inter-agent communication.</p>
           <div class="skill-tags">
-            <span class="skill-tag">orchestration</span>
-            <span class="skill-tag">sub-agents</span>
-            <span class="skill-tag">MCP</span>
-            <span class="skill-tag">tool chains</span>
+            <span class="skill-tag" style="background:rgba(0,255,170,0.1);color:var(--neon);">orchestration</span>
+            <span class="skill-tag" style="background:rgba(123,97,255,0.1);color:var(--neon2);">sub-agents</span>
+            <span class="skill-tag" style="background:rgba(255,68,136,0.1);color:var(--neon3);">MCP</span>
+            <span class="skill-tag" style="background:rgba(0,229,255,0.1);color:var(--cyan);">tool chains</span>
           </div>
         </div>
-
-        <div class="skill-card fade-up">
-          <div class="skill-icon" style="background: rgba(0, 212, 170, 0.12);">⚡</div>
+        <div class="skill fade-up">
+          <div class="skill-ico" style="background:rgba(123,97,255,0.1);">⚡</div>
           <h3>CLI / TUI Engineering</h3>
-          <p>Building rich terminal interfaces with streaming output, markdown rendering, and real-time tool execution feedback.</p>
+          <p>Rich terminal interfaces with streaming output, markdown rendering, and real-time tool execution feedback.</p>
           <div class="skill-tags">
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">Ink / React</span>
-            <span class="skill-tag">Bun</span>
-            <span class="skill-tag">Vite</span>
+            <span class="skill-tag" style="background:rgba(0,255,170,0.1);color:var(--neon);">TypeScript</span>
+            <span class="skill-tag" style="background:rgba(123,97,255,0.1);color:var(--neon2);">Ink / React</span>
+            <span class="skill-tag" style="background:rgba(255,68,136,0.1);color:var(--neon3);">Bun</span>
+            <span class="skill-tag" style="background:rgba(0,229,255,0.1);color:var(--cyan);">Vite</span>
           </div>
         </div>
-
-        <div class="skill-card fade-up">
-          <div class="skill-icon" style="background: rgba(255, 107, 138, 0.12);">🧠</div>
+        <div class="skill fade-up">
+          <div class="skill-ico" style="background:rgba(255,68,136,0.1);">🧠</div>
           <h3>LLM Provider Integration</h3>
-          <p>Provider-agnostic abstraction layers supporting Anthropic, OpenAI, Gemini, Grok — with streaming, tool calling, and function routing.</p>
+          <p>Provider-agnostic layers for Anthropic, OpenAI, Gemini, Grok — streaming, tool calling, function routing.</p>
           <div class="skill-tags">
-            <span class="skill-tag">streaming</span>
-            <span class="skill-tag">tool-calling</span>
-            <span class="skill-tag">RAG</span>
-            <span class="skill-tag">alignment</span>
+            <span class="skill-tag" style="background:rgba(0,255,170,0.1);color:var(--neon);">streaming</span>
+            <span class="skill-tag" style="background:rgba(123,97,255,0.1);color:var(--neon2);">tool-calling</span>
+            <span class="skill-tag" style="background:rgba(255,68,136,0.1);color:var(--neon3);">RAG</span>
+            <span class="skill-tag" style="background:rgba(0,229,255,0.1);color:var(--cyan);">alignment</span>
           </div>
         </div>
       </div>
@@ -752,142 +645,96 @@
 
   <!-- Projects -->
   <section id="projects">
-    <div class="container">
+    <div class="wrap">
       <div class="fade-up">
-        <p class="section-label">// What I've built</p>
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-desc">
-          A selection of projects spanning AI coding agents, multi-agent frameworks, and developer tooling.
+        <p class="sec-label">// What I've built</p>
+        <h2 class="sec-title">Featured Projects</h2>
+        <p class="sec-desc">
+          AI coding agents, multi-agent frameworks, developer tooling, and research tools.
         </p>
       </div>
-
-      <div class="projects-grid">
-        <!-- xclaw — featured -->
-        <a href="https://github.com/YuanyuanMa03/xclaw" target="_blank" class="project-card featured fade-up">
-          <div class="project-header">
-            <span class="project-emoji">⚡</span>
-            <div class="project-links">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </div>
+      <div class="projects">
+        <a href="https://github.com/YuanyuanMa03/xclaw" target="_blank" class="proj featured fade-up">
+          <div class="proj-head">
+            <span class="proj-emoji">⚡</span>
+            <svg class="proj-link" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           </div>
           <h3>xclaw</h3>
-          <p class="project-subtitle">AI programming CLI — beyond the boundary of human and AI</p>
-          <p>Multi-provider AI coding agent with personality-driven TUI, real tool execution (Bash/Read/Edit/Write/Grep/Glob), agent loop with up to 20 rounds, streaming token output, permission system (ask/auto-edit/full-auto), and session persistence. Built with TypeScript + Bun + Vite.</p>
-          <div class="project-tech">
-            <span>TypeScript</span>
-            <span>Bun</span>
-            <span>Ink (React TUI)</span>
-            <span>Vite</span>
-            <span>Multi-Provider</span>
-            <span>Agent Loop</span>
+          <p class="proj-sub">AI programming CLI — beyond the boundary of human and AI</p>
+          <p>Multi-provider AI coding agent with personality-driven TUI, real tool execution (Bash/Read/Edit/Write/Grep/Glob), agent loop with up to 20 rounds, streaming token output, permission system, and session persistence. Built with TypeScript + Bun + Vite.</p>
+          <div class="proj-tech">
+            <span>TypeScript</span><span>Bun</span><span>Ink TUI</span><span>Vite</span><span>Multi-Provider</span><span>Agent Loop</span>
           </div>
         </a>
 
-        <!-- claude-code -->
-        <a href="https://github.com/YuanyuanMa03/claude-code" target="_blank" class="project-card fade-up">
-          <div class="project-header">
-            <span class="project-emoji">🎹</span>
+        <a href="https://github.com/YuanyuanMa03/claude-code" target="_blank" class="proj fade-up">
+          <div class="proj-head">
+            <span class="proj-emoji">🎹</span>
           </div>
           <h3>claude-code</h3>
-          <p class="project-subtitle">Runnable, buildable, debuggable Claude Code fork</p>
+          <p class="proj-sub">Runnable, buildable, debuggable fork</p>
           <p>Full TypeScript type fixes, enterprise reliability, lock file fidelity. Bun-native build with working dev mode.</p>
-          <div class="project-tech">
-            <span>TypeScript</span>
-            <span>Bun</span>
-            <span>Agent Framework</span>
-          </div>
+          <div class="proj-tech"><span>TypeScript</span><span>Bun</span><span>Agent Framework</span></div>
         </a>
 
-        <!-- deer-flow -->
-        <a href="https://github.com/YuanyuanMa03/deer-flow" target="_blank" class="project-card fade-up">
-          <div class="project-header">
-            <span class="project-emoji">🦌</span>
+        <a href="https://github.com/YuanyuanMa03/deer-flow" target="_blank" class="proj fade-up">
+          <div class="proj-head">
+            <span class="proj-emoji">🦌</span>
           </div>
           <h3>deer-flow</h3>
-          <p class="project-subtitle">Long-horizon SuperAgent harness</p>
-          <p>Researches, codes, and creates with sandboxes, memories, tools, skills, subagents, and message gateway. Handles tasks from minutes to hours.</p>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>Multi-Agent</span>
-            <span>Sandbox</span>
-            <span>Memory</span>
-          </div>
+          <p class="proj-sub">Long-horizon SuperAgent harness</p>
+          <p>Researches, codes, creates with sandboxes, memories, tools, skills, subagents. Tasks from minutes to hours.</p>
+          <div class="proj-tech"><span>Python</span><span>Multi-Agent</span><span>Sandbox</span><span>Memory</span></div>
         </a>
 
-        <!-- MindOS -->
-        <a href="https://github.com/YuanyuanMa03/MindOS" target="_blank" class="project-card fade-up">
-          <div class="project-header">
-            <span class="project-emoji">🧠</span>
+        <a href="https://github.com/YuanyuanMa03/MindOS" target="_blank" class="proj fade-up">
+          <div class="proj-head">
+            <span class="proj-emoji">🧠</span>
           </div>
           <h3>MindOS</h3>
-          <p class="project-subtitle">Human-AI Collaborative Mind System</p>
-          <p>Globally sync your mind for all agents: transparent, controllable, and evolving symbiotically. Human thinks, agents act.</p>
-          <div class="project-tech">
-            <span>Multi-Agent</span>
-            <span>Mind Sync</span>
-            <span>Transparency</span>
-          </div>
+          <p class="proj-sub">Human-AI Collaborative Mind System</p>
+          <p>Globally sync your mind for all agents: transparent, controllable, evolving. Human thinks, agents act.</p>
+          <div class="proj-tech"><span>Multi-Agent</span><span>Mind Sync</span><span>Transparency</span></div>
         </a>
 
-        <!-- TraceGPT -->
-        <a href="https://github.com/YuanyuanMa03/TraceGPT" target="_blank" class="project-card fade-up">
-          <div class="project-header">
-            <span class="project-emoji">🔬</span>
+        <a href="https://github.com/YuanyuanMa03/TraceGPT" target="_blank" class="proj fade-up">
+          <div class="proj-head">
+            <span class="proj-emoji">🔬</span>
           </div>
           <h3>TraceGPT</h3>
-          <p class="project-subtitle">Calculator-verifiable Transformer framework</p>
-          <p>Learn how Transformers work from scratch. Pure NumPy, no PyTorch dependency. Every computation is verifiable step by step.</p>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>NumPy</span>
-            <span>Transformer</span>
-            <span>Education</span>
-          </div>
+          <p class="proj-sub">Calculator-verifiable Transformer</p>
+          <p>Learn Transformers from scratch. Pure NumPy, no PyTorch. Every computation verifiable step by step.</p>
+          <div class="proj-tech"><span>Python</span><span>NumPy</span><span>Transformer</span></div>
         </a>
 
-        <!-- ai-desk -->
-        <a href="https://github.com/YuanyuanMa03/ai-desk" target="_blank" class="project-card fade-up">
-          <div class="project-header">
-            <span class="project-emoji">🖥️</span>
+        <a href="https://github.com/YuanyuanMa03/ai-desk" target="_blank" class="proj fade-up">
+          <div class="proj-head">
+            <span class="proj-emoji">🖥️</span>
           </div>
           <h3>ai-desk</h3>
-          <p class="project-subtitle">Local-first AI aggregation workbench</p>
-          <p>Cross-platform AI workbench for desktop, mobile, and web. Aggregate multiple AI providers in one unified interface.</p>
-          <div class="project-tech">
-            <span>TypeScript</span>
-            <span>Cross-Platform</span>
-            <span>Desktop + Web</span>
-          </div>
+          <p class="proj-sub">Local-first AI workbench</p>
+          <p>Cross-platform AI workbench for desktop, mobile, and web. Aggregate multiple AI providers in one interface.</p>
+          <div class="proj-tech"><span>TypeScript</span><span>Cross-Platform</span><span>Desktop + Web</span></div>
         </a>
 
-        <!-- GitPulse -->
-        <a href="https://github.com/YuanyuanMa03/GitPulse" target="_blank" class="project-card fade-up">
-          <div class="project-header">
-            <span class="project-emoji">📊</span>
+        <a href="https://github.com/YuanyuanMa03/GitPulse" target="_blank" class="proj fade-up">
+          <div class="proj-head">
+            <span class="proj-emoji">📊</span>
           </div>
           <h3>GitPulse</h3>
-          <p class="project-subtitle">开源脉搏 — GitHub trending tracker</p>
-          <p>Real-time tracking of GitHub trending repositories. Discover what's hot in open source right now.</p>
-          <div class="project-tech">
-            <span>JavaScript</span>
-            <span>GitHub API</span>
-            <span>Real-time</span>
-          </div>
+          <p class="proj-sub">开源脉搏 — GitHub trending tracker</p>
+          <p>Real-time tracking of GitHub trending repositories. Discover what's hot in open source.</p>
+          <div class="proj-tech"><span>JavaScript</span><span>GitHub API</span><span>Real-time</span></div>
         </a>
 
-        <!-- RICEMIND -->
-        <a href="https://github.com/YuanyuanMa03/ricemind" target="_blank" class="project-card fade-up">
-          <div class="project-header">
-            <span class="project-emoji">🌾</span>
+        <a href="https://github.com/YuanyuanMa03/ricemind" target="_blank" class="proj fade-up">
+          <div class="proj-head">
+            <span class="proj-emoji">🌾</span>
           </div>
           <h3>RICEMIND · 禾智</h3>
-          <p class="project-subtitle">Agricultural AI Agent SDK</p>
-          <p>Literature search, BibTeX export, domain review generation, and 10 agricultural templates. Agent-powered research assistant.</p>
-          <div class="project-tech">
-            <span>JavaScript</span>
-            <span>Agent SDK</span>
-            <span>Literature</span>
-          </div>
+          <p class="proj-sub">Agricultural AI Agent SDK</p>
+          <p>Literature search, BibTeX export, domain review, 10 agricultural templates. Agent-powered research.</p>
+          <div class="proj-tech"><span>JavaScript</span><span>Agent SDK</span><span>Literature</span></div>
         </a>
       </div>
     </div>
@@ -895,95 +742,174 @@
 
   <!-- Stats -->
   <section id="stats">
-    <div class="container">
+    <div class="wrap">
       <div class="fade-up">
-        <p class="section-label">// By the numbers</p>
-        <h2 class="section-title">Open Source Activity</h2>
+        <p class="sec-label">// By the numbers</p>
+        <h2 class="sec-title">Open Source Activity</h2>
       </div>
-
       <div class="stats-row fade-up">
-        <div class="stat-card">
-          <div class="stat-value">32+</div>
-          <div class="stat-label">Public Repos</div>
+        <div class="stat">
+          <div class="stat-val">32+</div>
+          <div class="stat-lbl">Public Repos</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-value">15</div>
-          <div class="stat-label">Followers</div>
+        <div class="stat">
+          <div class="stat-val">15</div>
+          <div class="stat-lbl">Followers</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-value">4</div>
-          <div class="stat-label">Pinned Projects</div>
+        <div class="stat">
+          <div class="stat-val">4</div>
+          <div class="stat-lbl">Pinned Projects</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-value">∞</div>
-          <div class="stat-label">Curiosity</div>
+        <div class="stat">
+          <div class="stat-val">∞</div>
+          <div class="stat-lbl">Curiosity</div>
         </div>
       </div>
-
-      <div class="activity-graph fade-up">
+      <div class="activity fade-up">
         <img src="https://github-readme-activity-graph.vercel.app/graph?username=YuanyuanMa03&theme=github-compact&hide_border=true&area=true&custom_title=Contribution%20Activity" alt="Contribution Activity" loading="lazy" />
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="contact">
-    <div class="container">
+  <section id="contact">
+    <div class="wrap">
       <div class="fade-up">
-        <p class="section-label">// Get in touch</p>
-        <h2 class="section-title">Let's Connect</h2>
-        <p class="section-desc">
-          Interested in AI agents, multi-agent systems, or just want to chat about the future of human-AI collaboration? Reach out.
+        <p class="sec-label">// Get in touch</p>
+        <h2 class="sec-title">Let's Connect</h2>
+        <p class="sec-desc">
+          Interested in AI agents, multi-agent systems, or the future of human-AI collaboration? Reach out.
         </p>
       </div>
-
       <div class="contact-links fade-up">
         <a href="https://github.com/YuanyuanMa03" target="_blank" class="contact-card">
-          <span class="icon">🐙</span>
-          <div>
-            <div class="label">GitHub</div>
-            <div class="value">@YuanyuanMa03</div>
-          </div>
+          <span class="ico">🐙</span>
+          <div><div class="lbl">GitHub</div><div class="val">@YuanyuanMa03</div></div>
         </a>
         <a href="mailto:2025101184@stu.njau.edu.cn" class="contact-card">
-          <span class="icon">📧</span>
-          <div>
-            <div class="label">Academic Email</div>
-            <div class="value">2025101184@stu.njau.edu.cn</div>
-          </div>
+          <span class="ico">📧</span>
+          <div><div class="lbl">Academic</div><div class="val">2025101184@stu.njau.edu.cn</div></div>
         </a>
         <a href="mailto:2942204237@qq.com" class="contact-card">
-          <span class="icon">💬</span>
-          <div>
-            <div class="label">Personal Email</div>
-            <div class="value">2942204237@qq.com</div>
-          </div>
+          <span class="ico">💬</span>
+          <div><div class="lbl">Personal</div><div class="val">2942204237@qq.com</div></div>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>Built with <span class="heart">♥</span> and <span class="heart">agents</span> by Yuan · 2026</p>
+    <div class="wrap">
+      <p>Built with <span class="heart">♥</span> and agents by Yuan · 2026</p>
     </div>
   </footer>
 
-  <!-- Scroll Animation -->
+  <!-- Particle Canvas -->
   <script>
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: -1000, y: -1000 };
+    const PARTICLE_COUNT = 80;
+    const CONNECT_DIST = 150;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.r = Math.random() * 1.5 + 0.5;
+        this.alpha = Math.random() * 0.5 + 0.1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+        // mouse repulsion
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          const force = (120 - dist) / 120 * 0.02;
+          this.vx += dx * force;
+          this.vy += dy * force;
+        }
+        // damping
+        this.vx *= 0.99;
+        this.vy *= 0.99;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 255, 170, ${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      resize();
+      particles = [];
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECT_DIST) {
+            const alpha = (1 - dist / CONNECT_DIST) * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(0, 255, 170, ${alpha})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
           }
-        });
-      },
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => { resize(); });
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; });
+
+    init();
+    animate();
+
+    // Scroll animations
+    const obs = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+    // Mouse glow on project cards
+    document.querySelectorAll('.proj').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width * 100) + '%');
+        card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height * 100) + '%');
+      });
+    });
   </script>
 </body>
 </html>
