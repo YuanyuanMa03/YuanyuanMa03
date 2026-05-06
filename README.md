@@ -15,7 +15,7 @@
 
 <br/>
 
-[🌐 **Visit My Website**](https://yuanyuanma03.github.io/YuanyuanMa03/)
+[![🌐 VISIT MY PORTFOLIO →](https://img.shields.io/badge/%F0%9F%8C%90%20VISIT%20MY%20PORTFOLIO%20%E2%86%92-00ffaa?style=for-the-badge&logo=github&logoColor=050510&labelColor=00ffaa&color=00e5ff)](https://yuanyuanma03.github.io/YuanyuanMa03/)
 
 <br/>
 
@@ -95,6 +95,7 @@ I focus on **AI Agent Engineering** — building the tools, frameworks, and inte
 
 | Platform | |
 | :--- | :--- |
+| **🌐 Portfolio** | [![Website](https://img.shields.io/badge/yuan.dev-00ffaa?style=for-the-badge&logo=github&logoColor=050510)](https://yuanyuanma03.github.io/YuanyuanMa03/) |
 | **Academic** | <a href="mailto:2025101184@stu.njau.edu.cn"><img src="https://img.shields.io/badge/NJAU-Mail-005A32?style=flat-square&logo=minutemailer&logoColor=white"/></a> |
 | **Personal** | <a href="mailto:2942204237@qq.com"><img src="https://img.shields.io/badge/QQ-Mail-D42C2C?style=flat-square&logo=gmail&logoColor=white"/></a> |
 
