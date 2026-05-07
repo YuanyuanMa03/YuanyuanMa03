@@ -510,6 +510,50 @@
     .fade-up:nth-child(3) { transition-delay: .2s; }
     .fade-up:nth-child(4) { transition-delay: .3s; }
 
+    /* ====== Hamburger Menu ====== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 102;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 101;
+      background: rgba(5,5,16,0.95);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--neon); }
+
     /* ====== Responsive ====== */
     @media (max-width: 960px) {
       .hero-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -520,11 +564,19 @@
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .contact-links { grid-template-columns: 1fr; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
     }
     @media (max-width: 600px) {
       .wrap { padding: 0 20px; }
       section { padding: 100px 0; }
       .stat-val { font-size: 2rem; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-sub { font-size: 1.1rem; }
+      .hero-desc { font-size: 0.95rem; line-height: 1.8; }
+      .term-body { padding: 20px; font-size: 0.75rem; line-height: 2; }
+      .terminal { margin: 0 -10px; }
+      .activity img { min-width: 600px; margin-left: -30px; }
+      .sec-title { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -542,8 +594,19 @@
         <li><a href="#stats">Stats</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </div>
     </div>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#stats">Stats</a>
+    <a href="#contact">Contact</a>
+  </div>
 
   <!-- Hero -->
   <section class="hero">
@@ -908,6 +971,20 @@
         const rect = card.getBoundingClientRect();
         card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width * 100) + '%');
         card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height * 100) + '%');
+      });
+    });
+
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
       });
     });
   </script>
