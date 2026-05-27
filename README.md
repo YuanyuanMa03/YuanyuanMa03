@@ -1,115 +1,355 @@
 <div align="center">
 
-<h1>👋 Hi, I'm Yuan</h1>
+```
+ ██╗   ██╗██╗   ██╗ █████╗ ███╗   ██╗
+ ╚██╗ ██╔╝██║   ██║██╔══██╗████╗  ██║
+  ╚████╔╝ ██║   ██║███████║██╔██╗ ██║
+   ╚██╔╝  ██║   ██║██╔══██║██║╚██╗██║
+    ██║   ╚██████╔╝██║  ██║██║ ╚████║
+    ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝
+```
 
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=6C63FF&center=true&vCenter=true&width=435&lines=AI+Agent+Engineer;CLI+%7C+TUI+%7C+Multi-Agent+Systems;TypeScript+%7C+Python+%7C+Go" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&pause=1000&color=00FFAA&center=true&vCenter=true&width=420&lines=%24+whoami;AI+Agent+Engineer+%7C+CLI+%26+TUI;Multi-Agent+Systems+%7C+LLM+Tooling;TypeScript+%7C+Python+%7C+Go" alt="Typing SVG" />
 </a>
 
+```
+┌──────────────────────────────────────────────────────────────────┐
+│  Nanjing Agricultural University  ·  M.Sc. (in progress)         │
+│  Research: Multi-Agent Systems & LLM Engineering                 │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+[![VISIT PORTFOLIO](https://img.shields.io/badge/%E2%86%92_VISIT_PORTFOLIO-00ffaa?style=for-the-badge&logo=github&logoColor=050510&labelColor=050510&color=00ffaa)](https://yuanyuanma03.github.io/YuanyuanMa03/)
+
+</div>
+
+---
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║                     $ cat about.md                          ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div align="center">
+
+```
+ $ cat about.md
+```
+
+<table>
+<tr>
+<td>
+
+```
+ > I build AI agents that actually do things — not just chat, but execute code,
+ > manage tools, run in terminals, and collaborate across multi-agent systems.
+ >
+ > My work lives at the intersection of LLM engineering and developer tooling:
+ > CLI/TUI applications, agent orchestration, MCP protocol, provider-agnostic
+ > LLM integration, and everything that makes AI agents genuinely useful.
+ >
+ > Currently pursuing my M.Sc., where my research applies agent systems
+ > and LLMs to real-world domain problems — bridging theory and practice.
+ >
+```
+
+</td>
+</tr>
+<tr>
+<td align="center">
+
+<code><span style="color:#00e5ff">▸</span> TypeScript <span style="color:#7b61ff">(primary)</span> <span style="color:#00e5ff">▸</span> Python <span style="color:#00e5ff">▸</span> Go <span style="color:#00e5ff">▸</span> R</code>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║                   $ neofetch --skills                       ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div align="center">
+
+```
+ $ neofetch --skills
+```
+
+<table>
+<tr>
+<td>
+
+```
+         ╔═══════════╗
+         ║  ┌─────┐  ║
+         ║  │ $█_  │  ║
+         ║  │▗▄▟█▌ │  ║
+         ║  │▝▀▀▘  │  ║
+         ║  └─────┘  ║
+         ║    yuan    ║
+         ║   @njau    ║
+         ╚═══════════╝
+```
+
+</td>
+<td>
+
+<span style="color:#00ffaa">**yuan**</span>@<span style="color:#7b61ff">**njau**</span><br/>
+<span style="color:#00e5ff">─────────────────────────────</span><br/>
+<span style="color:#00ffaa">**OS:**</span> AI Agent Engineer<br/>
+<span style="color:#00ffaa">**Shell:**</span> TypeScript / Bun<br/>
+<span style="color:#00ffaa">**DE:**</span> Neovim + tmux<br/>
+<span style="color:#00ffaa">**WM:**</span> Terminal-First Workflow<br/>
+<span style="color:#00e5ff">─────────────────────────────</span><br/>
+<span style="color:#00ffaa">**Skills:**</span> Multi-Agent Orchestration<br/>
+<span style="color:#7b61ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>CLI / TUI Engineering<br/>
+<span style="color:#7b61ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>LLM Provider Integration<br/>
+<span style="color:#7b61ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>MCP Protocol & Tool Systems<br/>
+<span style="color:#7b61ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Prompt Engineering & RAG<br/>
+<span style="color:#00e5ff">─────────────────────────────</span><br/>
+<span style="color:#00ffaa">**Packages:**</span> 32+ repos · <span style="color:#7b61ff">50+ stars</span><br/>
+<span style="color:#00ffaa">**Contributions:**</span> 3 major OSS projects<br/>
+<span style="color:#00ffaa">**Uptime:**</span> Building since <span style="color:#00e5ff;background-color:#161b22;padding:2px 6px;border-radius:3px;font-family:monospace">2023</span>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
+<div align="center">
+
+```
+ ┌──────────────────────────────────────────────────────────────────┐
+ │  $ ls ./projects --featured                                     │
+ └──────────────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ║                   FEATURED PROJECTS                         ║ -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+
+<div align="center">
+
+<table>
+<tr>
+<td colspan="2">
+
+```
+ ┌── xclaw ─────────────────────────────────────────────────────────┐
+ │                                                                  │
+ │  $ xclaw --init                                                 │
+ │                                                                  │
+ │  > AI programming CLI that redefines the boundary                │
+ │    between human and AI.                                         │
+ │                                                                  │
+ │  > Multi-provider engine (Anthropic / OpenAI / Gemini / Grok)    │
+ │    personality-driven TUI, real tool execution, permission        │
+ │    system, streaming token output.                               │
+ │                                                                  │
+ │  ▸ TypeScript + Bun    ▸ Original                                │
+ │  ▸ Multi-agent ready   ▸ Provider-agnostic                       │
+ │                                                                  │
+ └──────────────────────────────────────────────────────────────────┘
+```
+
+[![xclaw](https://img.shields.io/badge/xclaw-→_REPO-00ffaa?style=for-the-badge&logo=github&logoColor=050510&labelColor=050510)](https://github.com/YuanyuanMa03/xclaw)
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+
+```
+ ┌── GitPulse ────────────────────────────────────────────────────┐
+ │                                                                │
+ │  > Real-time GitHub trending tracker                           │
+ │  > Dark theme · Zero dependencies · Vanilla JS                 │
+ │  > GitHub Pages featured project                               │
+ │                                                                │
+ │  ▸ 23 stars          ▸ Original          ▸ Featured            │
+ │                                                                │
+ └────────────────────────────────────────────────────────────────┘
+```
+
+[![GitPulse](https://img.shields.io/badge/GitPulse-→_REPO-7b61ff?style=for-the-badge&logo=github&logoColor=050510&labelColor=050510)](https://github.com/YuanyuanMa03/GitPulse)
+
+</div>
+
+</div>
+
+---
+
+<div align="center">
+
+```
+ ┌──────────────────────────────────────────────────────────────────┐
+ │  $ git log --merges --oneline | head -3                         │
+ └──────────────────────────────────────────────────────────────────┘
+```
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ║               OPEN SOURCE CONTRIBUTIONS                     ║ -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+
+<table>
+<tr>
+<td>
+
+```
+ commit  c0ffee01  Merge #847  bytedance/deer-flow
+ > Fixed macOS startup failure; added Zhipu model templates
+   67k+ stars · Merged ✓
+
+ commit  a110c0de  Merge #231  AstrBotDevs/AstrBot
+ > Fixed deprecated Docker Compose configuration
+   32k+ stars · Merged ✓
+
+ commit  deadbeef  Merge #112  claude-code-best/claude-code
+ > Improved Bun setup docs; clarified build instructions
+   18k+ stars · Merged ✓
+```
+
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td align="center">
+
+[![deer-flow](https://img.shields.io/badge/deer--flow-67k+_stars-00ffaa?style=flat&logo=github&logoColor=050510&labelColor=0d1117)](https://github.com/bytedance/deer-flow)
+
+</td>
+<td align="center">
+
+[![AstrBot](https://img.shields.io/badge/AstrBot-32k+_stars-7b61ff?style=flat&logo=github&logoColor=050510&labelColor=0d1117)](https://github.com/AstrBotDevs/AstrBot)
+
+</td>
+<td align="center">
+
+[![claude-code](https://img.shields.io/badge/claude--code-18k+_stars-00e5ff?style=flat&logo=github&logoColor=050510&labelColor=0d1117)](https://github.com/claude-code-best/claude-code)
+
+</td>
+</tr>
+</table>
+
+```
+ > All PRs merged. Active contributor to the AI agent tooling ecosystem.
+```
+
+</div>
+
+---
+
+<div align="center">
+
+```
+ ┌──────────────────────────────────────────────────────────────────┐
+ │  $ gh stats --user YuanyuanMa03 --theme tokyonight              │
+ └──────────────────────────────────────────────────────────────────┘
+```
+
 <br/>
 
-<p>
-  <b>🧠 AI Engineer — Building tools, CLIs, and frameworks at the boundary of Human & AI</b><br>
-  <span style="opacity: 0.7; font-size: 0.9em;">M.Sc. @ Nanjing Agricultural University · Research: Multi-Agent Systems & LLM Engineering</span>
-</p>
+<table>
+<tr>
+<td colspan="2" align="center">
+
+<span style="color:#00e5ff">──────────────</span> <span style="color:#7b61ff">streak</span> <span style="color:#00e5ff">──────────────</span>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=YuanyuanMa03&theme=tokyonight&hide_border=true)
+
+</td>
+</tr>
+<tr>
+<td align="center">
+
+<span style="color:#00ffaa">────</span> <span style="color:#7b61ff">stats</span> <span style="color:#00ffaa">────</span>
+
+</td>
+<td align="center">
+
+<span style="color:#00ffaa">────</span> <span style="color:#7b61ff">languages</span> <span style="color:#00ffaa">────</span>
+
+</td>
+</tr>
+<tr>
+<td align="center">
+
+![Stats](https://github-readme-stats.vercel.app/api?username=YuanyuanMa03&show_icons=true&theme=tokyonight&hide_border=true&bg_color=050510&title_color=00ffaa&text_color=c9d1d9&icon_color=7b61ff)
+
+</td>
+<td align="center">
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=YuanyuanMa03&layout=compact&theme=tokyonight&hide_border=true&bg_color=050510&title_color=00ffaa&text_color=c9d1d9)
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
+<div align="center">
+
+```
+ ┌──────────────────────────────────────────────────────────────────┐
+ │  $ connect --all                                                │
+ └──────────────────────────────────────────────────────────────────┘
+```
+
+<table>
+<tr>
+<td>
+
+```
+  Portfolio  ─── https://yuanyuanma03.github.io/YuanyuanMa03/
+  GitHub     ─── https://github.com/YuanyuanMa03
+  NJAU Mail  ─── 2025101184@stu.njau.edu.cn
+  QQ Mail    ─── 2942204237@qq.com
+  Gmail      ─── yym290552@gmail.com
+```
+
+</td>
+</tr>
+</table>
+
+[![GitHub](https://img.shields.io/badge/GitHub-follow-00ffaa?style=flat&logo=github&logoColor=050510&labelColor=0d1117)](https://github.com/YuanyuanMa03) [![Portfolio](https://img.shields.io/badge/Portfolio-visit-00e5ff?style=flat&logo=google-chrome&logoColor=050510&labelColor=0d1117)](https://yuanyuanma03.github.io/YuanyuanMa03/) [![Email](https://img.shields.io/badge/Email-NJAU-7b61ff?style=flat&logo=minutemailer&logoColor=white&labelColor=0d1117)](mailto:2025101184@stu.njau.edu.cn) [![Gmail](https://img.shields.io/badge/Gmail-D42C2C?style=flat&logo=gmail&logoColor=white&labelColor=0d1117)](mailto:yym290552@gmail.com)
 
 <br/>
 
-[![🌐 VISIT MY PORTFOLIO →](https://img.shields.io/badge/%F0%9F%8C%90%20VISIT%20MY%20PORTFOLIO%20%E2%86%92-00ffaa?style=for-the-badge&logo=github&logoColor=050510&labelColor=00ffaa&color=00e5ff)](https://yuanyuanma03.github.io/YuanyuanMa03/)
+<table>
+<tr>
+<td>
 
-</div>
+```
+ ┌──────────────────────────────────────────────────────────────────┐
+ │                                                                  │
+ │   > Turning LLMs into agents that actually do things —             │
+ │   > real tools, real execution, real impact.                       │
+ │                                                                  │
+ │                                                    ── yuan        │
+ │                                                                  │
+ └──────────────────────────────────────────────────────────────────┘
+```
 
----
-
-## 🏆 Open Source Contributions
-
-> Contributions to high-impact open source projects.
-
-| Project | Stars | My Contributions |
-| :--- | :---: | :--- |
-| [**bytedance/deer-flow**](https://github.com/bytedance/deer-flow) | ⭐ 67k+ | Fixed macOS startup failure; added Zhipu model templates |
-| [**claude-code-best/claude-code**](https://github.com/claude-code-best/claude-code) | ⭐ 18k+ | Improved Bun setup documentation; clarified build instructions |
-| [**AstrBotDevs/AstrBot**](https://github.com/AstrBotDevs/AstrBot) | ⭐ 32k+ | Fixed deprecated Docker Compose config |
-
-> *All PRs merged. Active contributor to the AI agent tooling ecosystem.*
-
----
-
-## 🎯 What I Build
-
-I focus on **AI Agent Engineering** — building the tools, frameworks, and interfaces that make AI agents genuinely useful.
-
-| 🤖 **Agent Systems** | 🏗️ **Dev Tools & CLI** | 🧠 **LLM Engineering** |
-| :--- | :--- | :--- |
-| Multi-agent orchestration & collaboration | AI-powered CLI / TUI tools | Provider-agnostic LLM integration |
-| Tool systems, MCP protocol, skill chains | Code agents with real tool execution | GRPO, LoRA fine-tuning (Apple Silicon) |
-| Sub-agent spawning & task delegation | Streaming token output & rich rendering | RAG, vector databases, long-term memory |
-
----
-
-## 🛠️ Tech Stack
-
-<div align="center">
-
-| **💻 Languages** | **🧠 AI / Agents** | **⚙️ Infrastructure** |
-| :--- | :--- | :--- |
-| ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) **(Primary)** | Multi-Agent Orchestration | ![Bun](https://img.shields.io/badge/Bun-000?style=flat-square&logo=bun&logoColor=white) |
-| ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) | LLM Provider Integration (Anthropic / OpenAI / Gemini / Grok) | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) |
-| ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white) | MCP Protocol & Tool Systems | ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) |
-| ![R](https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white) | Prompt Engineering & Alignment | ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white) |
-
-**Core Focus:** *AI Coding Agents · Multi-Agent Systems · CLI/TUI Engineering · Provider Abstraction*
-
-</div>
-
----
-
-## 🚀 Featured Projects
-
-### ⚡ AI Coding Agents & CLI
-
-* **[xclaw](https://github.com/YuanyuanMa03/xclaw)** — AI programming CLI that redefines the boundary between human and AI. Multi-provider engine (Anthropic / OpenAI / Gemini / Grok), personality-driven TUI, real tool execution, permission system, streaming output. `Built from scratch with TypeScript + Bun.`
-* **[claude-code (fork)](https://github.com/YuanyuanMa03/claude-code)** — Fully runnable Claude Code fork. TypeScript type fixes, enterprise reliability, Bun-native build. Active contributor upstream.
-
-### 🤖 Agent Frameworks & Platforms
-
-* **[deer-flow (fork)](https://github.com/YuanyuanMa03/deer-flow)** — Long-horizon SuperAgent with sandboxes, memories, tools, skills, and subagents. Contributed macOS compatibility fixes and model provider templates upstream.
-* **[MindOS (fork)](https://github.com/YuanyuanMa03/MindOS)** — Human-AI Collaborative Mind System. Globally sync your mind for all agents: transparent, controllable, evolving.
-* **[ai-desk](https://github.com/YuanyuanMa03/ai-desk)** — Local-first AI aggregation workbench for desktop, mobile, and web.
-
-### 🔬 Research & Domain Tools
-
-* **[GitPulse](https://github.com/YuanyuanMa03/GitPulse)** ⭐ 23 — Real-time GitHub trending tracker with dark theme, zero dependencies, vanilla JS. `Featured on GitHub Pages.`
-* **[RICEMIND · 禾智](https://github.com/YuanyuanMa03/ricemind)** — Agricultural AI Agent SDK with literature search, BibTeX export, and 10+ domain templates.
-* **[TraceGPT](https://github.com/YuanyuanMa03/TraceGPT)** — Calculator-verifiable Transformer learning framework. Pure NumPy, no PyTorch dependency.
-* **[RiceGrowAI](https://github.com/YuanyuanMa03/RiceGrowAI)** — AI-powered rice growth & CH₄ emission simulation system.
-
----
-
-## 📊 GitHub Stats
-
-<div align="center">
-
-![](https://github-readme-streak-stats.herokuapp.com/?user=YuanyuanMa03&theme=tokyonight&hide_border=true)
-
-<img src="https://github-readme-stats.vercel.app/api?username=YuanyuanMa03&show_icons=true&theme=tokyonight&hide_border=true" height="170">
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YuanyuanMa03&layout=compact&theme=tokyonight&hide_border=true" height="170">
-
-</div>
-
----
-
-## 📫 Connect
-
-<div align="center">
-
-| Platform | |
-| :--- | :--- |
-| **🌐 Portfolio** | [![Website](https://img.shields.io/badge/yuan.dev-00ffaa?style=for-the-badge&logo=github&logoColor=050510)](https://yuanyuanma03.github.io/YuanyuanMa03/) |
-| **Academic** | <a href="mailto:2025101184@stu.njau.edu.cn"><img src="https://img.shields.io/badge/NJAU-Mail-005A32?style=flat-square&logo=minutemailer&logoColor=white"/></a> |
-| **Personal** | <a href="mailto:2942204237@qq.com"><img src="https://img.shields.io/badge/QQ-Mail-D42C2C?style=flat-square&logo=gmail&logoColor=white"/></a> |
-
-<br>
-<i>"Building the interface between human and AI, one agent at a time."</i>
+</td>
+</tr>
+</table>
 
 </div>
