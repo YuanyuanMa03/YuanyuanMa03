@@ -20,7 +20,24 @@
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-[![VISIT PORTFOLIO](https://img.shields.io/badge/%E2%86%92_VISIT_PORTFOLIO-00ffaa?style=for-the-badge&logo=github&logoColor=050510&labelColor=050510&color=00ffaa)](https://yuanyuanma03.github.io/YuanyuanMa03/)
+<br/>
+
+<table>
+<tr>
+<td align="center" style="border: 2px solid #00ffaa; border-radius: 16px; padding: 24px 40px; background: linear-gradient(135deg, rgba(0,255,170,0.06), rgba(123,97,255,0.04));">
+
+**`$ open`** **[yuanyuanma03.github.io](https://yuanyuanma03.github.io/YuanyuanMa03/)**
+
+> *Terminal Hacker portfolio — animated particles, typewriter demos, EN/ZH toggle*
+> *Interactive elements, aurora backgrounds, click-to-explore everything*
+
+[**`>>> ENTER THE PORTFOLIO <<<`**](https://yuanyuanma03.github.io/YuanyuanMa03/)
+
+</td>
+</tr>
+</table>
+
+<br/>
 
 </div>
 
