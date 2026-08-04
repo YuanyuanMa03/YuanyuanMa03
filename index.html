@@ -410,8 +410,97 @@
 
     /* ====== Reduced motion ====== */
     @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; }
+      * { transition: none !important; animation: none !important; }
       html { scroll-behavior: auto; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      #cursor-glow { display: none !important; }
+    }
+
+    /* ====== Hero title glow ====== */
+    .intro h1 {
+      text-shadow: 0 0 24px rgba(125,211,252,0.35), 0 0 48px rgba(123,97,255,0.18);
+      animation: heroFade 1.1s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .intro .tagline { animation: heroFade 1.1s .15s cubic-bezier(.2,.8,.2,1) both; }
+    .intro p.bio { animation: heroFade 1.1s .3s cubic-bezier(.2,.8,.2,1) both; }
+    .intro .social-links { animation: heroFade 1.1s .45s cubic-bezier(.2,.8,.2,1) both; }
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(14px); filter: blur(6px); }
+      to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    /* ====== Scroll reveal ====== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1);
+      will-change: opacity, transform;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ====== Panel hover lift ====== */
+    section.panel, header.panel {
+      transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+    }
+    section.panel:hover {
+      border-color: rgba(125,211,252,0.28);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.28), 0 0 0 1px rgba(125,211,252,0.10);
+    }
+
+    /* ====== Project / contribution row hover ====== */
+    ul.list li {
+      transition: transform .28s cubic-bezier(.2,.8,.2,1);
+      position: relative;
+    }
+    ul.list li:hover { transform: translateX(4px); }
+    .item-title { transition: color .2s ease, text-shadow .25s ease; }
+    .item-title:hover { color: #fff; text-shadow: 0 0 14px rgba(125,211,252,0.55); }
+
+    /* ====== Skill pill pulse on hover ====== */
+    .lang-pill { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .lang-pill:hover {
+      transform: translateY(-2px);
+      border-color: rgba(125,211,252,0.5);
+      box-shadow: 0 4px 14px rgba(125,211,252,0.18);
+    }
+    .lang-pill.primary:hover { box-shadow: 0 4px 18px rgba(125,211,252,0.32); }
+
+    /* ====== Social link glow ====== */
+    .social-link { transition: color .2s ease; }
+    .social-link:hover { text-shadow: 0 0 10px rgba(125,211,252,0.4); }
+
+    /* ====== Cursor glow (pointer-fine only) ====== */
+    #cursor-glow {
+      position: fixed;
+      top: 0; left: 0;
+      width: 420px; height: 420px;
+      margin: -210px 0 0 -210px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(125,211,252,0.10) 0%, rgba(123,97,255,0.05) 35%, transparent 65%);
+      pointer-events: none;
+      z-index: 5;
+      mix-blend-mode: screen;
+      opacity: 0;
+      transition: opacity .4s ease;
+      will-change: transform;
+    }
+    @media (pointer: fine) { body:hover #cursor-glow { opacity: 1; } }
+
+    /* ====== Topbar brand subtle glow ====== */
+    .brand { transition: text-shadow .3s ease; }
+    .brand:hover { text-shadow: 0 0 12px rgba(125,211,252,0.4); }
+
+    /* ====== h2 accent line ====== */
+    section.panel h2 { position: relative; padding-left: 14px; }
+    section.panel h2::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 50%;
+      width: 6px; height: 6px;
+      margin-top: -3px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
     }
   </style>
 </head>
@@ -419,11 +508,12 @@
 
   <!-- WebGL Rain Layer -->
   <canvas id="rain-canvas"></canvas>
+  <div id="cursor-glow" aria-hidden="true"></div>
 
   <div class="home-page">
 
     <!-- Topbar -->
-    <div class="topbar">
+    <div class="topbar reveal">
       <a href="#" class="brand">Yuanyuan Ma<span class="dot"> · Nanjing</span></a>
       <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">中文</button>
     </div>
@@ -460,7 +550,7 @@
     </header>
 
     <!-- Projects -->
-    <section id="projects" class="panel">
+    <section id="projects" class="panel reveal">
       <h2 data-en="Projects" data-zh="项目">Projects</h2>
       <p class="sec-intro" data-en="Selected work — ordered by reach. CLIs, agent frameworks, research tools, and learning projects I built from scratch." data-zh="精选作品——按影响力排序。我从零构建的 CLI、智能体框架、研究工具与学习项目。">
         Selected work — ordered by reach. CLIs, agent frameworks, research tools, and learning projects I built from scratch.
@@ -551,7 +641,7 @@
     </section>
 
     <!-- Contributions -->
-    <section id="contributions" class="panel">
+    <section id="contributions" class="panel reveal">
       <h2 data-en="Open Source Contributions" data-zh="开源贡献">Open Source Contributions</h2>
       <p class="sec-intro" data-en="Merged pull requests to upstream projects — ordered by reach." data-zh="已合并到上游项目的 Pull Request——按影响力排序。">
         Merged pull requests to upstream projects — ordered by reach.
@@ -600,7 +690,7 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="panel">
+    <section id="skills" class="panel reveal">
       <h2 data-en="Skills" data-zh="技能">Skills</h2>
       <div class="skills-group">
         <div class="skill-row">
@@ -634,7 +724,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="panel">
+    <footer class="panel reveal">
       <p class="signoff" data-en="Turning LLMs into agents that actually do things — real tools, real execution, real impact." data-zh="将大语言模型变成真正能做事的智能体——真实工具，真实执行，真实影响。">
         Turning LLMs into agents that actually do things — real tools, real execution, real impact. <span class="who">— Yuanyuan Ma</span>
       </p>
@@ -1106,6 +1196,33 @@
         localStorage.setItem('lang', lang);
       }
       if (langBtn) langBtn.addEventListener('click', function () { setLang(currentLang === 'en' ? 'zh' : 'en'); });
+
+      // ---- scroll reveal (IntersectionObserver) ----
+      if (!reducedMotion && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      } else {
+        // no JS observer or reduced motion: show immediately
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      }
+
+      // ---- cursor glow follow ----
+      var glow = document.getElementById('cursor-glow');
+      if (glow && !reducedMotion && window.matchMedia('(pointer: fine)').matches) {
+        var gx = 0, gy = 0, tx = 0, ty = 0;
+        window.addEventListener('mousemove', function (e) { tx = e.clientX; ty = e.clientY; });
+        function glowTick() {
+          gx += (tx - gx) * 0.18;
+          gy += (ty - gy) * 0.18;
+          glow.style.transform = 'translate(' + gx + 'px,' + gy + 'px)';
+          requestAnimationFrame(glowTick);
+        }
+        glowTick();
+      }
 
       // ---- boot ----
       window.addEventListener('resize', resize);
