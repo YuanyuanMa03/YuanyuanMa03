@@ -2,2313 +2,1117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yuan — AI Agent Engineer</title>
-  <meta name="description" content="AI Agent Engineer — Building tools, CLIs, and frameworks at the boundary of human and AI." />
-  <meta property="og:title" content="Yuan — AI Agent Engineer" />
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/118096301?v=4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Yuanyuan Ma — AI Developer & Agent Builder</title>
+  <meta name="description" content="AI Developer building coding CLIs, multi-agent systems, and research tools. M.Sc. at Nanjing Agricultural University." />
+  <meta name="author" content="Yuanyuan Ma" />
+  <meta property="og:title" content="Yuanyuan Ma — AI Developer & Agent Builder" />
+  <meta property="og:description" content="AI Developer building coding CLIs, multi-agent systems, and research tools. M.Sc. at Nanjing Agricultural University." />
+  <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yuanyuanma03.github.io/YuanyuanMa03/" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/118096301?v=4" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Yuanyuan Ma — AI Developer & Agent Builder" />
+  <meta name="twitter:description" content="AI Developer building coding CLIs, multi-agent systems, and research tools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #050510;
-      --bg2: #0a0a14;
-      --card: rgba(255,255,255,0.03);
-      --card-hover: rgba(255,255,255,0.06);
-      --border: rgba(255,255,255,0.06);
-      --border-hover: rgba(255,255,255,0.12);
-      --text: #f0f0ff;
-      --text2: #9999bb;
-      --text3: #555577;
-      --neon: #00ffaa;
-      --neon2: #7b61ff;
-      --neon3: #ff4488;
-      --cyan: #00e5ff;
-      --radius: 20px;
-      --sans: 'Times New Roman', 'Songti SC', Georgia, serif;
-      --mono: 'JetBrains Mono', monospace;
-      --display: 'Times New Roman', 'Songti SC', Georgia, serif;
+      --glass-bg: rgba(14, 17, 26, 0.52);
+      --glass-bg-soft: rgba(20, 24, 34, 0.42);
+      --glass-border: rgba(255, 255, 255, 0.10);
+      --glass-border-soft: rgba(255, 255, 255, 0.06);
+      --ink: #ececEA;
+      --ink-soft: #b8b6b0;
+      --muted: #8a8983;
+      --faint: #5e5d58;
+      --accent: #7dd3fc;
     }
+
+    * { box-sizing: border-box; }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--sans);
-      background: var(--bg);
-      color: var(--text);
+      margin: 0;
+      background: #0a0d14;
+      color: var(--ink);
+      font-family: "IBM Plex Mono", SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 14px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,0.18);
+      text-underline-offset: 3px;
+      transition: color .2s ease, text-decoration-color .2s ease;
+    }
+    a:hover { color: #fff; text-decoration-color: var(--accent); }
 
-    /* ====== Canvas Background ====== */
-    #bg-canvas {
+    /* ====== WebGL Rain Canvas ====== */
+    #rain-canvas {
       position: fixed;
       inset: 0;
       z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ====== Noise Overlay ====== */
-    .noise {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 256px;
-    }
-
-    /* ====== Scanline ====== */
-    .scanline {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0,255,170,0.008) 2px,
-        rgba(0,255,170,0.008) 4px
-      );
-    }
-
-    /* ====== Container ====== */
-    .wrap {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-
-    /* ====== Nav ====== */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      background: rgba(5,5,16,0.7);
-      border-bottom: 1px solid var(--border);
-    }
-    nav .wrap {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 72px;
-    }
-    .logo {
-      font-family: var(--display);
-      font-size: 1.4rem; font-weight: 800;
-      background: linear-gradient(135deg, var(--neon), var(--cyan));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      color: var(--text2); font-size: 0.88rem; font-weight: 500;
-      transition: color .2s; position: relative;
-      font-family: var(--mono);
-    }
-    .nav-links a::before {
-      content: '$ '; color: var(--text3); font-size: 0.75rem;
-      opacity: 0; transition: opacity .2s;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 2px; background: var(--neon);
-      transition: width .3s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover::before { opacity: 1; }
-    .nav-links a:hover::after { width: 100%; }
-
-    /* ====== Hero ====== */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding-top: 72px;
-      position: relative;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 80px;
-      align-items: center;
       width: 100%;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,255,170,0.08);
-      border: 1px solid rgba(0,255,170,0.2);
-      color: var(--neon);
-      font-family: var(--mono);
-      font-size: 0.78rem; font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 24px;
-      animation: pulse-glow 3s ease-in-out infinite;
-    }
-    .hero-badge .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--neon);
-      animation: blink-dot 2s ease-in-out infinite;
-    }
-    @keyframes blink-dot { 0%,100%{opacity:1} 50%{opacity:.3} }
-    @keyframes pulse-glow {
-      0%,100% { box-shadow: 0 0 20px rgba(0,255,170,0.1); }
-      50% { box-shadow: 0 0 30px rgba(0,255,170,0.2); }
-    }
-    .hero h1 {
-      font-family: var(--display);
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin-bottom: 8px;
-    }
-    .hero h1 .gradient {
-      background: linear-gradient(135deg, var(--neon), var(--cyan), var(--neon2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-sub {
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      font-weight: 300;
-      color: var(--text2);
-      margin-bottom: 32px;
-      letter-spacing: -0.01em;
-    }
-    .hero-desc {
-      font-size: 1rem;
-      color: var(--text2);
-      max-width: 520px;
-      margin-bottom: 40px;
-      line-height: 1.9;
-    }
-    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 14px 32px;
-      border-radius: 14px;
-      font-weight: 600; font-size: 0.95rem;
-      cursor: pointer; border: none;
-      transition: all .3s;
-      font-family: var(--sans);
-    }
-    .btn-neon {
-      background: linear-gradient(135deg, var(--neon), var(--cyan));
-      color: #050510;
-      box-shadow: 0 0 30px rgba(0,255,170,0.25), 0 4px 20px rgba(0,255,170,0.15);
-    }
-    .btn-neon:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 50px rgba(0,255,170,0.35), 0 8px 30px rgba(0,255,170,0.2);
-    }
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border-hover);
-    }
-    .btn-ghost:hover {
-      border-color: var(--neon2);
-      background: rgba(123,97,255,0.08);
-      transform: translateY(-3px);
-    }
-    .btn:focus-visible {
-      outline: 2px solid var(--neon);
-      outline-offset: 3px;
-    }
-    .nav-links a:focus-visible {
-      outline: 2px solid var(--neon);
-      outline-offset: 4px;
-      border-radius: 4px;
+      height: 100%;
+      display: block;
     }
 
-    /* Terminal */
-    .hero-visual { position: relative; }
-    .terminal {
-      background: rgba(10,10,20,0.85);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 0 60px rgba(0,255,170,0.06), 0 20px 60px rgba(0,0,0,0.5);
-      backdrop-filter: blur(20px);
-      transition: box-shadow .4s, border-color .4s;
-    }
-    .terminal:hover {
-      border-color: rgba(0,255,170,0.15);
-      box-shadow: 0 0 80px rgba(0,255,170,0.1), 0 20px 60px rgba(0,0,0,0.5);
-    }
-    .term-bar {
-      display: flex; align-items: center; gap: 8px;
-      padding: 16px 20px;
-      background: rgba(255,255,255,0.02);
-      border-bottom: 1px solid var(--border);
-    }
-    .term-dot { width: 12px; height: 12px; border-radius: 50%; }
-    .term-dot.r { background: #ff5f57; }
-    .term-dot.y { background: #febc2e; }
-    .term-dot.g { background: #28c840; }
-    .term-title {
-      flex: 1; text-align: center;
-      font-family: var(--mono);
-      font-size: 0.78rem; color: var(--text3);
-    }
-    .term-tabs {
-      display: flex; gap: 0;
-    }
-    .term-tab {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      padding: 4px 14px;
-      color: var(--text3);
-      border: 1px solid transparent;
-      cursor: default;
-    }
-    .term-tab.active {
-      color: var(--neon);
-      border-bottom-color: var(--neon);
-    }
-    .term-body {
-      padding: 28px;
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      line-height: 2.2;
-      min-height: 320px;
-    }
-    .term-body .p { color: var(--neon); }
-    .term-body .c { color: var(--text3); font-style: italic; }
-    .term-body .k { color: var(--neon2); }
-    .term-body .s { color: var(--cyan); }
-    .term-body .o { color: var(--neon); }
-    .term-body .w { color: var(--text); }
-    .term-body .r { color: var(--neon3); }
-    .term-body .dim { color: var(--text3); }
-    .term-line {
-      white-space: nowrap;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity .3s, transform .3s;
-    }
-    .term-line.shown {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .cursor {
-      display: inline-block;
-      width: 9px; height: 17px;
-      background: var(--neon);
-      animation: blink 1s step-end infinite;
-      vertical-align: middle;
-      margin-left: 4px;
-    }
-    @keyframes blink { 50%{opacity:0} }
-
-    /* ASCII art hero decoration */
-    .hero-ascii {
-      position: absolute;
-      bottom: -40px;
-      left: -60px;
-      font-family: var(--mono);
-      font-size: 0.55rem;
-      line-height: 1.3;
-      color: rgba(0,255,170,0.06);
-      white-space: pre;
-      pointer-events: none;
-      user-select: none;
+    /* fallback gradient if WebGL fails */
+    .no-webgl-fallback {
+      position: fixed; inset: 0; z-index: 0;
+      background: linear-gradient(135deg, #0c1929 0%, #1a0c2e 50%, #0c1929 100%);
     }
 
-    /* ====== Section Terminal Prompt ====== */
-    .sec-prompt {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--neon);
-      margin-bottom: 48px;
-      padding: 14px 20px;
-      background: rgba(0,255,170,0.03);
-      border: 1px solid rgba(0,255,170,0.08);
-      border-radius: 12px;
-      display: inline-block;
-    }
-    .sec-prompt .prompt-char { color: var(--neon2); }
-
-    /* ====== Sections ====== */
-    section { padding: 140px 0; }
-
-    .sec-label {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--neon);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      margin-bottom: 12px;
-    }
-    .sec-title {
-      font-family: var(--display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-    }
-    .sec-desc {
-      font-size: 1.05rem;
-      color: var(--text2);
-      max-width: 600px;
-      margin-bottom: 56px;
-      line-height: 1.8;
-    }
-
-    /* ====== About Section ====== */
-    .about-terminal {
-      background: rgba(10,10,20,0.7);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: border-color .4s, box-shadow .4s;
-    }
-    .about-terminal:hover {
-      border-color: rgba(0,229,255,0.2);
-      box-shadow: 0 0 40px rgba(0,229,255,0.06);
-    }
-    .about-body {
-      padding: 36px;
-      font-family: var(--mono);
-      font-size: 0.88rem;
-      line-height: 2.4;
-    }
-    .about-body .cmd { color: var(--neon); }
-    .about-body .out { color: var(--text2); padding-left: 0; }
-    .about-body .highlight { color: var(--cyan); font-weight: 600; }
-    .about-body .quote {
-      color: var(--neon);
-      font-style: italic;
-      padding: 20px 24px;
-      border-left: 3px solid var(--neon);
-      margin: 16px 0;
-      background: rgba(0,255,170,0.03);
-      border-radius: 0 8px 8px 0;
-    }
-    .about-body .author {
-      color: var(--text3);
-      font-size: 0.78rem;
-      text-align: right;
-      margin-top: 8px;
-    }
-
-    /* ====== Skills — Neofetch Style ====== */
-    .neofetch-container {
+    /* ====== Content Layer ====== */
+    .home-page {
+      position: relative;
+      z-index: 10;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 32px 96px;
       display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 0;
-      background: rgba(10,10,20,0.7);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: border-color .4s, box-shadow .4s;
+      gap: 44px;
     }
-    .neofetch-container:hover {
-      border-color: rgba(0,255,170,0.15);
-      box-shadow: 0 0 50px rgba(0,255,170,0.06);
-    }
-    .neofetch-ascii {
-      padding: 36px 28px 36px 36px;
-      border-right: 1px solid var(--border);
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      line-height: 1.4;
-      color: var(--neon);
-      white-space: pre;
+
+    /* ====== Topbar ====== */
+    .topbar {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      background: rgba(0,255,170,0.02);
+      padding: 14px 22px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(22px) saturate(1.3);
+      -webkit-backdrop-filter: blur(22px) saturate(1.3);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
     }
-    .neofetch-info {
-      padding: 36px;
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      line-height: 2.2;
+    .brand {
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: .01em;
+      text-decoration: none;
+      color: var(--ink);
     }
-    .neofetch-header {
-      margin-bottom: 16px;
-    }
-    .neofetch-user { color: var(--neon); font-weight: 700; }
-    .neofetch-at { color: var(--text2); }
-    .neofetch-host { color: var(--neon2); font-weight: 700; }
-    .neofetch-sep {
-      color: var(--cyan);
-      letter-spacing: 0;
-    }
-    .neofetch-row {
-      display: flex;
-      gap: 0;
-    }
-    .neofetch-key {
-      color: var(--neon);
-      font-weight: 600;
-      min-width: 160px;
-      flex-shrink: 0;
-    }
-    .neofetch-val { color: var(--text); }
-    .neofetch-colors {
-      display: flex;
-      gap: 4px;
-      margin-top: 12px;
-    }
-    .neofetch-color-block {
-      width: 24px;
-      height: 14px;
-      border-radius: 2px;
-    }
-    .skill-tag-neo {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      padding: 2px 10px;
-      border-radius: 6px;
-      margin: 2px 4px 2px 0;
-    }
+    .brand .dot { color: var(--muted); }
 
-    /* ====== Project Type Badges ====== */
-    .proj-type {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    .proj-type.original {
-      background: rgba(0,255,170,0.12);
-      color: var(--neon);
-      border: 1px solid rgba(0,255,170,0.25);
-    }
-    .proj-type.fork {
-      background: rgba(123,97,255,0.1);
-      color: var(--neon2);
-      border: 1px solid rgba(123,97,255,0.2);
-    }
-    .proj-bar .proj-type {
-      margin-left: auto;
-    }
-
-    /* ====== Projects — Terminal Cards ====== */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-    .proj {
-      background: rgba(10,10,20,0.6);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: all .4s cubic-bezier(.4,0,.2,1);
-      display: flex; flex-direction: column;
-      position: relative;
-    }
-    .proj::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(0,255,170,0.04) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity .4s;
-      pointer-events: none;
-    }
-    .proj:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(0,255,170,0.04);
-    }
-    .proj:hover::after { opacity: 1; }
-    .proj-bar {
-      display: flex; align-items: center; gap: 6px;
-      padding: 12px 16px;
-      background: rgba(255,255,255,0.02);
-      border-bottom: 1px solid var(--border);
-    }
-    .proj-bar .term-dot { width: 10px; height: 10px; }
-    .proj-bar .proj-tab-name {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--text3);
-      margin-left: 8px;
-    }
-    .proj-bar .proj-tab-name .cmd-text { color: var(--neon); }
-    .proj-body {
-      padding: 28px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      z-index: 1;
-    }
-    .proj-cmd {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--text3);
-      margin-bottom: 16px;
-    }
-    .proj-cmd .dollar { color: var(--neon); }
-    .proj h3 {
-      font-size: 1.2rem; font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .proj-sub {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--neon);
-      margin-bottom: 14px;
-    }
-    .proj p {
-      font-size: 0.88rem;
-      color: var(--text2);
-      line-height: 1.7;
-      flex: 1;
-    }
-    .proj-tech {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      margin-top: 18px;
-    }
-    .proj-tech span {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      padding: 3px 10px;
+    .lang-toggle {
+      font-family: inherit;
+      font-size: 12px;
+      padding: 5px 11px;
+      border: 1px solid var(--glass-border);
       background: rgba(255,255,255,0.04);
-      color: var(--text3);
+      color: var(--ink-soft);
       border-radius: 6px;
-      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all .2s ease;
     }
-    .proj-link-row {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
+    .lang-toggle:hover {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.22);
+      color: #fff;
     }
-    .proj-link-row a {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--text3);
-      transition: color .2s;
+
+    /* ====== Glass Panel (shared) ====== */
+    .panel {
+      background: var(--glass-bg);
+      backdrop-filter: blur(22px) saturate(1.3);
+      -webkit-backdrop-filter: blur(22px) saturate(1.3);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 30px 30px;
+    }
+
+    /* ====== Intro ====== */
+    .intro h1 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: .01em;
+      color: #fff;
+    }
+    .intro .tagline {
+      margin: 0 0 20px;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .intro .tagline .sep { color: var(--faint); margin: 0 8px; }
+    .intro p.bio {
+      margin: 0 0 14px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 62ch;
+    }
+    .intro p.bio .em { color: var(--ink); }
+
+    /* ====== Social row ====== */
+    .social-links {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-    }
-    .proj-link-row a:hover { color: var(--neon); }
-    .proj-link-row a .arrow { color: var(--neon); }
-
-    .proj.featured {
-      grid-column: span 2;
-      border-color: rgba(0,255,170,0.15);
-      background: linear-gradient(135deg, rgba(0,255,170,0.04), rgba(123,97,255,0.03));
-    }
-    .proj.featured:hover {
-      border-color: rgba(0,255,170,0.3);
-    }
-    .proj.featured .proj-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-    .proj.featured .proj-left { }
-    .proj.featured .proj-right {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      line-height: 2.4;
-      color: var(--text2);
-    }
-    .proj.featured .proj-right .output-line { display: block; }
-    .proj.featured .proj-right .check { color: var(--neon); }
-    .proj.featured .proj-right .info { color: var(--cyan); }
-
-    /* ====== Stats ====== */
-    .stats-terminal {
-      background: rgba(10,10,20,0.7);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: 48px;
-      transition: border-color .4s, box-shadow .4s;
-    }
-    .stats-terminal:hover {
-      border-color: rgba(0,255,170,0.15);
-      box-shadow: 0 0 40px rgba(0,255,170,0.06);
-    }
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-    .stat {
-      padding: 36px 24px;
-      text-align: center;
-      border-right: 1px solid var(--border);
-      position: relative;
-    }
-    .stat:last-child { border-right: none; }
-    .stat::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--neon), transparent);
-      opacity: 0;
-      transition: opacity .3s;
-    }
-    .stat:hover::before { opacity: 1; }
-    .stat-ascii-border {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--text3);
-      margin-bottom: 12px;
-      letter-spacing: 0;
-      white-space: pre;
-    }
-    .stat-val {
-      font-family: var(--display);
-      font-size: 2.8rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--neon), var(--cyan));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .stat-lbl {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--text2);
-      margin-top: 6px;
-    }
-    .stats-cmd {
-      padding: 14px 20px;
-      background: rgba(255,255,255,0.02);
-      border-bottom: 1px solid var(--border);
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--text3);
-    }
-    .stats-cmd .dollar { color: var(--neon); }
-    .stats-cmd .flag { color: var(--neon2); }
-
-    .activity {
-      background: rgba(10,10,20,0.7);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px;
-      text-align: center;
-      transition: border-color .4s;
-    }
-    .activity:hover {
-      border-color: rgba(0,255,170,0.1);
-    }
-    .activity-cmd {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--text3);
-      margin-bottom: 20px;
-    }
-    .activity-cmd .dollar { color: var(--neon); }
-    .activity img {
-      width: 100%;
-      max-width: 900px;
-      border-radius: 12px;
-    }
-
-    /* ====== Contact — Terminal Style ====== */
-    .contact-terminal {
-      background: rgba(10,10,20,0.7);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: border-color .4s, box-shadow .4s;
-    }
-    .contact-terminal:hover {
-      border-color: rgba(0,255,170,0.15);
-      box-shadow: 0 0 40px rgba(0,255,170,0.06);
-    }
-    .contact-body {
-      padding: 32px;
-      font-family: var(--mono);
-      font-size: 0.88rem;
-      line-height: 2.6;
-    }
-    .contact-body .cmd { color: var(--neon); }
-    .contact-body .out-label { color: var(--text3); display: inline-block; min-width: 110px; }
-    .contact-body .out-link {
-      color: var(--cyan);
-      text-decoration: none;
-      transition: color .2s;
-      border-bottom: 1px solid transparent;
-    }
-    .contact-body .out-link:hover {
-      color: var(--neon);
-      border-bottom-color: var(--neon);
-    }
-    .contact-body .divider {
-      color: var(--text3);
-      font-size: 0.72rem;
-    }
-    .contact-quote {
-      margin-top: 24px;
-      padding: 20px 24px;
-      border: 1px solid rgba(0,255,170,0.08);
-      border-radius: 12px;
-      background: rgba(0,255,170,0.02);
-    }
-    .contact-quote .quote-text {
-      color: var(--neon);
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      font-style: italic;
-      line-height: 1.8;
-    }
-    .contact-quote .quote-author {
-      color: var(--text3);
-      font-family: var(--mono);
-      font-size: 0.75rem;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-top: 8px;
-      text-align: right;
     }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      text-decoration: none;
+    }
+    .social-link .name {
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,0.18);
+      text-underline-offset: 3px;
+      transition: text-decoration-color .2s ease;
+    }
+    .social-link:hover { color: #fff; }
+    .social-link:hover .name { text-decoration-color: var(--accent); }
+    .social-sep { color: var(--faint); font-size: 13px; user-select: none; }
+
+    /* ====== Sections ====== */
+    section.panel { display: grid; gap: 18px; }
+    h2 {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .sec-intro {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 60ch;
+      line-height: 1.6;
+    }
+
+    /* ====== List ====== */
+    ul.list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 18px;
+    }
+    ul.list li {
+      display: grid;
+      gap: 5px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--glass-border-soft);
+    }
+    ul.list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .item-head {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .item-title {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,0.22);
+      text-underline-offset: 3px;
+      transition: text-decoration-color .2s ease;
+    }
+    .item-title:hover { text-decoration-color: var(--accent); }
+    .item-meta { font-size: 12px; color: var(--muted); }
+    .item-meta .sep { color: var(--faint); margin: 0 6px; }
+    .item-meta .tag {
+      color: var(--ink-soft);
+      border: 1px solid var(--glass-border);
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+    .item-desc {
+      margin: 0;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      max-width: 64ch;
+    }
+    .more-link { margin: 4px 0 0; font-size: 13px; }
+    .more-link a { color: var(--ink-soft); }
+
+    /* ====== Skills ====== */
+    .skills-group { display: grid; gap: 14px; }
+    .skill-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      align-items: baseline;
+    }
+    .skill-label { font-size: 11px; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; }
+    .skill-val { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+    .lang-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .lang-pill {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      border: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.04);
+      padding: 2px 9px;
+      border-radius: 4px;
+    }
+    .lang-pill.primary { color: #fff; border-color: rgba(125,211,252,0.35); }
 
     /* ====== Footer ====== */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      text-align: center;
+      display: grid;
+      gap: 10px;
+      padding: 22px 30px;
     }
-    footer p {
-      color: var(--text3);
-      font-size: 0.85rem;
-      font-family: var(--mono);
+    .signoff {
+      margin: 0;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      font-style: italic;
     }
-    footer .heart { color: var(--neon3); }
-    footer .footer-cmd { color: var(--neon); }
+    .signoff .who { color: #fff; font-style: normal; }
+    .copyright { margin: 0; font-size: 12px; color: var(--muted); }
 
-    /* ====== Animations ====== */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity .7s ease, transform .7s cubic-bezier(.4,0,.2,1);
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    /* stagger */
-    .fade-up:nth-child(2) { transition-delay: .1s; }
-    .fade-up:nth-child(3) { transition-delay: .2s; }
-    .fade-up:nth-child(4) { transition-delay: .3s; }
-
-    /* ====== Hamburger Menu ====== */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 8px;
-      z-index: 102;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all .3s;
-    }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-    .mobile-menu {
-      display: none;
+    /* ====== Control Dock ====== */
+    .dock-toggle {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 101;
-      background: rgba(5,5,16,0.95);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      flex-direction: column;
+      right: 22px;
+      bottom: 22px;
+      z-index: 30;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      backdrop-filter: blur(22px) saturate(1.3);
+      -webkit-backdrop-filter: blur(22px) saturate(1.3);
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 32px;
+      transition: transform .25s ease, background .2s ease;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
     }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: var(--mono);
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--text);
-      transition: color .2s;
+    .dock-toggle:hover { transform: scale(1.08); background: rgba(30,36,50,0.7); }
+    .dock-toggle svg { width: 22px; height: 22px; }
+
+    .dock-panel {
+      position: fixed;
+      right: 22px;
+      bottom: 84px;
+      z-index: 30;
+      width: 248px;
+      padding: 20px 20px 18px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(26px) saturate(1.4);
+      -webkit-backdrop-filter: blur(26px) saturate(1.4);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+      transform: translateY(12px) scale(0.96);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform .28s cubic-bezier(.2,.8,.2,1), opacity .22s ease;
     }
-    .mobile-menu a::before {
-      content: '$ '; color: var(--neon);
+    .dock-panel.open {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      pointer-events: auto;
     }
-    .mobile-menu a:hover { color: var(--neon); }
+    .dock-title {
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 14px;
+    }
+    .control { margin-bottom: 14px; }
+    .control:last-of-type { margin-bottom: 4px; }
+    .control-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 5px;
+    }
+    .control-label { font-size: 12px; color: var(--ink-soft); }
+    .control-val { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .control input[type="range"] {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 2px;
+      outline: none;
+    }
+    .control input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(125,211,252,0.5);
+    }
+    .control input[type="range"]::-moz-range-thumb {
+      width: 14px; height: 14px;
+      border: none;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+    }
+    .dock-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--glass-border-soft);
+    }
+    .dock-btn {
+      flex: 1;
+      font-family: inherit;
+      font-size: 11.5px;
+      padding: 7px 8px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.04);
+      color: var(--ink-soft);
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all .2s ease;
+      text-align: center;
+    }
+    .dock-btn:hover { background: rgba(255,255,255,0.10); color: #fff; }
+    .dock-btn input[type="file"] { display: none; }
 
     /* ====== Responsive ====== */
-    @media (max-width: 960px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-      .hero-visual { max-width: 560px; }
-      .hero-ascii { display: none; }
-      .about-body { padding: 24px; font-size: 0.82rem; }
-      .neofetch-container { grid-template-columns: 1fr; }
-      .neofetch-ascii {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        padding: 24px;
-        justify-content: center;
-        font-size: 0.6rem;
-      }
-      .neofetch-info { padding: 24px; }
-      .projects { grid-template-columns: 1fr; }
-      .proj.featured { grid-column: span 1; }
-      .proj.featured .proj-body { grid-template-columns: 1fr; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .stat { border-bottom: 1px solid var(--border); }
-      .stat:nth-child(2) { border-right: none; }
-      .stat:nth-child(1), .stat:nth-child(2) { }
-      .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
-      .contact-body { padding: 24px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-    }
-    @media (max-width: 600px) {
-      .wrap { padding: 0 20px; }
-      section { padding: 100px 0; }
-      .stat-val { font-size: 2rem; }
-      .hero h1 { font-size: 2.4rem; }
-      .hero-sub { font-size: 1.1rem; }
-      .hero-desc { font-size: 0.95rem; line-height: 1.8; }
-      .term-body { padding: 20px; font-size: 0.72rem; line-height: 2; min-height: auto; }
-      .terminal { margin: 0 -10px; }
-      .activity { overflow-x: auto; }
-      .activity img { max-width: 100%; height: auto; }
-      .sec-title { font-size: 1.8rem; }
-      .neofetch-key { min-width: 120px; }
-      .neofetch-info { font-size: 0.75rem; }
-      .stat { padding: 24px 16px; }
-      .stat-ascii-border { font-size: 0.5rem; }
-      .about-body { font-size: 0.78rem; line-height: 2.2; }
-      .contact-body { font-size: 0.78rem; }
-      .contact-body .out-label { min-width: 80px; }
+    @media (max-width: 640px) {
+      .home-page { padding: 44px 18px 90px; gap: 34px; }
+      .panel { padding: 22px 20px; }
+      .intro h1 { font-size: 16px; }
+      .skill-row { grid-template-columns: 1fr; gap: 4px; }
+      .dock-panel { right: 14px; left: 14px; width: auto; bottom: 78px; }
+      .dock-toggle { right: 16px; bottom: 16px; }
     }
 
+    /* ====== Reduced motion ====== */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-      .fade-up { opacity: 1; transform: none; }
-      #bg-canvas { display: none; }
-      .aurora-blob { display: none; }
-    }
-
-    /* ====== Aurora Blobs ====== */
-    .aurora-blob {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.04;
-      pointer-events: none;
-      z-index: 0;
-      animation: drift 20s ease-in-out infinite alternate;
-    }
-    .aurora-blob.blob-green {
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(0,255,170,0.6), transparent 70%);
-      top: 10%; left: 5%;
-      animation-duration: 20s;
-    }
-    .aurora-blob.blob-purple {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(123,97,255,0.6), transparent 70%);
-      top: 50%; right: 10%;
-      animation-duration: 25s;
-    }
-    .aurora-blob.blob-cyan {
-      width: 550px; height: 550px;
-      background: radial-gradient(circle, rgba(0,229,255,0.6), transparent 70%);
-      bottom: 10%; left: 30%;
-      animation-duration: 30s;
-    }
-    @keyframes drift {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(60px, -40px) scale(1.15); }
-    }
-
-    /* ====== Clickable Elements ====== */
-    .clickable {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(0,255,170,0.3);
-      transform: scale(0);
-      animation: ripple-expand 0.6s ease-out forwards;
-      pointer-events: none;
-    }
-    @keyframes ripple-expand {
-      to { transform: scale(4); opacity: 0; }
-    }
-
-    /* ====== Skill Tag Tooltip ====== */
-    .clickable[data-tooltip] {
-      overflow: visible;
-    }
-    .clickable[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: -30px;
-      left: 0;
-      background: #1a1a2e;
-      color: var(--neon);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.7rem;
-      white-space: nowrap;
-      border: 1px solid rgba(0,255,170,0.2);
-      z-index: 10;
-      pointer-events: none;
-    }
-
-    /* ====== Stats Clickable ====== */
-    .stat.clickable {
-      cursor: pointer;
-      transition: background .3s;
-    }
-    .stat.clickable:hover {
-      background: rgba(0,255,170,0.04);
-    }
-    .stat-val.copied-flash {
-      -webkit-text-fill-color: var(--neon) !important;
-    }
-
-    /* ====== Contact Row ====== */
-    .contact-row {
-      display: flex;
-      align-items: center;
-      padding: 4px 8px;
-      margin: 0 -8px;
-      border-radius: 8px;
-      transition: background .2s;
-    }
-    .contact-row:hover {
-      background: rgba(0,255,170,0.05);
-    }
-
-    /* ====== Terminal Dots ====== */
-    .term-dot.clickable {
-      cursor: pointer;
-      transition: transform .2s, filter .2s;
-      z-index: 2;
-    }
-    .term-dot.clickable:hover {
-      transform: scale(1.3);
-      filter: brightness(1.3);
-    }
-    .term-dot.g.pulse-active {
-      animation: dot-pulse 1s ease-in-out 3;
-    }
-    @keyframes dot-pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(40,200,64,0.4); filter: brightness(1); }
-      50% { box-shadow: 0 0 12px 4px rgba(40,200,64,0.5); filter: brightness(1.5); }
-    }
-
-    /* ====== Terminal Collapsed ====== */
-    .term-body.collapsed {
-      height: 0;
-      overflow: hidden;
-      padding-top: 0;
-      padding-bottom: 0;
-      min-height: 0;
-    }
-    .terminal.glow-active {
-      border-color: rgba(0,255,170,0.3) !important;
-      box-shadow: 0 0 30px rgba(0,255,170,0.15), 0 0 60px rgba(0,255,170,0.08) !important;
-      transition: border-color .3s, box-shadow .3s;
-    }
-
-    /* ====== Terminal Hidden (red dot) ====== */
-    .terminal.term-hidden {
-      transform: scale(0);
-      opacity: 0;
-      transition: transform .4s cubic-bezier(.4,0,.2,1), opacity .4s;
-    }
-
-    /* ====== Project Tech Tags ====== */
-    .proj-tech span.clickable {
-      transition: background .2s, box-shadow .2s, color .2s;
-    }
-    .proj-tech span.clickable:hover {
-      background: rgba(0,255,170,0.1);
-      box-shadow: 0 0 12px rgba(0,255,170,0.15);
-      color: var(--neon);
-      border-color: rgba(0,255,170,0.3);
-    }
-
-    /* ====== Open Source Contributions ====== */
-    .contrib-terminal {
-      background: rgba(10,10,20,0.7);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: border-color .4s, box-shadow .4s;
-    }
-    .contrib-terminal:hover {
-      border-color: rgba(123,97,255,0.2);
-      box-shadow: 0 0 40px rgba(123,97,255,0.06);
-    }
-    .contrib-body {
-      padding: 8px 0;
-    }
-    .contrib-row {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      padding: 24px 32px;
-      transition: background .3s;
-    }
-    .contrib-row:hover {
-      background: rgba(123,97,255,0.04);
-    }
-    .contrib-stars {
-      text-align: center;
-      min-width: 80px;
-      flex-shrink: 0;
-    }
-    .contrib-star-count {
-      font-family: var(--mono);
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--neon2);
-      display: block;
-    }
-    .contrib-star-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--text3);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .contrib-info { flex: 1; }
-    .contrib-repo {
-      font-family: var(--mono);
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--text);
-      transition: color .2s;
-    }
-    .contrib-repo:hover { color: var(--neon2); }
-    .contrib-desc {
-      font-size: 0.82rem;
-      color: var(--text2);
-      margin-top: 4px;
-      line-height: 1.6;
-    }
-    .contrib-status {
-      flex-shrink: 0;
-    }
-    .contrib-status .check {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--neon);
-      background: rgba(0,255,170,0.08);
-      border: 1px solid rgba(0,255,170,0.2);
-      padding: 4px 12px;
-      border-radius: 6px;
-    }
-    .contrib-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 0 32px;
-    }
-    @media (max-width: 600px) {
-      .contrib-row { padding: 16px 20px; gap: 12px; flex-wrap: wrap; }
-      .contrib-stars { min-width: 60px; }
-      .contrib-star-count { font-size: 1.1rem; }
-    }
-
-    /* ====== Language Toggle ====== */
-    .lang-btn {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 8px;
-      background: rgba(0,255,170,0.08);
-      border: 1px solid rgba(0,255,170,0.2);
-      color: var(--neon);
-      cursor: pointer;
-      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      min-width: 40px;
-      margin-left: 16px;
-    }
-    .lang-btn:hover {
-      background: rgba(0,255,170,0.15);
-      border-color: rgba(0,255,170,0.4);
-      transform: scale(1.05);
-    }
-    .lang-btn:focus-visible {
-      outline: 2px solid var(--neon);
-      outline-offset: 3px;
-    }
-    [data-en], [data-zh] {
-      transition: opacity 0.15s ease;
-    }
-
-    /* ====== Stats Gradient Border ====== */
-    .stats-terminal {
-      border-image: linear-gradient(135deg, rgba(0,255,170,0.3), rgba(0,229,255,0.3), rgba(123,97,255,0.3)) 1;
-      border-width: 1px;
-      border-style: solid;
-    }
-    .stats-terminal:hover {
-      border-image: linear-gradient(135deg, rgba(0,255,170,0.5), rgba(0,229,255,0.5), rgba(123,97,255,0.5)) 1;
-    }
-
-    /* ====== Contact Row Left Border ====== */
-    .contact-row {
-      border-left: 3px solid transparent;
-      transition: background-color 0.2s, border-left-color 0.2s;
-    }
-    .contact-row:hover {
-      border-left-color: var(--neon);
-    }
-
-    /* ====== Footer Typewriter ====== */
-    footer .footer-text {
-      overflow: hidden;
-      white-space: nowrap;
-      display: inline-block;
-      animation: typewriter-reveal 2s steps(40) 1.5s both;
-    }
-    @keyframes typewriter-reveal {
-      from { max-width: 0; }
-      to { max-width: 100%; }
-    }
-
-    /* ====== Motion: Nav Underline scaleX ====== */
-    .nav-links a::after {
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      transform: scaleX(0);
-      transform-origin: left;
-      width: 100%;
-      opacity: 0;
-    }
-    .nav-links a:hover::after {
-      transform: scaleX(1);
-      opacity: 1;
-    }
-
-    /* ====== Motion: Dot Bounce ====== */
-    @keyframes dot-bounce {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.6); }
-      100% { transform: scale(1); }
-    }
-    .term-dot.bounce-active {
-      animation: dot-bounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    /* ====== Accessibility: Skip Link ====== */
-    .skip-link {
-      position: absolute;
-      top: -100%;
-      left: 16px;
-      z-index: 9999;
-      padding: 12px 24px;
-      background: var(--neon);
-      color: var(--bg);
-      font-family: var(--mono);
-      font-size: 0.88rem;
-      font-weight: 600;
-      border-radius: 0 0 12px 12px;
-      text-decoration: none;
-      transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .skip-link:focus {
-      top: 0;
-    }
-
-    /* ====== Accessibility: Selection ====== */
-    ::selection {
-      background: rgba(0,255,170,0.3);
-      color: #fff;
-    }
-    ::-moz-selection {
-      background: rgba(0,255,170,0.3);
-      color: #fff;
-    }
-
-    /* ====== Custom Scrollbar ====== */
-    html {
-      scrollbar-width: thin;
-      scrollbar-color: rgba(0,255,170,0.2) var(--bg);
-    }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: rgba(0,255,170,0.2); border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(0,255,170,0.4); }
-
-    /* ====== Page Entrance ====== */
-    @keyframes page-boot {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    body {
-      animation: page-boot 0.8s ease-out;
-    }
-
-    /* ====== Boot Overlay ====== */
-    .boot-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 10000;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 16px;
-      transition: opacity 0.5s ease;
-    }
-    .boot-overlay.fade-out {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .boot-overlay .boot-text {
-      font-family: var(--mono);
-      font-size: 1rem;
-      color: var(--neon);
-      letter-spacing: 0.1em;
-    }
-    .boot-overlay .boot-cursor {
-      display: inline-block;
-      width: 10px;
-      height: 18px;
-      background: var(--neon);
-      animation: blink 1s step-end infinite;
-      vertical-align: middle;
-      margin-left: 4px;
-    }
-    @keyframes boot-progress {
-      from { width: 0; }
-      to { width: 200px; }
-    }
-    .boot-overlay .boot-bar {
-      width: 200px;
-      height: 2px;
-      background: rgba(0,255,170,0.15);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .boot-overlay .boot-bar-fill {
-      height: 100%;
-      background: var(--neon);
-      animation: boot-progress 0.8s ease-out forwards;
-    }
-
-    /* ====== Focus-visible for all interactive ====== */
-    .clickable:focus-visible {
-      outline: 2px solid var(--neon);
-      outline-offset: 3px;
-    }
-    a:focus-visible {
-      outline: 2px solid var(--neon);
-      outline-offset: 3px;
+      * { transition: none !important; }
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 <body>
-  <div class="boot-overlay" id="boot-overlay">
-    <span class="boot-text">booting<span class="boot-cursor"></span></span>
-    <div class="boot-bar"><div class="boot-bar-fill"></div></div>
-  </div>
-  <a href="#main" class="skip-link">Skip to content</a>
 
-  <canvas id="bg-canvas"></canvas>
-  <div class="noise"></div>
-  <div class="scanline"></div>
-  <div class="aurora-blob blob-green"></div>
-  <div class="aurora-blob blob-purple"></div>
-  <div class="aurora-blob blob-cyan"></div>
+  <!-- WebGL Rain Layer -->
+  <canvas id="rain-canvas"></canvas>
 
-  <!-- Nav -->
-  <nav>
-    <div class="wrap">
-      <a href="#" class="logo">yuan<span style="color:var(--neon)">.</span>dev</a>
-      <ul class="nav-links">
-        <li><a href="#about" data-en="About" data-zh="关于">About</a></li>
-        <li><a href="#skills" data-en="Skills" data-zh="技能">Skills</a></li>
-        <li><a href="#projects" data-en="Projects" data-zh="项目">Projects</a></li>
-        <li><a href="#contributions" data-en="Contribs" data-zh="贡献">Contribs</a></li>
-        <li><a href="#stats" data-en="Stats" data-zh="数据">Stats</a></li>
-        <li><a href="#contact" data-en="Contact" data-zh="联系">Contact</a></li>
-      </ul>
-      <button id="lang-toggle" class="lang-btn clickable" aria-label="Switch language">EN</button>
-      <div class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </div>
+  <div class="home-page">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <a href="#" class="brand">Yuanyuan Ma<span class="dot"> · Nanjing</span></a>
+      <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">中文</button>
     </div>
-  </nav>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#about" data-en="About" data-zh="关于">About</a>
-    <a href="#skills" data-en="Skills" data-zh="技能">Skills</a>
-    <a href="#projects" data-en="Projects" data-zh="项目">Projects</a>
-    <a href="#stats" data-en="Stats" data-zh="数据">Stats</a>
-    <a href="#contact" data-en="Contact" data-zh="联系">Contact</a>
-  </div>
+    <!-- Intro -->
+    <header class="intro panel">
+      <h1>Yuanyuan Ma</h1>
+      <p class="tagline">
+        <span data-en="AI Developer" data-zh="AI 开发者">AI Developer</span>
+        <span class="sep">·</span>
+        <span data-en="Agent & CLI Builder" data-zh="智能体与 CLI 构建者">Agent &amp; CLI Builder</span>
+        <span class="sep">·</span>
+        <span data-en="Open Source" data-zh="开源贡献者">Open Source</span>
+      </p>
+      <p class="bio" data-en="I build AI agents that actually do things — multi-provider coding CLIs, agent frameworks, and research tools. My open-source work has shipped merged PRs to claude-code (4), bytedance/deer-flow, and AstrBot, and my own projects have earned 150+ stars across 33 repositories." data-zh="我构建真正能做事的 AI 智能体——多供应商编程 CLI、智能体框架与研究工具。我的开源工作已向 claude-code（4 个 PR）、bytedance/deer-flow、AstrBot 合并贡献，个人项目在 33 个仓库累计获得 150+ 星标。">
+        I build AI agents that actually do things — multi-provider coding CLIs, agent frameworks, and research tools. My open-source work has shipped merged PRs to <span class="em">claude-code</span> (4), <span class="em">bytedance/deer-flow</span>, and <span class="em">AstrBot</span>, and my own projects have earned <span class="em">150+ stars</span> across 33 repositories.
+      </p>
+      <p class="bio" data-en="Currently pursuing my M.Sc. at Nanjing Agricultural University, where my research applies agent systems and LLMs to crop-model transfer learning and reproducible agricultural science. Day-to-day I work in Python and TypeScript." data-zh="目前在南京农业大学攻读硕士，研究方向为将智能体系统与大语言模型应用于作物模型迁移学习与可复现的农业科学。日常工作以 Python 与 TypeScript 为主。">
+        Currently pursuing my M.Sc. at Nanjing Agricultural University, where my research applies agent systems and LLMs to crop-model transfer learning and reproducible agricultural science. Day-to-day I work in <span class="em">Python</span> and <span class="em">TypeScript</span>.
+      </p>
+      <div class="social-links">
+        <a class="social-link" href="https://github.com/YuanyuanMa03" target="_blank" rel="noopener">
+          <span class="name" data-en="GitHub · 27 followers" data-zh="GitHub · 27 关注者">GitHub · 27 followers</span>
+        </a>
+        <span class="social-sep">·</span>
+        <a class="social-link" href="mailto:2025101184@stu.njau.edu.cn">
+          <span class="name">Email</span>
+        </a>
+        <span class="social-sep">·</span>
+        <a class="social-link" href="#projects">
+          <span class="name" data-en="Projects ↓" data-zh="项目 ↓">Projects ↓</span>
+        </a>
+      </div>
+    </header>
 
-  <!-- Hero -->
-  <section class="hero" id="main">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-text">
-          <div class="hero-badge"><span class="dot"></span> <span data-en="Available for collaboration" data-zh="可接受合作">Available for collaboration</span></div>
-          <h1><span data-en="Building the" data-zh="构建">Building the</span> <span class="gradient" data-en="Future of Agents" data-zh="智能体的未来">Future of Agents</span></h1>
-          <p class="hero-sub" data-en="AI Agent Engineer · CLI Architect · Open Source" data-zh="AI智能体工程师 · CLI架构师 · 开源贡献者">AI Agent Engineer · CLI Architect · Open Source</p>
-          <p class="hero-desc" data-en="I design and build multi-agent systems, AI coding CLIs, and provider-agnostic LLM frameworks. Focused on making agents genuinely useful — real tools, real execution, real impact." data-zh="我设计和构建多智能体系统、AI编程CLI和供应商无关的LLM框架。专注于让智能体真正有用——真实的工具、真实的执行、真实的影响。">
-            I design and build multi-agent systems, AI coding CLIs, and provider-agnostic LLM frameworks.
-            Focused on making agents genuinely useful — real tools, real execution, real impact.
+    <!-- Projects -->
+    <section id="projects" class="panel">
+      <h2 data-en="Projects" data-zh="项目">Projects</h2>
+      <p class="sec-intro" data-en="Selected work — ordered by reach. CLIs, agent frameworks, research tools, and learning projects I built from scratch." data-zh="精选作品——按影响力排序。我从零构建的 CLI、智能体框架、研究工具与学习项目。">
+        Selected work — ordered by reach. CLIs, agent frameworks, research tools, and learning projects I built from scratch.
+      </p>
+      <ul class="list">
+        <li>
+          <div class="item-head">
+            <a class="item-title" href="https://github.com/YuanyuanMa03/academic-research-skills" target="_blank" rel="noopener">academic-research-skills</a>
+            <span class="item-meta">
+              <span data-en="45 stars" data-zh="45 星标">45 stars</span>
+              <span class="sep">·</span>
+              <span data-en="Python" data-zh="Python">Python</span>
+            </span>
+          </div>
+          <p class="item-desc" data-en="Academic research skills for AI coding agents — search CNKI, Google Scholar, Web of Science, and ScienceDirect; download papers; draft Nature-style introductions. Turns Claude Code / Codex into a literature research assistant." data-zh="面向 AI 编程智能体的学术研究技能——检索知网、Google Scholar、Web of Science、ScienceDirect；下载论文；撰写 Nature 风格引言。让 Claude Code / Codex 成为文献研究助手。">
+            Academic research skills for AI coding agents — search CNKI, Google Scholar, Web of Science, and ScienceDirect; download papers; draft Nature-style introductions. Turns Claude Code / Codex into a literature research assistant.
           </p>
-          <div class="hero-cta">
-            <a href="https://github.com/YuanyuanMa03" target="_blank" class="btn btn-neon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              GitHub
-            </a>
-            <a href="#projects" class="btn btn-ghost" data-en="View Projects ↓" data-zh="查看项目 ↓">
-              View Projects ↓
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="terminal">
-            <div class="term-bar">
-              <span class="term-dot r clickable"></span>
-              <span class="term-dot y clickable"></span>
-              <span class="term-dot g clickable"></span>
-              <div class="term-tabs">
-                <span class="term-tab active">xclaw</span>
-                <span class="term-tab">agent-loop</span>
-                <span class="term-tab">tools</span>
-              </div>
-            </div>
-            <div class="term-body" id="hero-terminal">
-              <!-- Typewriter lines injected by JS -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <pre class="hero-ascii" aria-hidden="true">
-    ┌──────────────────────────────────────────┐
-    │                                          │
-    │   ██╗   ██╗██╗   ██╗ █████╗ ███╗   ██╗  │
-    │   ╚██╗ ██╔╝██║   ██║██╔══██╗████╗  ██║  │
-    │    ╚████╔╝ ██║   ██║███████║██╔██╗ ██║  │
-    │     ╚██╔╝  ██║   ██║██╔══██║██║╚██╗██║  │
-    │      ██║   ╚██████╔╝██║  ██║██║ ╚████║  │
-    │      ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝  │
-    │                                          │
-    │        AI Agent Engineer · NJAU           │
-    │                                          │
-    └──────────────────────────────────────────┘</pre>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <div class="wrap">
-      <div class="fade-up">
-        <p class="sec-label" data-en="// who am i" data-zh="// 关于我">// who am i</p>
-        <h2 class="sec-title" data-en="About Yuan" data-zh="关于 Yuan">About Yuan</h2>
-      </div>
-      <div class="about-terminal fade-up">
-        <div class="term-bar">
-          <span class="term-dot r clickable"></span>
-          <span class="term-dot y clickable"></span>
-          <span class="term-dot g clickable"></span>
-          <span class="term-title">~/about.md</span>
-        </div>
-        <div class="about-body">
-          <div><span class="cmd">$ cat about.md</span></div>
-          <br>
-          <div class="out" data-en="> I build AI agents that actually do things — not just chat, but" data-zh="> 我构建真正能做事的AI智能体——不只是聊天，而是">> I build AI agents that actually do things — not just chat, but</div>
-          <div class="out" data-en="> execute code, manage tools, run in terminals, and collaborate" data-zh="> 执行代码、管理工具、在终端中运行，并在">> execute code, manage tools, run in terminals, and collaborate</div>
-          <div class="out" data-en="> across multi-agent systems." data-zh="> 多智能体系统中协同工作。">> across multi-agent systems.</div>
-          <br>
-          <div class="out"><span data-en="> My work lives at the intersection of" data-zh="> 我的工作处于">> My work lives at the intersection of</span> <span class="highlight" data-en="LLM engineering" data-zh="LLM工程">LLM engineering</span> <span data-en="and" data-zh="和">and</span></div>
-          <div class="out"><span class="highlight" data-en="developer tooling" data-zh="开发者工具">developer tooling</span><span data-en=": CLI/TUI applications, agent orchestration," data-zh="：CLI/TUI应用、智能体编排、">: CLI/TUI applications, agent orchestration,</span></div>
-          <div class="out" data-en="> MCP protocol, provider-agnostic LLM integration, and everything" data-zh="> MCP协议、供应商无关的LLM集成，以及让">> MCP protocol, provider-agnostic LLM integration, and everything</div>
-          <div class="out" data-en="> that makes AI agents genuinely useful." data-zh="> AI智能体真正有用的一切。">> that makes AI agents genuinely useful.</div>
-          <br>
-          <div class="out"><span data-en="> Currently pursuing my" data-zh="> 目前在">> Currently pursuing my</span> <span class="highlight" data-en="M.Sc. at Nanjing Agricultural University" data-zh="南京农业大学攻读硕士学位">M.Sc. at Nanjing Agricultural University</span><span data-en="," data-zh="，">,</span></div>
-          <div class="out" data-en="> where my research applies agent systems and LLMs to real-world" data-zh="> 研究方向为将Agent系统与LLM应用于">> where my research applies agent systems and LLMs to real-world</div>
-          <div class="out" data-en="> domain problems — bridging theory and practice." data-zh="> 实际领域问题——连接理论与实践。">> domain problems — bridging theory and practice.</div>
-          <br>
-          <div class="out" data-en="> Languages: TypeScript (primary) · Python · Go · R" data-zh="> 语言：TypeScript（主要）· Python · Go · R">> Languages: <span class="highlight">TypeScript</span> (primary) · Python · Go · R</div>
-          <br>
-          <div class="quote">
-            <span data-en="&quot;Turning LLMs into agents that actually do things —&lt;br&gt;real tools, real execution, real impact.&quot;" data-zh="&quot;将大语言模型变成真正能做事的智能体——&lt;br&gt;真实工具，真实执行，真实影响。&quot;">"Turning LLMs into agents that actually do things —<br>
-            real tools, real execution, real impact."</span>
-            <div class="author" data-en="-- yuan" data-zh="-- yuan">-- yuan</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills — Neofetch -->
-  <section id="skills">
-    <div class="wrap">
-      <div class="fade-up">
-        <p class="sec-label" data-en="// system info" data-zh="// 系统信息">// system info</p>
-        <h2 class="sec-title" data-en="Core Competencies" data-zh="核心能力">Core Competencies</h2>
-        <p class="sec-desc" data-en="End-to-end AI agent engineering: from provider abstraction layers to terminal UIs, from tool orchestration to multi-agent coordination." data-zh="端到端AI智能体工程：从供应商抽象层到终端UI，从工具编排到多智能体协调。">
-          End-to-end AI agent engineering: from provider abstraction layers to terminal UIs, from tool orchestration to multi-agent coordination.
-        </p>
-      </div>
-      <div class="neofetch-container fade-up">
-        <div class="neofetch-ascii">
-          <div>
-         ╔═══════════╗
-         ║  ┌─────┐  ║
-         ║  │ $█_  │  ║
-         ║  │▗▄▟█▌ │  ║
-         ║  │▝▀▀▘  │  ║
-         ║  └─────┘  ║
-         ║    yuan    ║
-         ║   @njau    ║
-         ╚═══════════╝</div>
-        </div>
-        <div class="neofetch-info">
-          <div class="neofetch-header">
-            <span class="neofetch-user">yuan</span><span class="neofetch-at">@</span><span class="neofetch-host">njau</span>
-          </div>
-          <div class="neofetch-sep">───────────────────────────────────────</div>
-          <div class="neofetch-row">
-            <span class="neofetch-key">OS:</span>
-            <span class="neofetch-val" data-en="AI Agent Engineer" data-zh="AI智能体工程师">AI Agent Engineer</span>
-          </div>
-          <div class="neofetch-row">
-            <span class="neofetch-key">Shell:</span>
-            <span class="neofetch-val" data-en="TypeScript / Bun" data-zh="TypeScript / Bun">TypeScript / Bun</span>
-          </div>
-          <div class="neofetch-row">
-            <span class="neofetch-key">DE:</span>
-            <span class="neofetch-val" data-en="Neovim + tmux" data-zh="Neovim + tmux">Neovim + tmux</span>
-          </div>
-          <div class="neofetch-row">
-            <span class="neofetch-key">WM:</span>
-            <span class="neofetch-val" data-en="Terminal-First Workflow" data-zh="终端优先工作流">Terminal-First Workflow</span>
-          </div>
-          <div class="neofetch-sep">───────────────────────────────────────</div>
-          <div class="neofetch-row">
-            <span class="neofetch-key" data-en="Skills:" data-zh="技能：">Skills:</span>
-            <span class="neofetch-val">
-              <span class="skill-tag-neo clickable" data-tooltip="Sub-agent spawning, task delegation, inter-agent communication" data-en="Multi-Agent Orchestration" data-zh="多智能体编排" style="background:rgba(0,255,170,0.1);color:var(--neon);">Multi-Agent Orchestration</span>
+        </li>
+        <li>
+          <div class="item-head">
+            <a class="item-title" href="https://github.com/YuanyuanMa03/GitPulse" target="_blank" rel="noopener">GitPulse</a>
+            <span class="item-meta">
+              <span data-en="24 stars" data-zh="24 星标">24 stars</span>
+              <span class="sep">·</span>
+              <span data-en="JavaScript" data-zh="JavaScript">JavaScript</span>
             </span>
           </div>
-          <div class="neofetch-row">
-            <span class="neofetch-key">&nbsp;</span>
-            <span class="neofetch-val">
-              <span class="skill-tag-neo clickable" data-tooltip="Rich terminal interfaces, streaming output, Ink/React TUI" data-en="CLI / TUI Engineering" data-zh="CLI / TUI 工程" style="background:rgba(123,97,255,0.1);color:var(--neon2);">CLI / TUI Engineering</span>
+          <p class="item-desc" data-en="Real-time GitHub trending tracker — 开源脉搏. Discover what's hot in open source. Dark theme, zero dependencies, vanilla JS." data-zh="实时 GitHub 趋势追踪器——开源脉搏。发现开源领域的热点。暗色主题，零依赖，原生 JS。">
+            Real-time GitHub trending tracker — 开源脉搏. Discover what's hot in open source. Dark theme, zero dependencies, vanilla JS.
+          </p>
+        </li>
+        <li>
+          <div class="item-head">
+            <a class="item-title" href="https://github.com/YuanyuanMa03/xcoder" target="_blank" rel="noopener">xcoder</a>
+            <span class="item-meta">
+              <span data-en="7 stars" data-zh="7 星标">7 stars</span>
+              <span class="sep">·</span>
+              <span data-en="TypeScript" data-zh="TypeScript">TypeScript</span>
             </span>
           </div>
-          <div class="neofetch-row">
-            <span class="neofetch-key">&nbsp;</span>
-            <span class="neofetch-val">
-              <span class="skill-tag-neo clickable" data-tooltip="Anthropic, OpenAI, Gemini, Grok — streaming &amp; tool calling" data-en="LLM Provider Integration" data-zh="LLM供应商集成" style="background:rgba(0,229,255,0.1);color:var(--cyan);">LLM Provider Integration</span>
+          <p class="item-desc" data-en="AI coding CLI that pushes beyond the boundary between human and AI. Multi-model agent with browser automation, voice input, code review, and terminal-native workflow." data-zh="超越人与 AI 边界的 AI 编程 CLI。多模型智能体，支持浏览器自动化、语音输入、代码审查与终端原生工作流。">
+            AI coding CLI that pushes beyond the boundary between human and AI. Multi-model agent with browser automation, voice input, code review, and terminal-native workflow.
+          </p>
+        </li>
+        <li>
+          <div class="item-head">
+            <a class="item-title" href="https://github.com/YuanyuanMa03/cropcode" target="_blank" rel="noopener">cropcode</a>
+            <span class="item-meta">
+              <span data-en="Active" data-zh="活跃维护">Active</span>
+              <span class="sep">·</span>
+              <span data-en="TypeScript" data-zh="TypeScript">TypeScript</span>
             </span>
           </div>
-          <div class="neofetch-row">
-            <span class="neofetch-key">&nbsp;</span>
-            <span class="neofetch-val">
-              <span class="skill-tag-neo clickable" data-tooltip="Model Context Protocol, function routing, tool chains" data-en="MCP Protocol &amp; Tool Systems" data-zh="MCP协议与工具系统" style="background:rgba(255,68,136,0.1);color:var(--neon3);">MCP Protocol &amp; Tool Systems</span>
+          <p class="item-desc" data-en="AI coding agent for the terminal — multi-provider (DeepSeek / MiMo / GLM / Qwen), China-direct with no proxy, MCP support, and a community skill marketplace. Actively maintained with CI." data-zh="终端 AI 编程智能体——多供应商（DeepSeek / MiMo / GLM / Qwen）、中国直连免代理、MCP 支持与社区技能市场。带 CI，持续维护。">
+            AI coding agent for the terminal — multi-provider (DeepSeek / MiMo / GLM / Qwen), China-direct with no proxy, MCP support, and a community skill marketplace. Actively maintained with CI.
+          </p>
+        </li>
+        <li>
+          <div class="item-head">
+            <a class="item-title" href="https://github.com/YuanyuanMa03/handmade-minigpt" target="_blank" rel="noopener">handmade-minigpt</a>
+            <span class="item-meta">
+              <span data-en="New · Teaching" data-zh="新作 · 教学">New · Teaching</span>
+              <span class="sep">·</span>
+              <span data-en="Python · PyTorch" data-zh="Python · PyTorch">Python · PyTorch</span>
             </span>
           </div>
-          <div class="neofetch-row">
-            <span class="neofetch-key">&nbsp;</span>
-            <span class="neofetch-val">
-              <span class="skill-tag-neo clickable" data-tooltip="Alignment, vector databases, long-term memory" data-en="Prompt Engineering &amp; RAG" data-zh="提示工程与RAG" style="background:rgba(0,255,170,0.08);color:var(--neon);">Prompt Engineering &amp; RAG</span>
+          <p class="item-desc" data-en="A 7-day path to hand-write a GPT from scratch — from tensors and gradients, through MLP and self-attention, to a trainable TinyGPT. Not an API tutorial: the goal is closing the book and rewriting it from an empty file." data-zh="7 天从零手写一个 GPT——从张量与梯度，到 MLP 与自注意力，直至可训练的 TinyGPT。不是 API 教程：目标是合上教程，从空文件重新写出来。">
+            A 7-day path to hand-write a GPT from scratch — from tensors and gradients, through MLP and self-attention, to a trainable TinyGPT. Not an API tutorial: the goal is closing the book and rewriting it from an empty file.
+          </p>
+        </li>
+        <li>
+          <div class="item-head">
+            <a class="item-title" href="https://github.com/YuanyuanMa03/literature_agent" target="_blank" rel="noopener">literature_agent</a>
+            <span class="item-meta">
+              <span data-en="4 stars" data-zh="4 星标">4 stars</span>
+              <span class="sep">·</span>
+              <span data-en="pip install lit-agent" data-zh="pip install lit-agent">pip install lit-agent</span>
             </span>
           </div>
-          <div class="neofetch-sep">───────────────────────────────────────</div>
-          <div class="neofetch-row">
-            <span class="neofetch-key" data-en="Packages:" data-zh="包数量：">Packages:</span>
-            <span class="neofetch-val" data-en="32+ repos · 23+ stars" data-zh="32+ 仓库 · 23+ 星标">32+ repos · <span style="color:var(--neon2)">23+ stars</span></span>
+          <p class="item-desc" data-en="LLM-powered literature analysis assistant. Smart screening, structured extraction, interactive visualizations, MCP extensions, and a conversational CLI. Installable via pip." data-zh="LLM 驱动的文献分析助手。智能筛选、结构化抽取、交互式可视化、MCP 扩展与会话式 CLI。可通过 pip 安装。">
+            LLM-powered literature analysis assistant. Smart screening, structured extraction, interactive visualizations, MCP extensions, and a conversational CLI. Installable via pip.
+          </p>
+        </li>
+      </ul>
+      <p class="more-link">
+        <a href="https://github.com/YuanyuanMa03?tab=repositories" target="_blank" rel="noopener" data-en="More projects →" data-zh="更多项目 →">More projects →</a>
+      </p>
+    </section>
+
+    <!-- Contributions -->
+    <section id="contributions" class="panel">
+      <h2 data-en="Open Source Contributions" data-zh="开源贡献">Open Source Contributions</h2>
+      <p class="sec-intro" data-en="Merged pull requests to upstream projects — ordered by reach." data-zh="已合并到上游项目的 Pull Request——按影响力排序。">
+        Merged pull requests to upstream projects — ordered by reach.
+      </p>
+      <ul class="list">
+        <li>
+          <div class="item-head">
+            <a class="item-title" href="https://github.com/claude-code-best/claude-code" target="_blank" rel="noopener">claude-code-best/claude-code</a>
+            <span class="item-meta">
+              <span data-en="21.8k stars" data-zh="21.8k 星标">21.8k stars</span>
+              <span class="sep">·</span>
+              <span class="tag" data-en="4 PRs merged" data-zh="4 个 PR 已合并">4 PRs merged</span>
+            </span>
           </div>
-          <div class="neofetch-row">
-            <span class="neofetch-key" data-en="Contributions:" data-zh="贡献：">Contributions:</span>
-            <span class="neofetch-val" data-en="3 major OSS projects" data-zh="3个主要开源项目">3 major OSS projects</span>
+          <p class="item-desc" data-en="Largest contribution: added a 6-preset AI personality mode system and a guided login flow for China LLM providers (Zhipu, DeepSeek, Moonshot). Plus Bun setup documentation across three PRs." data-zh="最大贡献：新增 6 套 AI 人格预设模式与中国 LLM 供应商（智谱、DeepSeek、月之暗面）的引导登录流程。另通过三个 PR 改进 Bun 安装文档。">
+            Largest contribution: added a 6-preset AI personality mode system and a guided login flow for China LLM providers (Zhipu, DeepSeek, Moonshot). Plus Bun setup documentation across three PRs.
+          </p>
+        </li>
+        <li>
+          <div class="item-head">
+            <a class="item-title" href="https://github.com/bytedance/deer-flow" target="_blank" rel="noopener">bytedance/deer-flow</a>
+            <span class="item-meta">
+              <span data-en="79k stars" data-zh="79k 星标">79k stars</span>
+              <span class="sep">·</span>
+              <span class="tag" data-en="1 merged · 3 open" data-zh="1 已合并 · 3 开放中">1 merged · 3 open</span>
+            </span>
           </div>
-          <div class="neofetch-row">
-            <span class="neofetch-key" data-en="Uptime:" data-zh="活跃时间：">Uptime:</span>
-            <span class="neofetch-val" data-en="Building since 2023" data-zh="自2023年开始构建">Building since <span style="color:var(--cyan);background:rgba(0,229,255,0.1);padding:1px 6px;border-radius:3px;">2023</span></span>
+          <p class="item-desc" data-en="Fixed a macOS startup failure in the LangGraph log pipeline by using a portable locale. Three additional open PRs add Zhipu Claude/OpenAI-compatible model templates and a llama.cpp local-model example." data-zh="通过使用可移植 locale 修复了 LangGraph 日志管道在 macOS 上的启动失败。另有三个开放中的 PR，添加智谱 Claude/OpenAI 兼容模型模板与 llama.cpp 本地模型示例。">
+            Fixed a macOS startup failure in the LangGraph log pipeline by using a portable locale. Three additional open PRs add Zhipu Claude/OpenAI-compatible model templates and a llama.cpp local-model example.
+          </p>
+        </li>
+        <li>
+          <div class="item-head">
+            <a class="item-title" href="https://github.com/AstrBotDevs/AstrBot" target="_blank" rel="noopener">AstrBotDevs/AstrBot</a>
+            <span class="item-meta">
+              <span data-en="38.5k stars" data-zh="38.5k 星标">38.5k stars</span>
+              <span class="sep">·</span>
+              <span class="tag" data-en="Merged" data-zh="已合并">Merged</span>
+            </span>
           </div>
-          <div class="neofetch-sep">───────────────────────────────────────</div>
-          <div class="neofetch-colors">
-            <span class="neofetch-color-block" style="background:#050510;border:1px solid #333;"></span>
-            <span class="neofetch-color-block" style="background:#ff5f57;"></span>
-            <span class="neofetch-color-block" style="background:#febc2e;"></span>
-            <span class="neofetch-color-block" style="background:#28c840;"></span>
-            <span class="neofetch-color-block" style="background:#00ffaa;"></span>
-            <span class="neofetch-color-block" style="background:#7b61ff;"></span>
-            <span class="neofetch-color-block" style="background:#00e5ff;"></span>
-            <span class="neofetch-color-block" style="background:#ff4488;"></span>
-          </div>
+          <p class="item-desc" data-en="Removed a deprecated version field from the Docker Compose config that triggered warnings on modern Compose versions." data-zh="移除了 Docker Compose 配置中已废弃的 version 字段，该字段会在新版 Compose 上触发警告。">
+            Removed a deprecated version field from the Docker Compose config that triggered warnings on modern Compose versions.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="panel">
+      <h2 data-en="Skills" data-zh="技能">Skills</h2>
+      <div class="skills-group">
+        <div class="skill-row">
+          <span class="skill-label" data-en="languages" data-zh="语言">languages</span>
+          <span class="skill-val">
+            <span class="lang-pills">
+              <span class="lang-pill primary">Python</span>
+              <span class="lang-pill primary">TypeScript</span>
+              <span class="lang-pill">Go</span>
+              <span class="lang-pill">R</span>
+            </span>
+          </span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label" data-en="agents" data-zh="智能体">agents</span>
+          <span class="skill-val" data-en="Multi-agent orchestration · coding CLIs · MCP protocol · skill marketplaces" data-zh="多智能体编排 · 编程 CLI · MCP 协议 · 技能市场">Multi-agent orchestration · coding CLIs · MCP protocol · skill marketplaces</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label" data-en="LLM" data-zh="LLM">LLM</span>
+          <span class="skill-val" data-en="Provider-agnostic integration (DeepSeek / MiMo / GLM / Qwen) · China-direct · prompt engineering" data-zh="供应商无关集成（DeepSeek / MiMo / GLM / Qwen）· 中国直连 · 提示工程">Provider-agnostic integration (DeepSeek / MiMo / GLM / Qwen) · China-direct · prompt engineering</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label" data-en="research" data-zh="研究">research</span>
+          <span class="skill-val" data-en="Crop-model transfer learning · reproducible pipelines · literature analysis" data-zh="作物模型迁移学习 · 可复现流水线 · 文献分析">Crop-model transfer learning · reproducible pipelines · literature analysis</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label" data-en="workflow" data-zh="工作流">workflow</span>
+          <span class="skill-val" data-en="Neovim + tmux · terminal-first · Bun · uv" data-zh="Neovim + tmux · 终端优先 · Bun · uv">Neovim + tmux · terminal-first · Bun · uv</span>
         </div>
       </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="panel">
+      <p class="signoff" data-en="Turning LLMs into agents that actually do things — real tools, real execution, real impact." data-zh="将大语言模型变成真正能做事的智能体——真实工具，真实执行，真实影响。">
+        Turning LLMs into agents that actually do things — real tools, real execution, real impact. <span class="who">— Yuanyuan Ma</span>
+      </p>
+      <p class="copyright">© 2026 · <a href="https://github.com/YuanyuanMa03" target="_blank" rel="noopener">github.com/YuanyuanMa03</a></p>
+    </footer>
+
+  </div>
+
+  <!-- Control Dock -->
+  <button class="dock-toggle" id="dock-toggle" aria-label="Rain controls">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2.5c-3 4-6 7.5-6 11a6 6 0 0 0 12 0c0-3.5-3-7-6-11z"/>
+    </svg>
+  </button>
+
+  <div class="dock-panel" id="dock-panel" role="dialog" aria-label="Rain effect controls">
+    <p class="dock-title" data-en="Rain Controls" data-zh="雨滴调节">Rain Controls</p>
+
+    <div class="control">
+      <div class="control-row">
+        <span class="control-label" data-en="Rain" data-zh="雨势">Rain</span>
+        <span class="control-val" id="val-rain">0.65</span>
+      </div>
+      <input type="range" id="ctrl-rain" min="0" max="1" step="0.01" value="0.65" />
     </div>
-  </section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <div class="wrap">
-      <div class="fade-up">
-        <p class="sec-label" data-en="// what I've built" data-zh="// 我的构建">// what I've built</p>
-        <h2 class="sec-title" data-en="Featured Projects" data-zh="精选项目">Featured Projects</h2>
-        <div class="sec-prompt" data-en="$ ls ./projects --featured" data-zh="$ ls ./projects --featured">$ ls ./projects <span class="prompt-char">--featured</span></div>
+    <div class="control">
+      <div class="control-row">
+        <span class="control-label" data-en="Fog" data-zh="雾气">Fog</span>
+        <span class="control-val" id="val-fog">0.45</span>
       </div>
-      <div class="projects">
-
-        <!-- xclaw — Featured -->
-        <a href="https://github.com/YuanyuanMa03/xclaw" target="_blank" class="proj featured fade-up">
-          <div class="proj-bar">
-            <span class="term-dot r"></span>
-            <span class="term-dot y"></span>
-            <span class="term-dot g"></span>
-            <span class="proj-tab-name"><span class="cmd-text">$</span> xclaw --init</span>
-            <span class="proj-type original" data-en="Original" data-zh="原创">Original</span>
-          </div>
-          <div class="proj-body">
-            <div class="proj-left">
-              <h3>xclaw</h3>
-              <p class="proj-sub" data-en="AI programming CLI — beyond the boundary of human and AI" data-zh="AI编程CLI——超越人与AI的边界">AI programming CLI — beyond the boundary of human and AI</p>
-              <p data-en="Multi-provider AI coding agent with personality-driven TUI, real tool execution, agent loop with up to 20 rounds, streaming token output, permission system, and session persistence. Built from scratch with TypeScript + Bun + Vite." data-zh="多供应商AI编程智能体，具有个性化驱动的TUI、真实工具执行、最多20轮的智能体循环、流式token输出、权限系统和会话持久化。使用TypeScript + Bun + Vite从零构建。">Multi-provider AI coding agent with personality-driven TUI, real tool execution, agent loop with up to 20 rounds, streaming token output, permission system, and session persistence. Built from scratch with TypeScript + Bun + Vite.</p>
-              <div class="proj-tech">
-                <span>TypeScript</span><span>Bun</span><span>Ink TUI</span><span>Vite</span><span>Multi-Provider</span><span>Agent Loop</span>
-              </div>
-              <div class="proj-link-row">
-                <a href="https://github.com/YuanyuanMa03/xclaw" target="_blank" data-en="View Repository" data-zh="查看仓库"><span class="arrow">&gt;</span> View Repository</a>
-              </div>
-            </div>
-            <div class="proj-right">
-              <span class="output-line"><span class="check">[OK]</span> Multi-provider engine ready</span>
-              <span class="output-line"><span class="info">---</span> Anthropic · OpenAI · Gemini · Grok</span>
-              <span class="output-line"><span class="check">[OK]</span> Agent loop active</span>
-              <span class="output-line"><span class="info">---</span> Up to 20 rounds, tool execution</span>
-              <span class="output-line"><span class="check">[OK]</span> Tools armed</span>
-              <span class="output-line"><span class="info">---</span> Bash · Read · Edit · Write · Grep</span>
-              <span class="output-line"><span class="check">[OK]</span> Permission system</span>
-              <span class="output-line"><span class="info">---</span> ask · auto-edit · full-auto</span>
-              <span class="output-line"><span class="check">[OK]</span> TUI rendering</span>
-              <span class="output-line"><span class="info">---</span> Streaming tokens · Markdown</span>
-              <span class="output-line">&nbsp;</span>
-              <span class="output-line"><span style="color:var(--neon2)">&gt;</span> Analyzing codebase...</span>
-              <span class="output-line"><span style="color:var(--neon2)">&gt;</span> Reading <span style="color:var(--cyan)">src/engine/agent-loop.ts</span></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- TraceGPT -->
-        <a href="https://github.com/YuanyuanMa03/TraceGPT" target="_blank" class="proj fade-up">
-          <div class="proj-bar">
-            <span class="term-dot r"></span>
-            <span class="term-dot y"></span>
-            <span class="term-dot g"></span>
-            <span class="proj-tab-name"><span class="cmd-text">$</span> tracegpt --verify</span>
-            <span class="proj-type original" data-en="Original" data-zh="原创">Original</span>
-          </div>
-          <div class="proj-body">
-            <div class="proj-cmd"><span class="dollar">$</span> cat README.md | head -5</div>
-            <h3>TraceGPT</h3>
-            <p class="proj-sub" data-en="Calculator-verifiable Transformer" data-zh="可计算器验证的Transformer">Calculator-verifiable Transformer</p>
-            <p data-en="Learn Transformers from scratch. Pure NumPy, no PyTorch. Every computation verifiable step by step." data-zh="从零学习Transformer。纯NumPy，无PyTorch。每一步计算都可验证。">Learn Transformers from scratch. Pure NumPy, no PyTorch. Every computation verifiable step by step.</p>
-            <div class="proj-tech"><span>Python</span><span>NumPy</span><span>Transformer</span></div>
-          </div>
-        </a>
-
-        <!-- ai-desk -->
-        <a href="https://github.com/YuanyuanMa03/ai-desk" target="_blank" class="proj fade-up">
-          <div class="proj-bar">
-            <span class="term-dot r"></span>
-            <span class="term-dot y"></span>
-            <span class="term-dot g"></span>
-            <span class="proj-tab-name"><span class="cmd-text">$</span> ai-desk --launch</span>
-            <span class="proj-type original" data-en="Original" data-zh="原创">Original</span>
-          </div>
-          <div class="proj-body">
-            <div class="proj-cmd"><span class="dollar">$</span> cat README.md | head -5</div>
-            <h3>ai-desk</h3>
-            <p class="proj-sub" data-en="Local-first AI workbench" data-zh="本地优先AI工作台">Local-first AI workbench</p>
-            <p data-en="Cross-platform AI workbench for desktop, mobile, and web. Aggregate multiple AI providers in one interface." data-zh="面向桌面、移动和Web的跨平台AI工作台。在一个界面中聚合多个AI供应商。">Cross-platform AI workbench for desktop, mobile, and web. Aggregate multiple AI providers in one interface.</p>
-            <div class="proj-tech"><span>TypeScript</span><span>Cross-Platform</span><span>Desktop + Web</span></div>
-          </div>
-        </a>
-
-        <!-- GitPulse -->
-        <a href="https://github.com/YuanyuanMa03/GitPulse" target="_blank" class="proj fade-up">
-          <div class="proj-bar">
-            <span class="term-dot r"></span>
-            <span class="term-dot y"></span>
-            <span class="term-dot g"></span>
-            <span class="proj-tab-name"><span class="cmd-text">$</span> gitpulse --track</span>
-            <span class="proj-type original" data-en="Original" data-zh="原创">Original</span>
-          </div>
-          <div class="proj-body">
-            <div class="proj-cmd"><span class="dollar">$</span> cat README.md | head -5</div>
-            <h3>GitPulse</h3>
-            <p class="proj-sub" data-en="GitHub trending tracker" data-zh="GitHub热门趋势追踪">GitHub trending tracker</p>
-            <p data-en="Real-time tracking of GitHub trending repositories. Discover what's hot in open source." data-zh="实时追踪GitHub热门仓库。发现开源领域的热点。">Real-time tracking of GitHub trending repositories. Discover what's hot in open source.</p>
-            <div class="proj-tech"><span>JavaScript</span><span>GitHub API</span><span>Real-time</span></div>
-          </div>
-        </a>
-
-      </div>
+      <input type="range" id="ctrl-fog" min="0" max="1" step="0.01" value="0.45" />
     </div>
-  </section>
 
-  <!-- Open Source Contributions -->
-  <section id="contributions">
-    <div class="wrap">
-      <div class="fade-up">
-        <p class="sec-label" data-en="// merged upstream" data-zh="// 已合并上游">// merged upstream</p>
-        <h2 class="sec-title" data-en="Open Source Contributions" data-zh="开源贡献">Open Source Contributions</h2>
-        <div class="sec-prompt" data-en="$ git log --merges --oneline --upstream" data-zh="$ git log --merges --oneline --upstream">$ git log --merges --oneline <span class="prompt-char">--upstream</span></div>
+    <div class="control">
+      <div class="control-row">
+        <span class="control-label" data-en="Refract" data-zh="折射">Refract</span>
+        <span class="control-val" id="val-refract">0.30</span>
       </div>
-      <div class="contrib-terminal fade-up">
-        <div class="term-bar">
-          <span class="term-dot r clickable"></span>
-          <span class="term-dot y clickable"></span>
-          <span class="term-dot g clickable"></span>
-          <span class="term-title">contributions.md</span>
-        </div>
-        <div class="contrib-body">
-          <div class="contrib-row clickable">
-            <div class="contrib-stars">
-              <span class="contrib-star-count">67k+</span>
-              <span class="contrib-star-label" data-en="stars" data-zh="星标">stars</span>
-            </div>
-            <div class="contrib-info">
-              <a href="https://github.com/bytedance/deer-flow" target="_blank" class="contrib-repo">bytedance/deer-flow</a>
-              <p class="contrib-desc" data-en="Fixed macOS startup failure; added Zhipu model provider templates" data-zh="修复macOS启动失败；添加智谱模型供应商模板">Fixed macOS startup failure; added Zhipu model provider templates</p>
-            </div>
-            <div class="contrib-status"><span class="check" data-en="MERGED" data-zh="已合并">MERGED</span></div>
-          </div>
-          <div class="contrib-divider"></div>
-          <div class="contrib-row clickable">
-            <div class="contrib-stars">
-              <span class="contrib-star-count">32k+</span>
-              <span class="contrib-star-label" data-en="stars" data-zh="星标">stars</span>
-            </div>
-            <div class="contrib-info">
-              <a href="https://github.com/AstrBotDevs/AstrBot" target="_blank" class="contrib-repo">AstrBotDevs/AstrBot</a>
-              <p class="contrib-desc" data-en="Fixed deprecated Docker Compose configuration" data-zh="修复已弃用的Docker Compose配置">Fixed deprecated Docker Compose configuration</p>
-            </div>
-            <div class="contrib-status"><span class="check" data-en="MERGED" data-zh="已合并">MERGED</span></div>
-          </div>
-          <div class="contrib-divider"></div>
-          <div class="contrib-row clickable">
-            <div class="contrib-stars">
-              <span class="contrib-star-count">18k+</span>
-              <span class="contrib-star-label" data-en="stars" data-zh="星标">stars</span>
-            </div>
-            <div class="contrib-info">
-              <a href="https://github.com/claude-code-best/claude-code" target="_blank" class="contrib-repo">claude-code-best/claude-code</a>
-              <p class="contrib-desc" data-en="Improved Bun setup documentation; clarified build instructions" data-zh="改进Bun安装文档；明确构建说明">Improved Bun setup documentation; clarified build instructions</p>
-            </div>
-            <div class="contrib-status"><span class="check" data-en="MERGED" data-zh="已合并">MERGED</span></div>
-          </div>
-        </div>
-      </div>
+      <input type="range" id="ctrl-refract" min="0" max="1" step="0.01" value="0.30" />
     </div>
-  </section>
 
-  <!-- Stats -->
-  <section id="stats">
-    <div class="wrap">
-      <div class="fade-up">
-        <p class="sec-label" data-en="// by the numbers" data-zh="// 数据一览">// by the numbers</p>
-        <h2 class="sec-title" data-en="Open Source Activity" data-zh="开源活动">Open Source Activity</h2>
-      </div>
-      <div class="stats-terminal fade-up">
-        <div class="stats-cmd"><span class="dollar">$</span> gh stats <span class="flag">--user</span> YuanyuanMa03 <span class="flag">--theme</span> tokyonight</div>
-        <div class="stats-row">
-          <div class="stat clickable">
-            <div class="stat-ascii-border">┌──────────┐</div>
-            <div class="stat-val" data-target="32" data-suffix="+">0</div>
-            <div class="stat-lbl" data-en="Public Repos" data-zh="公开仓库">Public Repos</div>
-            <div class="stat-ascii-border">└──────────┘</div>
-          </div>
-          <div class="stat clickable">
-            <div class="stat-ascii-border">┌──────────┐</div>
-            <div class="stat-val" data-target="15" data-suffix="">0</div>
-            <div class="stat-lbl" data-en="Followers" data-zh="关注者">Followers</div>
-            <div class="stat-ascii-border">└──────────┘</div>
-          </div>
-          <div class="stat clickable">
-            <div class="stat-ascii-border">┌──────────┐</div>
-            <div class="stat-val" data-target="4" data-suffix="">0</div>
-            <div class="stat-lbl" data-en="Pinned Projects" data-zh="置顶项目">Pinned Projects</div>
-            <div class="stat-ascii-border">└──────────┘</div>
-          </div>
-          <div class="stat clickable">
-            <div class="stat-ascii-border">┌──────────┐</div>
-            <div class="stat-val" data-target="3" data-suffix="">0</div>
-            <div class="stat-lbl" data-en="OSS Contributions" data-zh="开源贡献">OSS Contributions</div>
-            <div class="stat-ascii-border">└──────────┘</div>
-          </div>
-        </div>
-      </div>
-      <div class="activity fade-up">
-        <div class="activity-cmd"><span class="dollar">$</span> gh contribution-graph <span style="color:var(--neon2)">--user</span> YuanyuanMa03</div>
-        <img src="https://github-readme-activity-graph.vercel.app/graph?username=YuanyuanMa03&theme=github-compact&hide_border=true&area=true&custom_title=Contribution%20Activity" alt="Contribution Activity" loading="lazy" />
-      </div>
+    <div class="dock-buttons">
+      <label class="dock-btn">
+        <span data-en="Upload BG" data-zh="上传背景">Upload BG</span>
+        <input type="file" id="bg-upload" accept="image/*,video/*" />
+      </label>
+      <button class="dock-btn" id="bg-reset" data-en="Fluid" data-zh="流体">Fluid</button>
+      <button class="dock-btn" id="ctrl-reset" data-en="Reset" data-zh="重置">Reset</button>
     </div>
-  </section>
+  </div>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="wrap">
-      <div class="fade-up">
-        <p class="sec-label" data-en="// get in touch" data-zh="// 联系我">// get in touch</p>
-        <h2 class="sec-title" data-en="Let's Connect" data-zh="与我联系">Let's Connect</h2>
-      </div>
-      <div class="contact-terminal fade-up">
-        <div class="term-bar">
-          <span class="term-dot r clickable"></span>
-          <span class="term-dot y clickable"></span>
-          <span class="term-dot g clickable"></span>
-          <span class="term-title">connect --all</span>
-        </div>
-        <div class="contact-body">
-          <div><span class="cmd">$ connect --all</span></div>
-          <br>
-          <div class="contact-row clickable">
-            <span class="out-label" data-en="  Portfolio" data-zh="  作品集">  Portfolio</span>
-            <span class="divider">---</span>
-            <a href="https://yuanyuanma03.github.io/YuanyuanMa03/" target="_blank" class="out-link">https://yuanyuanma03.github.io/YuanyuanMa03/</a>
-          </div>
-          <div class="contact-row clickable">
-            <span class="out-label" data-en="  GitHub" data-zh="  GitHub">  GitHub</span>
-            <span class="divider">---</span>
-            <a href="https://github.com/YuanyuanMa03" target="_blank" class="out-link">https://github.com/YuanyuanMa03</a>
-          </div>
-          <div class="contact-row clickable">
-            <span class="out-label" data-en="  NJAU Mail" data-zh="  南农邮箱">  NJAU Mail</span>
-            <span class="divider">---</span>
-            <a href="mailto:2025101184@stu.njau.edu.cn" class="out-link">2025101184@stu.njau.edu.cn</a>
-          </div>
-          <div class="contact-row clickable">
-            <span class="out-label" data-en="  QQ Mail" data-zh="  QQ邮箱">  QQ Mail</span>
-            <span class="divider">---</span>
-            <a href="mailto:2942204237@qq.com" class="out-link">2942204237@qq.com</a>
-          </div>
-          <div class="contact-row clickable">
-            <span class="out-label" data-en="  Gmail" data-zh="  Gmail">  Gmail</span>
-            <span class="divider">---</span>
-            <a href="mailto:yym290552@gmail.com" class="out-link">yym290552@gmail.com</a>
-          </div>
-          <br>
-          <div class="contact-quote">
-            <div class="quote-text">
-              <span data-en="> Turning LLMs into agents that actually do things —&lt;br&gt;real tools, real execution, real impact." data-zh="> 将大语言模型变成真正能做事的智能体——&lt;br&gt;真实工具，真实执行，真实影响。">> Turning LLMs into agents that actually do things —<br>
-              > real tools, real execution, real impact.</span>
-            </div>
-            <div class="quote-author" data-en="-- yuan" data-zh="-- yuan">-- yuan</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ====== WebGL2 Rain Shader ====== -->
+  <script id="rain-vs" type="x-shader/x-vertex">#version 300 es
+    in vec2 a_pos;
+    void main() { gl_Position = vec4(a_pos, 0.0, 1.0); }
+  </script>
 
-  <footer>
-    <div class="wrap">
-      <p><span class="footer-cmd">$</span> <span class="footer-text" data-en="Built with ♥ and agents by Yuan" data-zh="用爱心和智能体构建，by Yuan">Built with <span class="heart">&hearts;</span> and agents by Yuan</span> <span class="footer-cmd">|</span> 2026</p>
-    </div>
-  </footer>
+  <script id="rain-fs" type="x-shader/x-fragment">#version 300 es
+    precision highp float;
 
-  <!-- Particle Canvas -->
+    uniform vec2 u_res;
+    uniform float u_time;
+    uniform vec2 u_mouse;
+    uniform float u_rain;      // 0..1 density
+    uniform float u_fog;       // 0..1 fog/blur
+    uniform float u_refract;   // 0..1 refraction strength
+    uniform float u_texMode;   // 0 = procedural fluid, 1 = uploaded texture
+    uniform sampler2D u_tex;
+    uniform float u_videoAspect; // aspect of uploaded tex (w/h), 1 if procedural
+
+    out vec4 fragColor;
+
+    // ---- hash (replaces Heartfelt's random texture) ----
+    float hash21(vec2 p) {
+      p = fract(p * vec2(123.34, 345.45));
+      p += dot(p, p + 34.345);
+      return fract(p.x * p.y);
+    }
+    vec2 hash22(vec2 p) {
+      float n = sin(dot(p, vec2(41.0, 289.0)));
+      return fract(vec2(262144.0, 32768.0) * n);
+    }
+
+    // ---- value noise for fluid background ----
+    float vnoise(vec2 p) {
+      vec2 i = floor(p);
+      vec2 f = fract(p);
+      vec2 u = f * f * (3.0 - 2.0 * f);
+      float a = hash21(i);
+      float b = hash21(i + vec2(1.0, 0.0));
+      float c = hash21(i + vec2(0.0, 1.0));
+      float d = hash21(i + vec2(1.0, 1.0));
+      return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+    }
+    float fbm(vec2 p) {
+      float v = 0.0;
+      float a = 0.5;
+      for (int i = 0; i < 5; i++) {
+        v += a * vnoise(p);
+        p *= 2.0;
+        a *= 0.5;
+      }
+      return v;
+    }
+
+    // ---- procedural fluid background (default) ----
+    vec3 fluidBG(vec2 uv) {
+      vec2 q = uv * 2.0 - 1.0;
+      q.x *= u_res.x / u_res.y;
+      float t = u_time * 0.04;
+      vec2 flow = vec2(fbm(q + vec2(t, 0.0)), fbm(q + vec2(0.0, t * 1.2) + 2.0));
+      float n = fbm(q * 1.4 + flow * 1.5);
+      // deep teal -> deep violet, rain-night mood
+      vec3 c1 = vec3(0.035, 0.075, 0.115);   // deep navy
+      vec3 c2 = vec3(0.085, 0.055, 0.135);   // deep violet
+      vec3 c3 = vec3(0.04, 0.11, 0.13);      // teal hint
+      vec3 col = mix(c1, c2, smoothstep(0.2, 0.8, n));
+      col = mix(col, c3, smoothstep(0.55, 0.95, fbm(q + flow)) * 0.6);
+      // subtle vignette
+      float vig = 1.0 - dot(q, q) * 0.18;
+      return col * vig;
+    }
+
+    // ---- sample background (procedural or texture) with aspect-correct cover ----
+    vec3 sampleBG(vec2 uv, float lod) {
+      if (u_texMode > 0.5) {
+        // cover-fit the uploaded texture
+        float screenAspect = u_res.x / u_res.y;
+        vec2 s = uv;
+        if (screenAspect > u_videoAspect) {
+          s.y = (uv.y - 0.5) * (u_videoAspect / screenAspect) + 0.5;
+        } else {
+          s.x = (uv.x - 0.5) * (screenAspect / u_videoAspect) + 0.5;
+        }
+        if (s.x < 0.0 || s.x > 1.0 || s.y < 0.0 || s.y > 1.0) {
+          return vec3(0.02, 0.03, 0.05);
+        }
+        return textureLod(u_tex, s, lod).rgb;
+      }
+      return fluidBG(uv);
+    }
+
+    // ---- one layer of droplets (Heartfelt technique, hash-based) ----
+    // returns: vec2(displacementUVoffset, dropletMask)
+    vec4 dropLayer(vec2 uv, float scale, float time) {
+      uv *= scale;
+      // cell id + cell-local coord
+      vec2 id = floor(uv);
+      vec2 luv = fract(uv) - 0.5;
+
+      // per-cell random
+      vec2 rnd = hash22(id);
+      // jitter droplet position within cell
+      vec2 jitter = (rnd - 0.5) * 0.7;
+      vec2 dpos = luv - jitter;
+
+      // droplet lifetime: appears, grows, slides down, disappears
+      float period = 4.0 + rnd.x * 6.0;
+      float phase = rnd.y * period;
+      float life = fract(time / period + phase);
+      // droplet slides downward over its lifetime (0.3..1.0)
+      float slide = life > 0.3 ? (life - 0.3) / 0.7 : 0.0;
+      dpos.y += slide * 0.55;
+
+      // droplet radius: small -> big -> gone
+      float radius = mix(0.18, 0.42, smoothstep(0.0, 0.5, life)) * (1.0 - smoothstep(0.85, 1.0, life));
+      float dist = length(dpos);
+      float drop = smoothstep(radius, radius * 0.6, dist);
+
+      // only render a fraction of cells (density)
+      float exist = step(1.0 - (0.15 + u_rain * 0.55), rnd.x);
+
+      // refraction normal (lens bulge): -cos gives bulge vs the sin shape
+      vec2 p = 6.28318 * luv + (rnd - 0.5) * 2.0;
+      float t = drop * max(0.0, 1.0 - fract(time * (0.4 + rnd.y) + phase) * 2.0);
+      vec3 v = normalize(-vec3(cos(p), mix(0.2, 2.0, t - 0.5)));
+      vec2 offset = v.xy * u_refract * drop * exist;
+
+      // trail: lighter droplets below the main one along the slide path
+      float trailMask = 0.0;
+      if (life > 0.4 && slide > 0.0) {
+        vec2 tpos = luv - jitter;
+        tpos.y += slide * 0.55 - 0.12;
+        float td = length(tpos);
+        trailMask = smoothstep(0.09, 0.04, td) * (1.0 - smoothstep(0.4, 0.85, life));
+      }
+
+      return vec4(offset, drop * exist, trailMask * exist);
+    }
+
+    void main() {
+      vec2 uv = gl_FragCoord.xy / u_res.xy;
+
+      float time = u_time;
+      float lodBase = u_fog * 4.5; // mipmap-style blur for fog
+
+      // accumulate droplet layers: small, medium, large
+      vec2 disp = vec2(0.0);
+      float dropMask = 0.0;
+      float trailMask = 0.0;
+
+      // mouse adds local rain enhancement
+      vec2 m = u_mouse / u_res;
+      float mDist = distance(uv, m);
+      float mBoost = smoothstep(0.45, 0.0, mDist) * 0.25;
+
+      vec4 l1 = dropLayer(uv, 8.0, time);
+      vec4 l2 = dropLayer(uv + vec2(3.7, 1.3), 5.0, time * 0.85 + 2.0);
+      vec4 l3 = dropLayer(uv + vec2(1.1, 7.4), 3.0, time * 0.7 + 5.0);
+
+      disp += l1.xy + l2.xy * 0.9 + l3.xy * 0.8;
+      dropMask = max(max(l1.z, l2.z), l3.z);
+      trailMask = max(max(l1.w, l2.w), l3.w);
+
+      float effRain = clamp(u_rain + mBoost, 0.0, 1.0);
+      dropMask *= (0.4 + effRain * 0.6);
+      trailMask *= (0.3 + effRain * 0.7);
+
+      // sample background: sharp inside droplets, blurred (foggy) outside
+      vec3 sharp = sampleBG(uv - disp, 0.0);
+      float fogLod = lodBase + trailMask * 2.5;
+      vec3 foggy = sampleBG(uv, fogLod);
+
+      vec3 col = mix(foggy, sharp, clamp(dropMask * 1.4, 0.0, 1.0));
+
+      // droplet edge highlight (specular-ish)
+      float edge = smoothstep(0.35, 0.55, dropMask) - smoothstep(0.55, 0.7, dropMask);
+      col += edge * 0.10 * vec3(0.8, 0.9, 1.0);
+
+      // overall fog tint toward cool
+      col = mix(col, col * vec3(0.82, 0.88, 1.0), u_fog * 0.3);
+
+      // gentle vignette
+      vec2 q = uv * 2.0 - 1.0;
+      col *= 1.0 - dot(q, q) * 0.12;
+
+      fragColor = vec4(col, 1.0);
+    }
+  </script>
+
+  <!-- ====== App Logic ====== -->
   <script>
-    (function() {
-      'use strict';
+    (function () {
+      var canvas = document.getElementById('rain-canvas');
+      var gl = canvas.getContext('webgl2', { antialias: false, alpha: false });
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      var canvas = document.getElementById('bg-canvas');
-      var ctx = canvas.getContext('2d');
-      var particles = [];
-      var bursts = [];
-      var mouse = { x: -1000, y: -1000 };
-      var PARTICLE_COUNT = 80;
-      var CONNECT_DIST = 150;
+      // ---- params ----
+      var params = {
+        rain: 0.65,
+        fog: 0.45,
+        refract: 0.30
+      };
+      try {
+        var saved = JSON.parse(localStorage.getItem('rainParams') || '{}');
+        if (saved && typeof saved === 'object') {
+          if (typeof saved.rain === 'number') params.rain = saved.rain;
+          if (typeof saved.fog === 'number') params.fog = saved.fog;
+          if (typeof saved.refract === 'number') params.refract = saved.refract;
+        }
+      } catch (e) {}
+
+      function saveParams() {
+        try { localStorage.setItem('rainParams', JSON.stringify(params)); } catch (e) {}
+      }
+
+      // ---- WebGL init ----
+      var program = null, uniforms = {}, vao = null;
+      var bgTexture = null, texMode = 0, videoAspect = 1.0;
+      var videoEl = null, isVideo = false;
+
+      function compile(type, src) {
+        var s = gl.createShader(type);
+        gl.shaderSource(s, src);
+        gl.compileShader(s);
+        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+          console.error('Shader error:', gl.getShaderInfoLog(s));
+          return null;
+        }
+        return s;
+      }
+
+      function initGL() {
+        if (!gl) { fallback(); return; }
+        var vs = compile(gl.VERTEX_SHADER, document.getElementById('rain-vs').textContent);
+        var fs = compile(gl.FRAGMENT_SHADER, document.getElementById('rain-fs').textContent);
+        if (!vs || !fs) { fallback(); return; }
+        program = gl.createProgram();
+        gl.attachShader(program, vs);
+        gl.attachShader(program, fs);
+        gl.linkProgram(program);
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          console.error('Link error:', gl.getProgramInfoLog(program));
+          fallback(); return;
+        }
+        gl.useProgram(program);
+
+        // full-screen quad
+        vao = gl.createVertexArray();
+        gl.bindVertexArray(vao);
+        var buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+        var aPos = gl.getAttribLocation(program, 'a_pos');
+        gl.enableVertexAttribArray(aPos);
+        gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+        ['u_res','u_time','u_mouse','u_rain','u_fog','u_refract','u_texMode','u_tex','u_videoAspect'].forEach(function(n){
+          uniforms[n] = gl.getUniformLocation(program, n);
+        });
+
+        // default empty texture (procedural mode uses it harmlessly)
+        bgTexture = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, bgTexture);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([10,13,20,255]));
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      }
+
+      function fallback() {
+        gl = null;
+        var fb = document.createElement('div');
+        fb.className = 'no-webgl-fallback';
+        document.body.insertBefore(fb, document.body.firstChild);
+        canvas.style.display = 'none';
+      }
 
       function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-
-      function Particle() {
-        this.reset();
-      }
-      Particle.prototype.reset = function() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.r = Math.random() * 1.5 + 0.5;
-        this.alpha = Math.random() * 0.5 + 0.1;
-        // HSL hue for color-shifting: green(150), purple(260), cyan(185), pink(340)
-        var hues = [150, 260, 185, 340];
-        this.hue = hues[Math.floor(Math.random() * hues.length)];
-        this.life = Infinity; // permanent by default
-      };
-      Particle.prototype.update = function() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-        var dx = this.x - mouse.x;
-        var dy = this.y - mouse.y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          var force = (120 - dist) / 120 * 0.02;
-          this.vx += dx * force;
-          this.vy += dy * force;
-        }
-        this.vx *= 0.99;
-        this.vy *= 0.99;
-      };
-      Particle.prototype.draw = function() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'hsla(' + this.hue + ', 100%, 70%, ' + this.alpha + ')';
-        ctx.fill();
-      };
-
-      function init() {
-        resize();
-        particles = [];
-        for (var i = 0; i < PARTICLE_COUNT; i++) {
-          particles.push(new Particle());
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var w = Math.floor(window.innerWidth * dpr);
+        var h = Math.floor(window.innerHeight * dpr);
+        if (canvas.width !== w || canvas.height !== h) {
+          canvas.width = w; canvas.height = h;
+          if (gl) {
+            gl.viewport(0, 0, w, h);
+            if (texMode === 0 && bgTexture) gl.generateMipmap(gl.TEXTURE_2D);
+          }
         }
       }
 
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        var now = Date.now();
-
-        // Update and draw regular particles
-        for (var i = 0; i < particles.length; i++) {
-          // Slow hue cycling
-          particles[i].hue = (particles[i].hue + 0.15) % 360;
-          particles[i].update();
-          particles[i].draw();
-          for (var j = i + 1; j < particles.length; j++) {
-            var dx = particles[i].x - particles[j].x;
-            var dy = particles[i].y - particles[j].y;
-            var dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < CONNECT_DIST) {
-              var baseAlpha = (1 - dist / CONNECT_DIST) * 0.15;
-              // Pulsing connections via sin wave
-              var pulseAlpha = baseAlpha * (Math.sin(now * 0.002 + i * 0.5) * 0.5 + 0.5);
-              // Average hue of connected particles
-              var avgHue = (particles[i].hue + particles[j].hue) / 2;
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = 'hsla(' + avgHue + ', 100%, 70%, ' + pulseAlpha + ')';
-              ctx.lineWidth = 0.5;
-              ctx.stroke();
-            }
-          }
+      var mouse = [0, 0];
+      window.addEventListener('mousemove', function (e) {
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        mouse = [e.clientX * dpr, (window.innerHeight - e.clientY) * dpr];
+      });
+      window.addEventListener('touchmove', function (e) {
+        if (e.touches[0]) {
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          mouse = [e.touches[0].clientX * dpr, (window.innerHeight - e.touches[0].clientY) * dpr];
         }
+      }, { passive: true });
 
-        // Update and draw burst particles
-        for (var b = bursts.length - 1; b >= 0; b--) {
-          bursts[b].x += bursts[b].vx;
-          bursts[b].y += bursts[b].vy;
-          bursts[b].vx *= 0.96;
-          bursts[b].vy *= 0.96;
-          bursts[b].frame++;
-          bursts[b].alpha = bursts[b].maxAlpha * (1 - bursts[b].frame / bursts[b].maxFrames);
-          if (bursts[b].frame >= bursts[b].maxFrames) {
-            bursts.splice(b, 1);
-          } else {
-            ctx.beginPath();
-            ctx.arc(bursts[b].x, bursts[b].y, bursts[b].r, 0, Math.PI * 2);
-            ctx.fillStyle = 'hsla(' + bursts[b].hue + ', 100%, 70%, ' + bursts[b].alpha + ')';
-            ctx.fill();
+      var startTime = performance.now();
+      var frozenTime = 0; // for reduced-motion
+      function render() {
+        if (gl) {
+          // update video texture if needed
+          if (isVideo && videoEl && videoEl.readyState >= 2) {
+            gl.bindTexture(gl.TEXTURE_2D, bgTexture);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, videoEl);
           }
+          var t = reducedMotion ? 8.0 : (performance.now() - startTime) / 1000;
+          gl.uniform2f(uniforms.u_res, canvas.width, canvas.height);
+          gl.uniform1f(uniforms.u_time, t);
+          gl.uniform2f(uniforms.u_mouse, mouse[0], mouse[1]);
+          gl.uniform1f(uniforms.u_rain, params.rain);
+          gl.uniform1f(uniforms.u_fog, params.fog);
+          gl.uniform1f(uniforms.u_refract, params.refract);
+          gl.uniform1f(uniforms.u_texMode, texMode);
+          gl.uniform1f(uniforms.u_videoAspect, videoAspect);
+          gl.activeTexture(gl.TEXTURE0);
+          gl.bindTexture(gl.TEXTURE_2D, bgTexture);
+          gl.uniform1i(uniforms.u_tex, 0);
+          gl.drawArrays(gl.TRIANGLES, 0, 6);
         }
-
-        requestAnimationFrame(animate);
+        requestAnimationFrame(render);
       }
 
-      window.addEventListener('resize', function() { resize(); init(); });
-      window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
-      window.addEventListener('mouseleave', function() { mouse.x = -1000; mouse.y = -1000; });
-
-      // Click burst: spawn 15 temporary particles at click position
-      canvas.style.pointerEvents = 'auto';
-      canvas.addEventListener('click', function(e) {
-        var rect = canvas.getBoundingClientRect();
-        var cx = e.clientX - rect.left;
-        var cy = e.clientY - rect.top;
-        var hues = [150, 260, 185, 340];
-        for (var b = 0; b < 15; b++) {
-          var angle = (Math.PI * 2 / 15) * b + (Math.random() - 0.5) * 0.5;
-          var speed = Math.random() * 4 + 2;
-          bursts.push({
-            x: cx,
-            y: cy,
-            vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed,
-            r: Math.random() * 2 + 1,
-            hue: hues[Math.floor(Math.random() * hues.length)],
-            alpha: 1,
-            maxAlpha: Math.random() * 0.6 + 0.4,
-            frame: 0,
-            maxFrames: 60
-          });
+      // ---- background upload ----
+      function loadTextureFromFile(file) {
+        var isVid = file.type.indexOf('video') === 0;
+        if (isVid) {
+          if (videoEl) videoEl.pause();
+          videoEl = document.createElement('video');
+          videoEl.muted = true; videoEl.loop = true; videoEl.playsInline = true;
+          videoEl.autoplay = true;
+          videoEl.src = URL.createObjectURL(file);
+          videoEl.onloadstart = function () { videoAspect = videoEl.videoWidth / videoEl.videoHeight || 1.0; };
+          videoEl.onloadedmetadata = function () {
+            videoAspect = videoEl.videoWidth / videoEl.videoHeight || 1.0;
+            videoEl.play().catch(function(){});
+          };
+          isVideo = true;
+        } else {
+          if (videoEl) { videoEl.pause(); videoEl = null; }
+          isVideo = false;
+          var img = new Image();
+          img.onload = function () {
+            gl.bindTexture(gl.TEXTURE_2D, bgTexture);
+            gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+            gl.generateMipmap(gl.TEXTURE_2D);
+            videoAspect = img.naturalWidth / img.naturalHeight || 1.0;
+          };
+          img.src = URL.createObjectURL(file);
         }
-      });
-
-      init();
-      animate();
-
-      /* ===== Hero Terminal Typewriter ===== */
-      var terminalLines = [
-        { type: 'cmd', html: '<span class="p">$</span> <span class="w">xclaw</span> <span class="k">--model</span> <span class="s">"gpt-4o"</span> <span class="k">--agent</span>' },
-        { type: 'comment', html: '<span class="c"># Initializing multi-provider engine...</span>' },
-        { type: 'output', html: '<span class="o">[OK]</span> <span class="w">Anthropic · OpenAI · Gemini · Grok</span>' },
-        { type: 'comment', html: '<span class="c"># Loading agent loop — 20 round capacity</span>' },
-        { type: 'output', html: '<span class="o">[OK]</span> <span class="w">Agent loop active — tool execution enabled</span>' },
-        { type: 'comment', html: '<span class="c"># Arming tool belt</span>' },
-        { type: 'output', html: '<span class="o">[OK]</span> <span class="w">Bash · Read · Edit · Write · Grep · Glob</span>' },
-        { type: 'comment', html: '<span class="c"># Permission system configured</span>' },
-        { type: 'output', html: '<span class="o">[OK]</span> <span class="w">ask · auto-edit · full-auto</span>' },
-        { type: 'comment', html: '<span class="c"># TUI rendering ready</span>' },
-        { type: 'output', html: '<span class="o">[OK]</span> <span class="w">Streaming tokens · Markdown · Ink</span>' },
-        { type: 'blank', html: '' },
-        { type: 'action', html: '<span class="k">&gt;</span> <span class="w">Analyzing codebase structure...</span>' },
-        { type: 'action', html: '<span class="k">&gt;</span> <span class="w">Reading</span> <span class="s">src/engine/agent-loop.ts</span>' },
-        { type: 'action', html: '<span class="k">&gt;</span> <span class="w">Parsing</span> <span class="s">src/providers/openai.ts</span>' },
-        { type: 'action', html: '<span class="k">&gt;</span> <span class="w">Streaming response to TUI</span>' }
-      ];
-
-      var heroTerminal = document.getElementById('hero-terminal');
-      var typewriterStarted = false;
-
-      function startTypewriter() {
-        if (typewriterStarted) return;
-        typewriterStarted = true;
-        heroTerminal.innerHTML = '';
-
-        var i = 0;
-        function showNext() {
-          if (i >= terminalLines.length) {
-            // Add blinking cursor at the end
-            var cursorLine = document.createElement('div');
-            cursorLine.className = 'term-line shown';
-            cursorLine.innerHTML = '<span class="p">$</span> <span class="cursor"></span>';
-            heroTerminal.appendChild(cursorLine);
-            heroTerminal.scrollTop = heroTerminal.scrollHeight;
-            return;
-          }
-          var line = terminalLines[i];
-          var el = document.createElement('div');
-          el.className = 'term-line';
-          el.innerHTML = line.html;
-          heroTerminal.appendChild(el);
-
-          // Trigger show
-          requestAnimationFrame(function() {
-            el.classList.add('shown');
-            heroTerminal.scrollTop = heroTerminal.scrollHeight;
-          });
-
-          i++;
-          var delay = line.type === 'blank' ? 100 :
-                      line.type === 'cmd' ? 300 :
-                      line.type === 'comment' ? 200 :
-                      line.type === 'output' ? 150 :
-                      line.type === 'action' ? 250 : 150;
-          setTimeout(showNext, delay);
-        }
-        showNext();
+        texMode = 1;
       }
 
-      // Observe hero terminal entering viewport
-      var heroObs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) {
-            startTypewriter();
-            heroObs.disconnect();
-          }
-        });
-      }, { threshold: 0.3 });
-      heroObs.observe(heroTerminal);
-
-      /* ===== Scroll Animations ===== */
-      var obs = new IntersectionObserver(
-        function(entries) {
-          entries.forEach(function(e) {
-            if (e.isIntersecting) e.target.classList.add('visible');
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-      );
-      document.querySelectorAll('.fade-up').forEach(function(el) { obs.observe(el); });
-
-      /* ===== Count-up Animation ===== */
-      var statsAnimated = false;
-      var statsObs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting && !statsAnimated) {
-            statsAnimated = true;
-            animateStats();
-            statsObs.disconnect();
-          }
-        });
-      }, { threshold: 0.3 });
-
-      var statsTerminal = document.querySelector('.stats-terminal');
-      if (statsTerminal) statsObs.observe(statsTerminal);
-
-      function animateStats() {
-        var statVals = document.querySelectorAll('.stat-val[data-target]');
-        statVals.forEach(function(el) {
-          var target = parseInt(el.getAttribute('data-target'), 10);
-          var suffix = el.getAttribute('data-suffix') || '';
-          var duration = 1500;
-          var start = null;
-
-          function step(timestamp) {
-            if (!start) start = timestamp;
-            var progress = Math.min((timestamp - start) / duration, 1);
-            // Ease out cubic
-            var eased = 1 - Math.pow(1 - progress, 3);
-            var current = Math.floor(eased * target);
-            el.textContent = current + suffix;
-            if (progress < 1) {
-              requestAnimationFrame(step);
-            } else {
-              el.textContent = target + suffix;
-            }
-          }
-          requestAnimationFrame(step);
-        });
+      function resetToFluid() {
+        texMode = 0;
+        if (videoEl) { videoEl.pause(); videoEl = null; }
+        isVideo = false;
       }
 
-      /* ===== Mouse Glow on Project Cards ===== */
-      document.querySelectorAll('.proj').forEach(function(card) {
-        card.addEventListener('mousemove', function(e) {
-          var rect = card.getBoundingClientRect();
-          card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width * 100) + '%');
-          card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height * 100) + '%');
-        });
+      // ---- wire up controls ----
+      var dockToggle = document.getElementById('dock-toggle');
+      var dockPanel = document.getElementById('dock-panel');
+      dockToggle.addEventListener('click', function () {
+        dockPanel.classList.toggle('open');
       });
-
-      /* ===== Hamburger Menu Toggle ===== */
-      var hamburger = document.getElementById('hamburger');
-      var mobileMenu = document.getElementById('mobile-menu');
-      hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('open');
-      });
-      mobileMenu.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          hamburger.classList.remove('active');
-          mobileMenu.classList.remove('open');
-        });
-      });
-
-      /* ===== Clickable Ripple Effect ===== */
-      document.addEventListener('click', function(e) {
-        var clickable = e.target.closest('.clickable');
-        if (!clickable) return;
-        var rect = clickable.getBoundingClientRect();
-        var size = Math.max(rect.width, rect.height) * 2;
-        var ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-        clickable.appendChild(ripple);
-        ripple.addEventListener('animationend', function() { ripple.remove(); });
-      });
-
-      /* ===== Stats: Copy to Clipboard + Flash ===== */
-      document.querySelectorAll('.stat.clickable').forEach(function(stat) {
-        stat.addEventListener('click', function() {
-          var valEl = stat.querySelector('.stat-val');
-          var lblEl = stat.querySelector('.stat-lbl');
-          if (!valEl || !lblEl) return;
-          var text = valEl.textContent.trim() + ' ' + lblEl.textContent.trim();
-          if (navigator.clipboard) {
-            navigator.clipboard.writeText(text).catch(function() {});
-          }
-          // Flash green
-          valEl.classList.add('copied-flash');
-          setTimeout(function() { valEl.classList.remove('copied-flash'); }, 600);
-        });
-      });
-
-      /* ===== Terminal Dot Interactions ===== */
-      document.querySelectorAll('.term-bar').forEach(function(bar) {
-        var terminal = bar.closest('.terminal') || bar.closest('.about-terminal') || bar.closest('.contact-terminal');
-        if (!terminal) return;
-        var body = terminal.querySelector('.term-body') || terminal.querySelector('.about-body') || terminal.querySelector('.contact-body');
-        var redDot = bar.querySelector('.term-dot.r');
-        var yellowDot = bar.querySelector('.term-dot.y');
-        var greenDot = bar.querySelector('.term-dot.g');
-
-        if (redDot) {
-          redDot.addEventListener('click', function(e) {
-            e.stopPropagation();
-            terminal.classList.add('term-hidden');
-            // Restore after 2 seconds
-            setTimeout(function() {
-              terminal.classList.remove('term-hidden');
-            }, 2000);
-          });
-        }
-
-        if (yellowDot && body) {
-          yellowDot.addEventListener('click', function(e) {
-            e.stopPropagation();
-            body.classList.toggle('collapsed');
-          });
-        }
-
-        if (greenDot) {
-          greenDot.addEventListener('click', function(e) {
-            e.stopPropagation();
-            terminal.classList.add('glow-active');
-            greenDot.classList.add('pulse-active');
-            setTimeout(function() {
-              terminal.classList.remove('glow-active');
-              greenDot.classList.remove('pulse-active');
-            }, 3000);
-          });
+      document.addEventListener('click', function (e) {
+        if (!dockPanel.contains(e.target) && !dockToggle.contains(e.target)) {
+          dockPanel.classList.remove('open');
         }
       });
 
-      /* ===== Project Tech Tags: Add clickable class + hover glow ===== */
-      document.querySelectorAll('.proj-tech span').forEach(function(tag) {
-        tag.classList.add('clickable');
+      function bindSlider(id, key, valId) {
+        var el = document.getElementById(id);
+        var valEl = document.getElementById(valId);
+        el.value = params[key];
+        valEl.textContent = params[key].toFixed(2);
+        el.addEventListener('input', function () {
+          params[key] = parseFloat(el.value);
+          valEl.textContent = params[key].toFixed(2);
+          saveParams();
+        });
+      }
+      bindSlider('ctrl-rain', 'rain', 'val-rain');
+      bindSlider('ctrl-fog', 'fog', 'val-fog');
+      bindSlider('ctrl-refract', 'refract', 'val-refract');
+
+      document.getElementById('bg-upload').addEventListener('change', function (e) {
+        if (e.target.files && e.target.files[0]) loadTextureFromFile(e.target.files[0]);
+      });
+      document.getElementById('bg-reset').addEventListener('click', resetToFluid);
+      document.getElementById('ctrl-reset').addEventListener('click', function () {
+        params = { rain: 0.65, fog: 0.45, refract: 0.30 };
+        bindSlider('ctrl-rain', 'rain', 'val-rain');
+        bindSlider('ctrl-fog', 'fog', 'val-fog');
+        bindSlider('ctrl-refract', 'refract', 'val-refract');
+        saveParams();
       });
 
-      /* ===== Language Toggle ===== */
+      // ---- EN/ZH language toggle ----
       var currentLang = localStorage.getItem('lang') || 'en';
+      var langBtn = document.getElementById('lang-toggle');
       function setLang(lang) {
         currentLang = lang;
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+          var text = el.getAttribute('data-' + lang);
+          if (text != null) el.innerHTML = text;
+        });
+        if (langBtn) langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
         localStorage.setItem('lang', lang);
-        document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
-          el.style.opacity = '0';
-          setTimeout(function() {
-            el.textContent = el.getAttribute('data-' + lang);
-            el.style.opacity = '1';
-          }, 150);
-        });
-        var btn = document.getElementById('lang-toggle');
-        if (btn) btn.textContent = lang === 'en' ? 'EN' : '中';
       }
-      var langToggle = document.getElementById('lang-toggle');
-      if (langToggle) {
-        langToggle.addEventListener('click', function() {
-          setLang(currentLang === 'en' ? 'zh' : 'en');
-        });
-      }
+      if (langBtn) langBtn.addEventListener('click', function () { setLang(currentLang === 'en' ? 'zh' : 'en'); });
+
+      // ---- boot ----
+      window.addEventListener('resize', resize);
+      resize();
+      initGL();
       setLang(currentLang);
-
-      /* ===== Boot Overlay ===== */
-      var bootOverlay = document.getElementById('boot-overlay');
-      if (bootOverlay) {
-        setTimeout(function() {
-          bootOverlay.classList.add('fade-out');
-          setTimeout(function() {
-            bootOverlay.remove();
-          }, 600);
-        }, 1000);
-      }
-
-      /* ===== Scroll Parallax for hero-ascii ===== */
-      var heroAscii = document.querySelector('.hero-ascii');
-      if (heroAscii) {
-        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (!prefersReduced) {
-          window.addEventListener('scroll', function() {
-            var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-            heroAscii.style.transform = 'translateY(' + (scrollY * 0.1) + 'px)';
-          }, { passive: true });
-        }
-      }
-
-      /* ===== Terminal Dot Bounce on Click ===== */
-      document.querySelectorAll('.term-dot.clickable').forEach(function(dot) {
-        dot.addEventListener('click', function() {
-          dot.classList.remove('bounce-active');
-          // Force reflow to restart animation
-          void dot.offsetWidth;
-          dot.classList.add('bounce-active');
-          dot.addEventListener('animationend', function handler() {
-            dot.classList.remove('bounce-active');
-            dot.removeEventListener('animationend', handler);
-          });
-        });
-      });
-
-      /* ===== Accessibility: role + tabindex on .clickable ===== */
-      document.querySelectorAll('.clickable').forEach(function(el) {
-        if (!el.getAttribute('role')) el.setAttribute('role', 'button');
-        if (!el.getAttribute('tabindex')) el.setAttribute('tabindex', '0');
-      });
-
-      /* ===== Accessibility: aria-labels ===== */
-      document.querySelectorAll('.term-dot.r').forEach(function(d) {
-        if (!d.getAttribute('aria-label')) d.setAttribute('aria-label', 'Close terminal');
-      });
-      document.querySelectorAll('.term-dot.y').forEach(function(d) {
-        if (!d.getAttribute('aria-label')) d.setAttribute('aria-label', 'Collapse terminal');
-      });
-      document.querySelectorAll('.term-dot.g').forEach(function(d) {
-        if (!d.getAttribute('aria-label')) d.setAttribute('aria-label', 'Activate terminal glow');
-      });
-      document.querySelectorAll('.stat').forEach(function(s, i) {
-        var lbl = s.querySelector('.stat-lbl');
-        if (lbl && !s.getAttribute('aria-label')) {
-          s.setAttribute('aria-label', 'Statistic: ' + lbl.textContent.trim());
-        }
-      });
-      document.querySelectorAll('.skill-tag-neo').forEach(function(tag) {
-        if (!tag.getAttribute('aria-label')) {
-          tag.setAttribute('aria-label', 'Skill: ' + tag.textContent.trim());
-        }
-      });
-      document.querySelectorAll('.proj-tech span').forEach(function(tag) {
-        if (!tag.getAttribute('aria-label')) {
-          tag.setAttribute('aria-label', 'Technology: ' + tag.textContent.trim());
-        }
-      });
-
+      render();
     })();
   </script>
 </body>
