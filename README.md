@@ -19,7 +19,7 @@ M.Sc. at Nanjing Agricultural University · Nanjing 🌧️
 
 ---
 
-I build AI agents that actually do things — multi-provider coding CLIs, agent frameworks, and research tools. My open-source work has shipped merged PRs to **claude-code** (4 PRs), **bytedance/deer-flow**, and **AstrBot**, and my own projects have earned **150+ stars** across 33 repositories. Day-to-day I work in **Python** and **TypeScript**.
+I build AI agents that actually do things — coding CLIs, agent frameworks, and research tools.
 
 Portfolio (with live WebGL rain-glass effect): **[yuanyuanma03.github.io/YuanyuanMa03](https://yuanyuanma03.github.io/YuanyuanMa03/)**
 
