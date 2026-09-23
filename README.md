@@ -1,33 +1,49 @@
 <div align="center">
 
-# Yuanyuan Ma
+<h1>Yuanyuan Ma · 马远远</h1>
 
-**Building AI agents that actually do things.**
+<p><strong>Building AI agents that actually do things.</strong></p>
 
-Coding CLIs · Agent frameworks · Research tools
-M.Sc. @ Nanjing Agricultural University
+<p>AI coding tools · Research workflows · Open source<br>
+M.Sc. student at Nanjing Agricultural University</p>
 
-[Portfolio](https://mayuanyuan.top/) · [Gmail](mailto:yym290552@gmail.com) · [School Mail](mailto:2025101184@stu.njau.edu.cn)
+<h2><a href="https://mayuanyuan.top/">mayuanyuan.top ↗</a></h2>
+
+<p><strong>个人博客 / Notes, projects &amp; things in progress</strong></p>
+
+<p><a href="https://github.com/YuanyuanMa03?tab=repositories">Explore my projects</a> · <a href="mailto:yym290552@gmail.com">Get in touch</a></p>
 
 </div>
 
 ---
 
-## Projects
+### Hi there 👋
 
-- **[academic-research-skills](https://github.com/YuanyuanMa03/academic-research-skills)** · ★ 45 — academic search skills for AI coding agents: CNKI, Google Scholar, Web of Science
-- **[GitPulse](https://github.com/YuanyuanMa03/GitPulse)** · ★ 24 — real-time GitHub trending tracker, zero-dependency vanilla JS
-- **[xcoder](https://github.com/YuanyuanMa03/xcoder)** · ★ 7 — multi-model coding CLI with browser automation and voice input
-- **[cropcode](https://github.com/YuanyuanMa03/cropcode)** — terminal coding agent, multi-provider, China-direct, MCP
-- **[handmade-minigpt](https://github.com/YuanyuanMa03/handmade-minigpt)** — hand-write a GPT from scratch, from tensors to a trainable TinyGPT
-- **[literature_agent](https://github.com/YuanyuanMa03/literature_agent)** — LLM literature screening assistant, `pip install lit-agent`
+I'm Yuanyuan. I build tools that help people work with AI, from terminal coding agents to reproducible research workflows. I write about what I make and learn at **[mayuanyuan.top](https://mayuanyuan.top/)**.
 
-[All repositories →](https://github.com/YuanyuanMa03?tab=repositories)
+### Selected work
 
-## Contributions
+| Project | What it does |
+| --- | --- |
+| [CropCode](https://github.com/YuanyuanMa03/cropcode) | A terminal coding agent with multiple model providers and MCP support. |
+| [academic-research-skills](https://github.com/YuanyuanMa03/academic-research-skills) | Academic search skills for AI coding agents. |
+| [GitPulse](https://github.com/YuanyuanMa03/GitPulse) | A lightweight, real-time GitHub trends tracker. |
+| [xcoder](https://github.com/YuanyuanMa03/xcoder) | A multi-model coding CLI with browser automation and voice input. |
+| [literature_agent](https://github.com/YuanyuanMa03/literature_agent) | An assistant for screening and organizing research literature. |
 
-Merged pull requests to [claude-code](https://github.com/claude-code-best/claude-code) ×4, [bytedance/deer-flow](https://github.com/bytedance/deer-flow), and [AstrBot](https://github.com/AstrBotDevs/AstrBot).
+### Open source
 
-## Stack
+I've contributed to [claude-code](https://github.com/claude-code-best/claude-code), [DeerFlow](https://github.com/bytedance/deer-flow), and [AstrBot](https://github.com/AstrBotDevs/AstrBot).
 
-Python · TypeScript · Go · PyTorch · LangGraph · MCP · Bun · Docker · Neovim
+### Tools I use
+
+`Python` · `TypeScript` · `Go` · `PyTorch` · `MCP` · `Docker`
+
+---
+
+<div align="center">
+
+<p><strong>Find the full story at <a href="https://mayuanyuan.top/">mayuanyuan.top</a></strong><br>
+<a href="mailto:yym290552@gmail.com">Email</a> · <a href="mailto:2025101184@stu.njau.edu.cn">University email</a></p>
+
+</div>
