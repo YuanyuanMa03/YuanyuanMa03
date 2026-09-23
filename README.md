@@ -7,7 +7,7 @@
 Coding CLIs · Agent frameworks · Research tools
 M.Sc. @ Nanjing Agricultural University
 
-[Portfolio](https://yuanyuanma03.github.io/YuanyuanMa03/) · [Gmail](mailto:yym290552@gmail.com) · [School Mail](mailto:2025101184@stu.njau.edu.cn)
+[Portfolio](https://mayuanyuan.top/) · [Gmail](mailto:yym290552@gmail.com) · [School Mail](mailto:2025101184@stu.njau.edu.cn)
 
 </div>
 
