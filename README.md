@@ -1,49 +1,41 @@
 <div align="center">
 
-<h1>Yuanyuan Ma · 马远远</h1>
+# 马远远 · Yuanyuan Ma
 
-<p><strong>Building AI agents that actually do things.</strong></p>
+**把 AI 变成真正能做事的工具。**
 
-<p>AI coding tools · Research workflows · Open source<br>
-M.Sc. student at Nanjing Agricultural University</p>
+来自中国江苏南京 · 南京农业大学硕士研究生
 
-<h2><a href="https://mayuanyuan.top/">mayuanyuan.top ↗</a></h2>
-
-<p><strong>个人博客 / Notes, projects &amp; things in progress</strong></p>
-
-<p><a href="https://github.com/YuanyuanMa03?tab=repositories">Explore my projects</a> · <a href="mailto:yym290552@gmail.com">Get in touch</a></p>
+[mayuanyuan.top ↗](https://mayuanyuan.top)
 
 </div>
 
 ---
 
-### Hi there 👋
+### 关于我
 
-I'm Yuanyuan. I build tools that help people work with AI, from terminal coding agents to reproducible research workflows. I write about what I make and learn at **[mayuanyuan.top](https://mayuanyuan.top/)**.
+你好，我是远远，来自南京，目前在南京农业大学读硕士。
 
-### Selected work
+平时一边做科研，一边折腾 AI Agent、模型应用和开发工具。我喜欢把新想法落到代码里，做成真正能用的东西，也会记录一路上的尝试与收获。
 
-| Project | What it does |
-| --- | --- |
-| [CropCode](https://github.com/YuanyuanMa03/cropcode) | A terminal coding agent with multiple model providers and MCP support. |
-| [academic-research-skills](https://github.com/YuanyuanMa03/academic-research-skills) | Academic search skills for AI coding agents. |
-| [GitPulse](https://github.com/YuanyuanMa03/GitPulse) | A lightweight, real-time GitHub trends tracker. |
-| [xcoder](https://github.com/YuanyuanMa03/xcoder) | A multi-model coding CLI with browser automation and voice input. |
-| [literature_agent](https://github.com/YuanyuanMa03/literature_agent) | An assistant for screening and organizing research literature. |
+### 我关注的方向
 
-### Open source
+**AI Agent** · **科研与 AI** · **开发者工具** · **高效工作流**
 
-I've contributed to [claude-code](https://github.com/claude-code-best/claude-code), [DeerFlow](https://github.com/bytedance/deer-flow), and [AstrBot](https://github.com/AstrBotDevs/AstrBot).
+### 技术栈
 
-### Tools I use
-
-`Python` · `TypeScript` · `Go` · `PyTorch` · `MCP` · `Docker`
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=py,ts,go,pytorch,docker,git,linux,vscode&perline=8&theme=light" alt="Python, TypeScript, Go, PyTorch, Docker, Git, Linux, Visual Studio Code">
+  </a>
+</p>
 
 ---
 
 <div align="center">
 
-<p><strong>Find the full story at <a href="https://mayuanyuan.top/">mayuanyuan.top</a></strong><br>
-<a href="mailto:yym290552@gmail.com">Email</a> · <a href="mailto:2025101184@stu.njau.edu.cn">University email</a></p>
+**持续好奇，认真创造。**
+
+更多关于我：[mayuanyuan.top](https://mayuanyuan.top)
 
 </div>
